@@ -3,6 +3,9 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- bezpečnosť: stránka smie načítať len vlastné skripty a štýly + písma z Google Fonts -->
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'none'">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
   <meta name="color-scheme" content="dark">
   <title>UX/UI Design Case Studies — Dominika Škulavik</title>
   <meta name="description" content="UX/UI design and front-end case studies: a B2B SaaS web app for agriculture with its design system, a car-accident reporting app and a WordPress redesign.">

@@ -3,6 +3,9 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- bezpečnosť: stránka smie načítať len vlastné skripty a štýly + písma z Google Fonts -->
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'none'">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
   <meta name="color-scheme" content="dark">
   <title>Dominika Škulavik — UX/UI Designer &amp; Front-end Developer</title>
   <meta name="description" content="UX/UI designer and front-end developer from Nitra, Slovakia. I design web apps in Figma, build design systems and ship the front-end code.">

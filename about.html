@@ -3,6 +3,9 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- bezpečnosť: stránka smie načítať len vlastné skripty a štýly + písma z Google Fonts -->
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'none'">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
   <meta name="color-scheme" content="dark">
   <title>About Dominika Škulavik — UX/UI Designer in Nitra, Slovakia</title>
   <meta name="description" content="UX/UI designer and front-end developer with an MSc in Managerial Informatics. Skills in UX research, Figma, design systems, HTML, CSS, JavaScript and SQL.">
@@ -216,6 +219,55 @@
         </ul>
       </div>
       </div>
+    </section>
+
+    <!-- ===== Spoločníci (obľúbené nástroje) =====
+         Nový spoločník: skopíruj jedno <li class="companion"> a uprav texty. -->
+    <section class="section section--tight" aria-labelledby="companions-title">
+      <div class="section__head">
+        <h2 id="companions-title" class="h2">Favourite companions</h2>
+      </div>
+
+      <ul class="companions">
+        <li class="companion">
+          <span class="companion__icon" aria-hidden="true">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19l7-7 3 3-7 7-3-3z"></path><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"></path><path d="M2 2l7.6 7.6"></path><circle cx="11" cy="11" r="2"></circle></svg>
+          </span>
+          <p class="companion__class">CLASS · ARCHITECT</p>
+          <h3 class="companion__name">Figma</h3>
+          <p class="companion__text">Where every screen, flow and design token starts.</p>
+        </li>
+        <li class="companion">
+          <span class="companion__icon" aria-hidden="true">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l10 5-10 5L2 7l10-5z"></path><path d="M2 17l10 5 10-5"></path><path d="M2 12l10 5 10-5"></path></svg>
+          </span>
+          <p class="companion__class">CLASS · ARTIST</p>
+          <h3 class="companion__name">Illustrator &amp; Photoshop</h3>
+          <p class="companion__text">Logos, icons and photos that need a steady hand.</p>
+        </li>
+        <li class="companion">
+          <span class="companion__icon" aria-hidden="true">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v4M12 17v4M3 12h4M17 12h4M6 6l2.5 2.5M15.5 15.5L18 18M6 18l2.5-2.5M15.5 8.5L18 6"></path></svg>
+          </span>
+          <p class="companion__class">CLASS · SUPPORT</p>
+          <h3 class="companion__name">Claude</h3>
+          <p class="companion__text">Writes code alongside me. I review every line it hands back.</p>
+        </li>
+        <li class="companion">
+          <span class="companion__icon" aria-hidden="true">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M8 7l-5 5 5 5M16 7l5 5-5 5M14 4l-4 16"></path></svg>
+          </span>
+          <p class="companion__class">CLASS · ENGINEER</p>
+          <h3 class="companion__name">VS Code</h3>
+          <p class="companion__text">Where the designs turn into HTML, CSS and JavaScript.</p>
+        </li>
+      </ul>
+
+      <!-- citát: pravidlo pre spoluprácu s AI -->
+      <figure class="rule-quote">
+        <blockquote><p>“AI is a good servant but a bad master.”</p></blockquote>
+        <figcaption>SURVIVOR’S RULE #1</figcaption>
+      </figure>
     </section>
 
     <!-- ===== Inventár (záľuby) ===== -->

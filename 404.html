@@ -3,6 +3,9 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- bezpečnosť: stránka smie načítať len vlastné skripty a štýly + písma z Google Fonts -->
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'none'">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
   <meta name="color-scheme" content="dark">
   <!-- GitHub Pages ukáže túto stránku pri akejkoľvek zlej adrese (aj /a/b/c),
        preto sú všetky odkazy a súbory brané od koreňa webu -->
@@ -47,28 +50,6 @@
   <!-- pätička sa vkladá zo súboru js/layout.js -->
   <div data-site-footer></div>
 
-  <script>
-    // odpočet 9 → 0 ako v hre; potom už len čaká, kým hráč klikne
-    (function () {
-      var box = document.querySelector('[data-countdown]');
-      var num = box.querySelector('.game-over__count-num');
-      if (document.documentElement.classList.contains('motion-off') ||
-          window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-        box.hidden = true;
-        return;
-      }
-      var n = 9;
-      var timer = setInterval(function () {
-        n -= 1;
-        num.textContent = n;
-        if (n === 0) {
-          clearInterval(timer);
-          box.classList.add('is-over');
-          box.querySelector('.game-over__count-label').textContent = 'GAME OVER';
-          num.textContent = '';
-        }
-      }, 1000);
-    })();
-  </script>
+  <script src="js/404.js"></script>
 </body>
 </html>

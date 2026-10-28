@@ -58,3 +58,5 @@ Adresa: **https://www.dominika-skulavik.com** (GitHub Pages, doména z Websuppor
 - Každá zmena: commit → push do vetvy `main` → o minútku je naživo.
 - Súbor `CNAME` nemaž, drží vlastnú doménu.
 - Súbory, ktoré na GitHub nepatria (nepoužívané obrázky), sú v `.gitignore`.
+- **Bezpečnosť (CSP):** každá stránka má v hlavičke `Content-Security-Policy`. Povoľuje len vlastné skripty a štýly a písma z Google Fonts. Keď pridáš externý skript alebo obrázok z iného webu, treba ho tam dopísať, inak ho prehliadač zablokuje.
+- Nové veci skúšaj na vetve `dev`, na `main` idú až po kontrole.
