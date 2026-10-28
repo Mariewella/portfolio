@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <!-- GitHub Pages ukáže túto stránku pri akejkoľvek zlej adrese (aj /a/b/c),
+       preto sú všetky odkazy a súbory brané od koreňa webu -->
+  <base href="/">
+  <title>Page not found (404) — Dominika Škulavik</title>
+  <meta name="description" content="This page doesn’t exist. Continue to the portfolio of Dominika Škulavik, UX/UI designer and front-end developer.">
+  <meta name="robots" content="noindex">
+  <meta name="theme-color" content="#0b0c0a">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IM+Fell+English+SC&family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Special+Elite&display=swap">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" href="images/favicon.svg" type="image/svg+xml">
+  <script src="js/main.js" defer></script>
+</head>
+<body>
+  <!-- hlavička sa vkladá zo súboru js/layout.js (spoločná pre všetky stránky) -->
+  <script src="js/layout.js"></script>
+
+  <main id="content" class="page">
+    <section class="game-over">
+      <p class="eyebrow">ERROR 404 · PAGE NOT FOUND</p>
+      <h1 class="game-over__title flicker">You died.</h1>
+      <p class="lead">This room is empty. The page you were looking for doesn’t exist, or it was moved somewhere else.</p>
+
+      <!-- len efekt ako v automate, nikam sám nepresmeruje -->
+      <p class="game-over__count" aria-hidden="true" data-countdown>
+        <span class="game-over__count-label">CONTINUE?</span>
+        <span class="game-over__count-num">9</span>
+      </p>
+
+      <div class="cta-row">
+        <a class="cta" href="index.html">
+          <svg width="10" height="12" viewBox="0 0 10 12" aria-hidden="true"><path d="M0 0 L10 6 L0 12 Z" fill="currentColor"></path></svg>
+          Continue
+        </a>
+        <a class="cta cta--ghost" href="portfolio.html">Open case files</a>
+      </div>
+    </section>
+  </main>
+
+  <!-- pätička sa vkladá zo súboru js/layout.js -->
+  <div data-site-footer></div>
+
+  <script>
+    // odpočet 9 → 0 ako v hre; potom už len čaká, kým hráč klikne
+    (function () {
+      var box = document.querySelector('[data-countdown]');
+      var num = box.querySelector('.game-over__count-num');
+      if (document.documentElement.classList.contains('motion-off') ||
+          window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        box.hidden = true;
+        return;
+      }
+      var n = 9;
+      var timer = setInterval(function () {
+        n -= 1;
+        num.textContent = n;
+        if (n === 0) {
+          clearInterval(timer);
+          box.classList.add('is-over');
+          box.querySelector('.game-over__count-label').textContent = 'GAME OVER';
+          num.textContent = '';
+        }
+      }, 1000);
+    })();
+  </script>
+</body>
+</html>
