@@ -2,5 +2,4 @@
 User-agent: *
 Allow: /
 
-# Po zverejnení nahraď YOUR-DOMAIN skutočnou adresou webu (aj v sitemap.xml).
-Sitemap: https://YOUR-DOMAIN/sitemap.xml
+Sitemap: https://www.dominika-skulavik.com/sitemap.xml

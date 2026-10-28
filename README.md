@@ -51,20 +51,10 @@ Samostatná stránka Contact už nie je. Kontakty sú v pätičke každej strán
 
 Vo VS Code nainštaluj rozšírenie **Live Server**, klikni pravým na `index.html` → **Open with Live Server**.
 
-## Publikovanie na GitHub Pages
+## Web naživo
 
-1. Vo VS Code: Source Control → **Publish to GitHub** → verejný repozitár.
-2. Na GitHube v repozitári: **Settings → Pages** → Source: *Deploy from a branch*, vetva `main`, priečinok `/ (root)` → Save.
-3. O pár minút je web na `https://<tvoje-meno>.github.io/<nazov-repozitara>/`.
+Adresa: **https://www.dominika-skulavik.com** (GitHub Pages, doména z Websupportu).
 
-Každá ďalšia zmena: commit → push → o minútku je naživo.
-
-## Vlastná doména
-
-1. Kúp doménu u registrátora (napr. Websupport, Namecheap, Cloudflare).
-2. Na GitHube v **Settings → Pages → Custom domain** zadaj doménu a ulož.
-3. U registrátora nastav DNS podľa návodu GitHubu
-   (pre hlavnú doménu A záznamy na IP adresy GitHub Pages, pre `www` CNAME na `<tvoje-meno>.github.io`).
-4. Keď sa DNS overí, zaškrtni **Enforce HTTPS**.
-
-Návod: https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site
+- Každá zmena: commit → push do vetvy `main` → o minútku je naživo.
+- Súbor `CNAME` nemaž, drží vlastnú doménu.
+- Súbory, ktoré na GitHub nepatria (nepoužívané obrázky), sú v `.gitignore`.
