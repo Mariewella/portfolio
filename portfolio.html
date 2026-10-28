@@ -1,0 +1,577 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <title>UX/UI Design Case Studies — Dominika Škulavik</title>
+  <meta name="description" content="UX/UI design and front-end case studies: a B2B SaaS web app for agriculture with its design system, a car-accident reporting app and a WordPress redesign.">
+  <meta name="author" content="Dominika Škulavik">
+  <meta name="theme-color" content="#0b0c0a">
+  <!-- zdieľanie na sociálnych sieťach (LinkedIn, Facebook…) -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Dominika Škulavik — Portfolio">
+  <meta property="og:title" content="UX/UI Design Case Studies — Dominika Škulavik">
+  <meta property="og:description" content="UX/UI design and front-end case studies: a B2B SaaS web app for agriculture with its design system, a car-accident reporting app and a WordPress redesign.">
+  <meta property="og:locale" content="en_GB">
+  <meta name="twitter:card" content="summary">
+  <!-- štruktúrované dáta pre Google -->
+  <script type="application/ld+json">
+  {
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  "name": "UX/UI Design Case Studies",
+  "author": { "@type": "Person", "name": "Dominika Škulavik" },
+  "hasPart": [
+    { "@type": "CreativeWork", "name": "ISAT — B2B SaaS web application for agriculture", "keywords": "UX design, UI design, design system, front-end, SaaS" },
+    { "@type": "CreativeWork", "name": "CLAIM — car accident reporting app concept", "keywords": "mobile app, UX research, information architecture, brand identity, Figma prototype" },
+    { "@type": "CreativeWork", "name": "PrintySVK — WordPress website redesign", "keywords": "web redesign, WordPress, UX, bachelor thesis" }
+  ]
+  }
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IM+Fell+English+SC&family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Special+Elite&display=swap">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" href="images/favicon.svg" type="image/svg+xml">
+  <script src="js/main.js" defer></script>
+</head>
+<body>
+  <!-- hlavička sa vkladá zo súboru js/layout.js (spoločná pre všetky stránky) -->
+  <script src="js/layout.js"></script>
+
+  <main id="content" class="page page--tight">
+
+    <section class="intro">
+      <div class="intro__text">
+        <p class="eyebrow">UX/UI DESIGN CASE STUDIES</p>
+        <h1 class="display">Case files</h1>
+        <p class="lead">Open a folder to browse its documents.</p>
+      </div>
+      <div class="counter">
+        <span class="label">FILES ON THE DESK</span>
+        <span class="counter__value"><span data-count="docs">17</span> docs</span>
+      </div>
+    </section>
+
+    <!--
+      Ako pridať prípad:
+      1) Nová firma = nový priečinok (<button class="folder" data-dossier="id">) + nový <dialog class="dossier" id="dossier-id">.
+      2) Nový dokument vo firme = nový <article class="doc" data-title="Názov"> v dialógu.
+         Obsah, zoznam aj počítadlo strán si skript vytvorí sám.
+      Screenshot: nahraď <figure class="doc__shot">[ADD SCREENSHOT]</figure>
+      za <figure class="doc__shot"><img src="images/nazov.jpg" alt="popis"></figure>
+    -->
+    <div class="desk">
+
+      <button class="folder folder--red" type="button" data-dossier="isat">
+        <span class="folder__back" aria-hidden="true"><span class="folder__tab">MAIN CAMPAIGN</span></span>
+        <span class="folder__sheet" aria-hidden="true"></span>
+        <span class="folder__sheet" aria-hidden="true"></span>
+        <span class="folder__sheet" aria-hidden="true"></span>
+        <span class="folder__front">
+          <span class="folder__head"><span>FOLDER 01</span><span class="stamp stamp--shipped">SHIPPED</span></span>
+          <span class="folder__title">ISAT, s.r.o.</span>
+          <span class="folder__contents"></span>
+          <span class="folder__meta"><span>2024 – 2026</span><span><span data-doc-count="isat">10</span> documents</span></span>
+        </span>
+      </button>
+
+      <button class="folder folder--teal" type="button" data-dossier="claim">
+        <span class="folder__back" aria-hidden="true"><span class="folder__tab">DEMO</span></span>
+        <span class="folder__sheet" aria-hidden="true"></span>
+        <span class="folder__sheet" aria-hidden="true"></span>
+        <span class="folder__sheet" aria-hidden="true"></span>
+        <span class="folder__front">
+          <span class="folder__head"><span>FOLDER 02</span><span class="stamp stamp--demo">TRIAL</span></span>
+          <span class="folder__title">CLAIM</span>
+          <span class="folder__contents"></span>
+          <span class="folder__meta"><span>2026</span><span><span data-doc-count="claim">9</span> documents</span></span>
+        </span>
+      </button>
+
+      <button class="folder folder--muted" type="button" data-dossier="printy">
+        <span class="folder__back" aria-hidden="true"><span class="folder__tab">SIDE QUEST</span></span>
+        <span class="folder__sheet" aria-hidden="true"></span>
+        <span class="folder__sheet" aria-hidden="true"></span>
+        <span class="folder__sheet" aria-hidden="true"></span>
+        <span class="folder__front">
+          <span class="folder__head"><span>FOLDER 03</span><span class="stamp stamp--archived">ARCHIVED</span></span>
+          <span class="folder__title">PrintySVK</span>
+          <span class="folder__contents"></span>
+          <span class="folder__meta"><span>2024</span><span><span data-doc-count="printy">6</span> documents</span></span>
+        </span>
+      </button>
+
+    </div>
+  </main>
+
+  <!-- ================= DOSSIER: ISAT ================= -->
+  <dialog class="dossier" id="dossier-isat" aria-labelledby="dossier-isat-title">
+    <div class="dossier__spread">
+      <aside class="dossier__index paper">
+        <p class="dossier__label">FOLDER 01 · MAIN CAMPAIGN</p>
+        <h2 class="dossier__title" id="dossier-isat-title">ISAT, s.r.o.</h2>
+        <p class="dossier__summary">A B2B SaaS web application used daily in the agricultural sector by office staff, managers and people working outdoors, on desktop and on a phone.</p>
+        <dl class="case__meta">
+          <div><dt>ROLE</dt><dd>Designer / Front-end Developer</dd></div>
+          <div><dt>YEARS</dt><dd>2024 – 2026</dd></div>
+        </dl>
+        <p class="dossier__label">CONTENTS</p>
+        <ol class="dossier__toc"></ol>
+      </aside>
+
+      <div class="dossier__page paper">
+        <article class="doc" data-title="The product">
+          <header class="doc__head"><span>DOC 01</span><span class="stamp stamp--shipped">SHIPPED</span></header>
+          <h3 class="doc__title">The product</h3>
+          <dl class="doc__brief">
+            <div><dt>TASK</dt><dd>Design and build the screens of one web app that runs a company’s daily agenda, for very different people on very different devices.</dd></div>
+            <div><dt>PROBLEM</dt><dd>The modules had grown over the years, and the way people really used them no longer matched the way they were meant to be used. There had never been a designer on the product.</dd></div>
+            <div><dt>SOLUTION</dt><dd>
+              <ul class="case__points">
+                <li>Mapped every module before touching it: code review, database inspection and a written workflow of how it is actually used.</li>
+                <li>Defined user roles and access: who can see, enter and edit what.</li>
+                <li>Handed over specs a developer does not have to guess at, with states, roles and exceptions.</li>
+                <li>Cut full-page postbacks and added skeleton states, so an empty page is never mistaken for a fault.</li>
+                <li>Shipped in four languages, including the screens where the translations are edited.</li>
+              </ul>
+            </dd></div>
+          </dl>
+        </article>
+
+        <article class="doc" data-title="Warehouse" hidden>
+          <header class="doc__head"><span>DOC 02 · MODULE</span><span class="stamp stamp--shipped">LIVE</span></header>
+          <h3 class="doc__title">Warehouse</h3>
+          <p class="doc__meta">Aug 2025 – Oct 2026 · design + build · read-only view on stock</p>
+          <figure class="doc__shot doc__shot--fit"><img src="images/isat/warehouse.jpg" alt="Warehouse module: filters, totals for receipts, issues and stock, and a table with a unit column"><figcaption>Warehouse: company filter first, totals, unit as its own column (test account)</figcaption></figure>
+          <dl class="doc__brief">
+            <div><dt>TASK</dt><dd>Show how much of each material is left, per company, wherever the user is, including on a phone. The module only reads stock movements; another part of the system writes them.</dd></div>
+            <div><dt>PROBLEM</dt><dd>The grid added up quantities without looking at the unit, so 2,000 g and 2 kg became “2,002”. I measured it across every warehouse table instead of guessing: 277 of 11,330 rows mixed units, almost all with two genuinely different units.</dd></div>
+            <div><dt>SOLUTION</dt><dd>
+              <ul class="case__points">
+                <li>Totals are now split by unit. A read-only module must never quietly “fix” data it doesn’t own, so it shows the mess instead of hiding it.</li>
+                <li>Company is the first filter; the material name column stays pinned when the table scrolls sideways on a phone.</li>
+                <li>Table / chart toggle moved into the filters, because it is a view setting, not a separate tool.</li>
+                <li>Built only on design-system tokens, so dark mode works out of the box.</li>
+              </ul>
+            </dd></div>
+          </dl>
+        </article>
+
+        <article class="doc" data-title="Info Manager" hidden>
+          <header class="doc__head"><span>DOC 05 · COMPONENT</span><span class="stamp stamp--shipped">LIVE</span></header>
+          <h3 class="doc__title">Info Manager</h3>
+          <p class="doc__meta">Dec 2025 – Oct 2026 · design + build · the largest module: 70 commits, ~9,000 lines</p>
+          <figure class="doc__shot doc__shot--fit"><img src="images/isat/info-manager.jpg" alt="Info Manager machines tab: list of machines with status badges saying what needs attention"><figcaption>Machines tab: status shown by colour and by word (test account)</figcaption></figure>
+          <dl class="doc__brief">
+            <div><dt>TASK</dt><dd>Keep track of every date after which something stops being valid: an employee’s medical check, a machine’s MOT, a service contract, a reporting deadline.</dd></div>
+            <div><dt>PROBLEM</dt><dd>A company has dozens of these dates, and the only place they were all together was the administrator’s head.</dd></div>
+            <div><dt>SOLUTION</dt><dd>
+              <ul class="case__points">
+                <li>From one date and one number (how many days ahead to warn) the module produces a status, a colour, a notification and an e-mail, for four kinds of objects: people, machines, jobs and the company.</li>
+                <li>At most three urgent items per category on the overview; status is shown by colour and by word, so it works for colour-blind users and in print.</li>
+                <li>New entries are prefilled from existing registers: pick a machine and its plate and type fill in by themselves.</li>
+                <li>The only module with an audit log, because it owns its data: whoever changes something has to be on record.</li>
+              </ul>
+            </dd></div>
+          </dl>
+        </article>
+
+        <article class="doc" data-title="Livestock Records" hidden>
+          <header class="doc__head"><span>DOC 06 · COMPONENT</span><span class="stamp stamp--shipped">LIVE</span></header>
+          <h3 class="doc__title">Livestock Records</h3>
+          <p class="doc__meta">Aug 2026 – Oct 2026 · design + build · about a thousand animals on record</p>
+          <figure class="doc__shot doc__shot--fit"><img src="images/isat/livestock.jpg" alt="Livestock module empty state inviting the user to add the first animal card"><figcaption>Empty state of a new farm: start with one card, fill in the rest later (test account)</figcaption></figure>
+          <dl class="doc__brief">
+            <div><dt>TASK</dt><dd>Take the list of animals and add everything written about them during their life: health, reproduction, hooves, documents, photos, pedigree and a timeline.</dd></div>
+            <div><dt>PROBLEM</dt><dd>Data about an animal is created next to the animal, in the barn, phone in hand and often in dirty gloves, but it was only written down in the office in the evening, if at all.</dd></div>
+            <div><dt>SOLUTION</dt><dd>
+              <ul class="case__points">
+                <li>Designed phone-first: expandable cards instead of table rows, large touch targets and a bottom bar within thumb reach, the only one in the whole app.</li>
+                <li>Treatments are added right on the animal, not on a separate screen, which saves two taps on every entry.</li>
+                <li>Photos straight from the module, a status badge with colour and word, and repeated treatments grouped instead of ten identical rows.</li>
+                <li>Pedigree and timeline answer different questions: where the animal comes from, and what happened to it.</li>
+              </ul>
+            </dd></div>
+          </dl>
+        </article>
+
+        <article class="doc" data-title="Meal Ordering" hidden>
+          <header class="doc__head"><span>DOC 07 · COMPONENT</span><span class="stamp stamp--shipped">LIVE</span></header>
+          <h3 class="doc__title">Meal Ordering</h3>
+          <p class="doc__meta">Jun 2025 – Oct 2026 · design + build · practical part of my master’s thesis</p>
+          <figure class="doc__shot doc__shot--fit"><img src="images/isat/meal-ordering.jpg" alt="Meal ordering module after the cut-off, with an administrator reminder to send the orders to the kitchen"><figcaption>After the cut-off: the administrator is reminded to send the summary to the kitchen (test account)</figcaption></figure>
+          <dl class="doc__brief">
+            <div><dt>TASK</dt><dd>Replace the paper menu on the noticeboard: the administrator uploads the weekly menu, employees pick a meal for each day before the cut-off, and the kitchen gets one summary e-mail.</dd></div>
+            <div><dt>PROBLEM</dt><dd>People signed a paper sheet, someone had to copy it out and phone the kitchen every week, and anyone who wasn’t in the building that day was out of luck.</dd></div>
+            <div><dt>SOLUTION</dt><dd>
+              <ul class="case__points">
+                <li>Choices can change until the cut-off, as on paper; locking after the first click would have been worse than paper. A visible countdown shows how long is left.</li>
+                <li>Uploading a new menu no longer wipes existing orders. It once did, and a whole company’s orders vanished.</li>
+                <li>The kitchen e-mail can’t be sent twice: the check lives in the database, not in a disabled button.</li>
+                <li>Most changes came from how the module behaved in use. One lesson repeated: it did things the user didn’t know about.</li>
+              </ul>
+            </dd></div>
+          </dl>
+        </article>
+
+        <article class="doc" data-title="Profile" hidden>
+          <header class="doc__head"><span>DOC 08 · SUBPAGE</span><span class="stamp stamp--shipped">LIVE</span></header>
+          <h3 class="doc__title">Profile &amp; settings</h3>
+          <p class="doc__meta">Jul 2026 – Oct 2026 · design + build · 13 sections, 7 for regular users</p>
+          <figure class="doc__shot doc__shot--fit"><img src="images/isat/profile.jpg" alt="Profile notifications section with a toggle for each notification type, grouped side panel"><figcaption>Notifications: one toggle per type, shown according to permissions (test account)</figcaption></figure>
+          <dl class="doc__brief">
+            <div><dt>TASK</dt><dd>One place where a user sets up everything about themselves rather than their work: account, password, signed-in devices, notifications, language and appearance.</dd></div>
+            <div><dt>PROBLEM</dt><dd>Settings were scattered: language in the header, appearance nowhere, notifications couldn’t be switched off, and there was no single place to say how you want things.</dd></div>
+            <div><dt>SOLUTION</dt><dd>
+              <ul class="case__points">
+                <li>A side panel on desktop that becomes a list with arrows on mobile, a different structure rather than a squeezed panel.</li>
+                <li>Notification toggles appear according to permissions; a toggle the server wouldn’t save isn’t shown at all, rather than greyed out.</li>
+                <li>Personal details come from the signed-in session, after a bug where a stranger could appear in someone’s profile.</li>
+                <li>Install-as-app button only when the browser can really install it; dark mode that each page opts into, so older pages don’t break.</li>
+              </ul>
+            </dd></div>
+          </dl>
+        </article>
+
+        <article class="doc" data-title="Components" hidden>
+          <header class="doc__head"><span>DOC 09 · DESIGN SYSTEM</span><span class="stamp stamp--shipped">SHIPPED</span></header>
+          <h3 class="doc__title">Components (design system)</h3>
+          <figure class="doc__shot">[ADD SCREENSHOT]</figure>
+          <dl class="doc__brief">
+            <div><dt>TASK</dt><dd>Create a design system from a single base colour, and put it to work in Info Manager, Livestock Records and Meal Ordering.</dd></div>
+            <div><dt>PROBLEM</dt><dd>[ADD: what the screens looked like without a shared system]</dd></div>
+            <div><dt>SOLUTION</dt><dd>
+              <ul class="case__points">
+                <li>Primitives and semantic tokens; buttons in three levels plus a destructive variant.</li>
+                <li>Inputs with all of their states, modals, cards, tiles, badges, empty and loading states, a focus ring.</li>
+                <li>Dark mode defined as a second set of values, not an inversion.</li>
+              </ul>
+            </dd></div>
+          </dl>
+        </article>
+
+        <article class="doc" data-title="Brand Kit" hidden>
+          <header class="doc__head"><span>DOC 10 · BRAND</span><span class="stamp stamp--shipped">SHIPPED</span></header>
+          <h3 class="doc__title">Brand Kit</h3>
+          <figure class="doc__shot">[ADD SCREENSHOT]</figure>
+          <dl class="doc__brief">
+            <div><dt>TASK</dt><dd>Give the product and the company one consistent look.</dd></div>
+            <div><dt>PROBLEM</dt><dd>[ADD: what the brand assets looked like before]</dd></div>
+            <div><dt>SOLUTION</dt><dd>
+              <ul class="case__points">
+                <li>Brand guidelines the team works to.</li>
+                <li>Redrew the company mark as a vector.</li>
+                <li>A set of twelve icons.</li>
+              </ul>
+            </dd></div>
+          </dl>
+        </article>
+
+        <nav class="dossier__nav" aria-label="Pages"></nav>
+      </div>
+    </div>
+    <button class="dossier__close" type="button" data-close>Close file ✕</button>
+  </dialog>
+
+  <!-- ================= DOSSIER: CLAIM ================= -->
+  <dialog class="dossier" id="dossier-claim" aria-labelledby="dossier-claim-title">
+    <div class="dossier__spread">
+      <aside class="dossier__index paper">
+        <p class="dossier__label">FOLDER 02 · DEMO</p>
+        <h2 class="dossier__title" id="dossier-claim-title">CLAIM</h2>
+        <p class="dossier__summary">Collision Logging &amp; Asset Information Manager. Job candidate assignment.</p>
+        <dl class="case__meta">
+          <div><dt>ROLE</dt><dd>Digital Product Designer</dd></div>
+          <div><dt>YEAR</dt><dd>2026</dd></div>
+        </dl>
+        <p class="dossier__label">CONTENTS</p>
+        <ol class="dossier__toc"></ol>
+        <p class="dossier__label">ATTACHMENTS</p>
+        <ul class="dossier__files">
+          <li><a href="https://www.figma.com/design/02dQtSksVmuE597kyF9wsf/Car-Accident-Report?node-id=3-51" target="_blank" rel="noopener">Figma prototype (view only)</a></li>
+        </ul>
+      </aside>
+
+      <div class="dossier__page paper">
+        <article class="doc" data-title="Brief">
+          <header class="doc__head"><span>DOC 01</span><span class="stamp stamp--demo">DEMO</span></header>
+          <h3 class="doc__title">Brief</h3>
+          <figure class="doc__shot doc__shot--fit"><img src="images/claim/brand-lockups.jpg" alt="CLAIM primary lockup, submark and one-colour version"><figcaption>Primary lockup, submark and one-colour version</figcaption></figure>
+          <dl class="doc__brief">
+            <div><dt>TASK</dt><dd>Create a solution to improve CX for reporting a car accident.</dd></div>
+            <div><dt>PROBLEM</dt><dd>Current accident claim process is complex and time-consuming. People often feel stressed and are prone to make mistakes, when filling out personal or vehicle information.</dd></div>
+            <div><dt>SOLUTION</dt><dd>
+              <ul class="case__points">
+                <li>The whole method is built on the European Accident Statement with revisions.</li>
+                <li>Out of scope: the green card, the insurer’s claim handling, the web form for the second driver and country-specific legal values.</li>
+              </ul>
+            </dd></div>
+          </dl>
+        </article>
+
+        <article class="doc" data-title="Research" hidden>
+          <header class="doc__head"><span>DOC 02</span><span class="stamp stamp--demo">DEMO</span></header>
+          <h3 class="doc__title">Research &amp; users</h3>
+          <dl class="doc__brief">
+            <div><dt>TASK</dt><dd>Find out whether someone has already solved this. Where something works, it should be improved, not replaced.</dd></div>
+            <div><dt>PROBLEM</dt><dd>Existing options each miss the moment itself: the digital accident statement is paper on a screen, insurer apps assume you report later from home with the other party already known, and the paper form assumes you have it, a pen and a shared language.</dd></div>
+            <div><dt>SOLUTION</dt><dd>
+              <ul class="case__points">
+                <li>Instead of invented personas: domain-based scenarios. A cross-border crash with no shared language, a report three days later from home, a driver who drove off, an accident with no other party.</li>
+                <li>An assumption register: what I assume, how I would test it, and what changes if it’s wrong. For example, whether a stranger will scan a QR code at the scene.</li>
+              </ul>
+            </dd></div>
+          </dl>
+        </article>
+
+        <article class="doc" data-title="Analysis" hidden>
+          <header class="doc__head"><span>DOC 03</span><span class="stamp stamp--demo">DEMO</span></header>
+          <h3 class="doc__title">Analysis</h3>
+          <figure class="doc__shot doc__shot--fit"><img src="images/claim/two-documents.jpg" alt="Diagram: the shared accident statement at the scene versus the private report to your own insurer later"><figcaption>Two documents, two moments: shared at the scene, private later (in Slovak)</figcaption></figure>
+          <dl class="doc__brief">
+            <div><dt>TASK</dt><dd>Map every field of the European Accident Statement to the app. Its field numbering is the same in every language: field 7 is the vehicle, whether the form is Slovak, French or Italian.</dd></div>
+            <div><dt>PROBLEM</dt><dd>Paper assumes both drivers stand side by side with a working pen, read the same language and have the form in the glovebox. On the road, all three fail.</dd></div>
+            <div><dt>SOLUTION</dt><dd>
+              <ul class="case__points">
+                <li>Each driver fills in their own half on their own phone, in their own language, with shared field numbers.</li>
+                <li>A gap analysis between my data model and the form: policyholder vs. driver, trailers, six types of cover, the bank account that actually receives the money.</li>
+                <li>The two sheets of the paper form became the key structural idea: what has to happen at the scene, and what can wait until you sit down.</li>
+              </ul>
+            </dd></div>
+          </dl>
+        </article>
+
+        <article class="doc" data-title="Information Architecture" hidden>
+          <header class="doc__head"><span>DOC 04</span><span class="stamp stamp--demo">DEMO</span></header>
+          <h3 class="doc__title">Information architecture</h3>
+          <figure class="doc__shot doc__shot--fit"><img src="images/claim/information-architecture.jpg" alt="Sitemap with four tabs: Home, Reports, Garage, Profile"><figcaption>Four tabs; reporting an accident is a task, not a tab (in Slovak)</figcaption></figure>
+          <dl class="doc__brief">
+            <div><dt>TASK</dt><dd>Structure the app so the report itself has almost nothing left to ask.</dd></div>
+            <div><dt>PROBLEM</dt><dd>The report needs data about the driver, the vehicle, its owner and the insurance contract, and people are stressed when they fill it in.</dd></div>
+            <div><dt>SOLUTION</dt><dd>
+              <ul class="case__points">
+                <li>Four tabs: Home, Reports, Garage, Profile. Every piece of data is entered once, in the tab that owns it.</li>
+                <li>Ownership type does more work than it seems: personal, leased or company car decides who the policyholder is.</li>
+              </ul>
+            </dd></div>
+          </dl>
+          <figure class="doc__shot doc__shot--fit"><img src="images/claim/data-model.jpg" alt="Data model: driver drives vehicle, vehicle is covered by a contract and belongs to an owner"><figcaption>Data model: driver, vehicle, owner, contract (in Slovak)</figcaption></figure>
+        </article>
+
+        <article class="doc" data-title="Report Flow" hidden>
+          <header class="doc__head"><span>DOC 05</span><span class="stamp stamp--demo">DEMO</span></header>
+          <h3 class="doc__title">Report flow</h3>
+          <figure class="doc__shot doc__shot--fit"><img src="images/claim/report-flow.jpg" alt="Flow of the report: safety steps, at the scene question, vehicle, other party with three branches, then five numbered steps"><figcaption>Three paths split before the first field and join before the numbered steps (in Slovak)</figcaption></figure>
+          <dl class="doc__brief">
+            <div><dt>TASK</dt><dd>Get a shaken driver from the crash to a signed report.</dd></div>
+            <div><dt>PROBLEM</dt><dd>Someone reporting an accident from three days ago doesn’t need safety steps, and a driver who drove off is a different case from no other party at all.</dd></div>
+            <div><dt>SOLUTION</dt><dd>
+              <ul class="case__points">
+                <li>“Are you at the scene?” comes first. It hides the safety steps when they’re noise and decides whether date and time are known.</li>
+                <li>Skippable safety steps, injuries and 112 first, one thought per line: after a crash people scan, they don’t read.</li>
+                <li>Three branches (other driver here, driver left, only my vehicle) that close before five numbered steps, so the progress bar means the same on every path.</li>
+              </ul>
+            </dd></div>
+          </dl>
+        </article>
+
+        <article class="doc" data-title="Logo" hidden>
+          <header class="doc__head"><span>DOC 06</span><span class="stamp stamp--demo">DEMO</span></header>
+          <h3 class="doc__title">Logo</h3>
+          <figure class="doc__shot doc__shot--fit doc__shot--narrow"><img src="images/claim/logo-construction.jpg" alt="Construction of the CLAIM mark: a ring split into eight sectors, with one sector removed on the right"><figcaption>Construction in Illustrator; removing the grey sector opens the circle into a C</figcaption></figure>
+          <dl class="doc__brief">
+            <div><dt>TASK</dt><dd>A mark for an app people open on one of their worst days.</dd></div>
+            <div><dt>PROBLEM</dt><dd>It shouldn’t be a drawn letter with a wheel next to it.</dd></div>
+            <div><dt>SOLUTION</dt><dd>
+              <ul class="case__points">
+                <li>Built from geometry: the ring between two circles is split into eight equal sectors, and the same cut removes a wedge from each.</li>
+                <li>Removing one sector on the right opens the closed circle into a C, and the empty inner circle reads as a wheel hub. One shape that is both.</li>
+                <li>The custom logotype follows the same rule: sharp inner cut, rounded outer corner, flat edges.</li>
+              </ul>
+            </dd></div>
+          </dl>
+        </article>
+
+        <article class="doc" data-title="Brand Identity" hidden>
+          <header class="doc__head"><span>DOC 07</span><span class="stamp stamp--demo">DEMO</span></header>
+          <h3 class="doc__title">Brand identity</h3>
+          <figure class="doc__shot doc__shot--fit"><img src="images/claim/color-tokens.jpg" alt="Colour tokens: petrol primary, tints, amber accent, text, border and background colours"><figcaption>Colour tokens; the accent has a job, not a decoration (in Slovak)</figcaption></figure>
+          <dl class="doc__brief">
+            <div><dt>TASK</dt><dd>Colours, components and tone for a product people use a few times in their life, under stress.</dd></div>
+            <div><dt>PROBLEM</dt><dd>Blue is the default in insurance, so a blue app says “insurer”, and CLAIM isn’t one.</dd></div>
+            <div><dt>SOLUTION</dt><dd>
+              <ul class="case__points">
+                <li>Petrol instead of blue: calm without sameness. Amber as the accent, the colour the road already uses to say something happened (hazard lights, hi-vis vests).</li>
+                <li>Every fill is bound to a variable in light and dark mode; tested screens had 97–100 % coverage.</li>
+                <li>No illustrations. A cute drawing doesn’t soften a crash; restraint is the decision.</li>
+              </ul>
+            </dd></div>
+          </dl>
+        </article>
+
+        <article class="doc" data-title="Screens &amp; Prototype" hidden>
+          <header class="doc__head"><span>DOC 08</span><span class="stamp stamp--demo">DEMO</span></header>
+          <h3 class="doc__title">Screens &amp; prototype</h3>
+          <dl class="doc__brief">
+            <div><dt>TASK</dt><dd>Turn the structure into high-fidelity screens and a clickable prototype.</dd></div>
+            <div><dt>PROBLEM</dt><dd>The structure was rebuilt five times, each time because the analysis revealed something, for example that a branch has to close before the first shared screen or the prototype can’t carry the choice.</dd></div>
+            <div><dt>SOLUTION</dt><dd>
+              <ul class="case__points">
+                <li>36 screens with a token-based component library: a button in 36 variants, inputs, status pills, progress, segmented filter, bottom navigation and icons.</li>
+                <li>Motion only where it explains something: the submark is a wheel, so on launch it makes one full turn and reveals the rest of the name.</li>
+                <li><a href="https://www.figma.com/design/02dQtSksVmuE597kyF9wsf/Car-Accident-Report?node-id=3-51" target="_blank" rel="noopener">Open the prototype in Figma.</a></li>
+              </ul>
+            </dd></div>
+          </dl>
+        </article>
+
+        <article class="doc" data-title="Validation" hidden>
+          <header class="doc__head"><span>DOC 09</span><span class="stamp stamp--progress">PLAN</span></header>
+          <h3 class="doc__title">Validation &amp; handoff</h3>
+          <dl class="doc__brief">
+            <div><dt>TASK</dt><dd>Say honestly what is verified and what isn’t.</dd></div>
+            <div><dt>PROBLEM</dt><dd>Nothing has been tested yet. This is a plan, not finished prototype.</dd></div>
+            <div><dt>SOLUTION</dt><dd>
+              <ul class="case__points">
+                <li>Tests ordered by risk: QR handoff between strangers, understanding at the signature (it is not an admission of guilt), whether people do or skip the safety steps, location accuracy, onboarding vs. time to report.</li>
+                <li>What I’d do differently: write the assumption register at the start. The QR handoff is the riskiest assumption in the product and the part I designed most confidently.</li>
+                <li>Known gaps handed over openly: error, empty and loading states, the drawing tool, and open questions for legal, claims and development.</li>
+              </ul>
+            </dd></div>
+          </dl>
+        </article>
+
+        <nav class="dossier__nav" aria-label="Pages"></nav>
+      </div>
+    </div>
+    <button class="dossier__close" type="button" data-close>Close file ✕</button>
+  </dialog>
+
+  <!-- ================= DOSSIER: PrintySVK ================= -->
+  <dialog class="dossier" id="dossier-printy" aria-labelledby="dossier-printy-title">
+    <div class="dossier__spread">
+      <aside class="dossier__index paper">
+        <p class="dossier__label">FOLDER 03 · SIDE QUEST</p>
+        <h2 class="dossier__title" id="dossier-printy-title">PrintySVK</h2>
+        <p class="dossier__summary">A one-person 3D-printing business in Nitra: 3D printing, scanning, modelling, CAD and post-processing for companies and households.</p>
+        <dl class="case__meta">
+          <div><dt>ROLE</dt><dd>UX/UI designer</dd></div>
+          <div><dt>YEAR</dt><dd>2024</dd></div>
+        </dl>
+        <p class="dossier__label">CONTENTS</p>
+        <ol class="dossier__toc"></ol>
+        <p class="dossier__label">ATTACHMENTS</p>
+        <ul class="dossier__files">
+          <li><a href="files/printysvk-bachelor-thesis.pdf" download>Bachelor’s thesis (PDF, Slovak)</a></li>
+          <li><a href="https://www.instagram.com/reel/C8Fp9GfN3Yo5uW9fBLLJz4K7z0aXdoFZnUbBCI0/" target="_blank" rel="noopener">Video of the finished site</a></li>
+        </ul>
+      </aside>
+
+      <div class="dossier__page paper">
+        <article class="doc" data-title="Brief">
+          <header class="doc__head"><span>DOC 01</span><span class="stamp stamp--archived">ARCHIVED</span></header>
+          <h3 class="doc__title">Brief</h3>
+          <dl class="doc__brief">
+            <div><dt>TASK</dt><dd>Redesign the site to its next version with a focus on answering customer questions.</dd></div>
+            <div><dt>PROBLEM</dt><dd>Prices had to be requested, there was no information on materials, and getting in touch meant leaving the website.</dd></div>
+            <div><dt>SOLUTION</dt><dd>A new design built on research and process mapping, with three new interactive parts: a price calculator, a materials page and a contact form.</dd></div>
+          </dl>
+        </article>
+
+        <article class="doc" data-title="Research" hidden>
+          <header class="doc__head"><span>DOC 02</span><span class="stamp stamp--archived">ARCHIVED</span></header>
+          <h3 class="doc__title">Research</h3>
+          <figure class="doc__shot doc__shot--fit"><img src="images/printy/sitemap-before.jpg" alt="Sitemap of the original site: header, homepage with services, subpages Projects, Contact and Price list"><figcaption>Structure of the first version of the site</figcaption></figure>
+          <dl class="doc__brief">
+            <div><dt>TASK</dt><dd>Understand the business, its customers and what the website has to do.</dd></div>
+            <div><dt>PROBLEM</dt><dd>Two very different audiences: companies comparing in-house production with ordering a part, and households without technical knowledge.</dd></div>
+            <div><dt>SOLUTION</dt><dd>
+              <ul class="case__points">
+                <li>A technical and content analysis of the site.</li>
+                <li>Data showed that mobile usage was dominant.</li>
+                <li>A SWOT analysis and a comparison of six CMS platforms.</li>
+              </ul>
+            </dd></div>
+          </dl>
+        </article>
+
+        <article class="doc" data-title="Price Calculator" hidden>
+          <header class="doc__head"><span>DOC 03</span><span class="stamp stamp--archived">ARCHIVED</span></header>
+          <h3 class="doc__title">Price calculator</h3>
+          <figure class="doc__shot doc__shot--fit"><img src="images/printy/price-calculator.jpg" alt="Mock-up of the price calculator with sliders for 3D printing, material, weight, extra services and delivery"><figcaption>Interactive price calculator (mock-up)</figcaption></figure>
+          <dl class="doc__brief">
+            <div><dt>TASK</dt><dd>Let customers see what a print will cost without having to ask.</dd></div>
+            <div><dt>PROBLEM</dt><dd>The price list was a static table of hourly rates. Every quote was calculated by hand, and for people outside the industry it was hard to tell which services they actually needed.</dd></div>
+            <div><dt>SOLUTION</dt><dd>
+              <ul class="case__points">
+                <li>An interactive calculator on the homepage: pick the services, the material and set the weight and print time with sliders.</li>
+                <li>The estimated price updates live and is clearly marked as a guide price.</li>
+                <li>The separate price list page was removed, which freed a menu slot for Materials.</li>
+              </ul>
+            </dd></div>
+          </dl>
+        </article>
+
+        <article class="doc" data-title="Materials" hidden>
+          <header class="doc__head"><span>DOC 04</span><span class="stamp stamp--archived">ARCHIVED</span></header>
+          <h3 class="doc__title">Materials</h3>
+          <figure class="doc__shot doc__shot--fit"><img src="images/printy/materials.jpg" alt="Mock-up of the Materials page with a filament guide header, filter and material card"><figcaption>Materials page with a filter (mock-up)</figcaption></figure>
+          <dl class="doc__brief">
+            <div><dt>TASK</dt><dd>Help customers choose the right filament for their project.</dd></div>
+            <div><dt>PROBLEM</dt><dd>Customers had to look up filament properties elsewhere, and while searching they could end up with a competitor.</dd></div>
+            <div><dt>SOLUTION</dt><dd>
+              <ul class="case__points">
+                <li>A new Materials page for PLA, PETG, ASA, PC and FLEX, each with a picture, key properties and a “Find out more” detail.</li>
+                <li>A filter by strength, flexibility, heat, UV, chemical and moisture resistance, looks and biocompatibility.</li>
+              </ul>
+            </dd></div>
+          </dl>
+        </article>
+
+        <article class="doc" data-title="Contact" hidden>
+          <header class="doc__head"><span>DOC 05</span><span class="stamp stamp--archived">ARCHIVED</span></header>
+          <h3 class="doc__title">Contact</h3>
+          <figure class="doc__shot doc__shot--fit"><img src="images/printy/contact.jpg" alt="Mock-up of the contact form page with e-mail and message fields"><figcaption>Contact form (mock-up)</figcaption></figure>
+          <dl class="doc__brief">
+            <div><dt>TASK</dt><dd>Make it easy to get in touch from anywhere on the site.</dd></div>
+            <div><dt>PROBLEM</dt><dd>There was no way to send a message from the website itself.</dd></div>
+            <div><dt>SOLUTION</dt><dd>
+              <ul class="case__points">
+                <li>Phone, e-mail and social links moved to the footer of every page; one tap opens the phone or mail app.</li>
+                <li>A contact form with an automatic confirmation that the message arrived.</li>
+              </ul>
+            </dd></div>
+          </dl>
+        </article>
+
+        <article class="doc" data-title="Build" hidden>
+          <header class="doc__head"><span>DOC 06</span><span class="stamp stamp--archived">ARCHIVED</span></header>
+          <h3 class="doc__title">Build</h3>
+          <figure class="doc__shot doc__shot--fit"><img src="images/printy/mockup-all.jpg" alt="Full mock-up of the new site: homepage, portfolio, materials and contact pages"><figcaption>Full mock-up from the thesis: homepage, portfolio, materials, contact</figcaption></figure>
+          <dl class="doc__brief">
+            <div><dt>TASK</dt><dd>Turn the mock-ups into a fast, responsive site the owner can keep editing.</dd></div>
+            <div><dt>PROBLEM</dt><dd>The page builder Elementor generated a lot of extra code, which slowed the site down and limited fine control.</dd></div>
+            <div><dt>SOLUTION</dt><dd>
+              <ul class="case__points">
+                <li>Moved to the native Gutenberg block editor on the free Neve theme: cleaner code, better SEO, more control.</li>
+                <li>Separate hero layouts for desktop and mobile, full-width buttons and a hamburger menu on phones.</li>
+                <li>A redesigned logo, an orange-white-grey palette (60-30-10) and a sans-serif with full Slovak diacritics.</li>
+                <li>A custom back-to-top button in HTML, CSS and JS instead of buying the premium theme.</li>
+              </ul>
+            </dd></div>
+          </dl>
+        </article>
+
+        <nav class="dossier__nav" aria-label="Pages"></nav>
+      </div>
+    </div>
+    <button class="dossier__close" type="button" data-close>Close file ✕</button>
+  </dialog>
+
+
+  <!-- pätička sa vkladá zo súboru js/layout.js -->
+  <div data-site-footer></div>
+</body>
+</html>

@@ -1,0 +1,277 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <title>About Dominika Škulavik — UX/UI Designer in Nitra, Slovakia</title>
+  <meta name="description" content="UX/UI designer and front-end developer with an MSc in Managerial Informatics. Skills in UX research, Figma, design systems, HTML, CSS, JavaScript and SQL.">
+  <meta name="author" content="Dominika Škulavik">
+  <meta name="theme-color" content="#0b0c0a">
+  <!-- zdieľanie na sociálnych sieťach (LinkedIn, Facebook…) -->
+  <meta property="og:type" content="profile">
+  <meta property="og:site_name" content="Dominika Škulavik — Portfolio">
+  <meta property="og:title" content="About Dominika Škulavik — UX/UI Designer in Nitra, Slovakia">
+  <meta property="og:description" content="UX/UI designer and front-end developer with an MSc in Managerial Informatics. Skills in UX research, Figma, design systems, HTML, CSS, JavaScript and SQL.">
+  <meta property="og:locale" content="en_GB">
+  <meta name="twitter:card" content="summary">
+  <!-- štruktúrované dáta pre Google -->
+  <script type="application/ld+json">
+  {
+  "@context": "https://schema.org",
+  "@type": "ProfilePage",
+  "mainEntity":   {
+    "@type": "Person",
+    "@id": "#dominika",
+    "name": "Dominika Škulavik",
+    "alternateName": "Dominika Škulaviková",
+    "jobTitle": "UX/UI Designer & Front-end Developer",
+    "description": "UX/UI designer and front-end developer who designs web applications in Figma, builds design systems and ships the front-end.",
+    "email": "mailto:skulavikova.d@gmail.com",
+    "address": { "@type": "PostalAddress", "addressLocality": "Nitra", "addressCountry": "SK" },
+    "alumniOf": { "@type": "CollegeOrUniversity", "name": "Comenius University Bratislava" },
+    "knowsLanguage": ["sk", "cs", "en"],
+    "knowsAbout": ["UX design", "UI design", "User research", "Information architecture", "Design systems", "Design tokens", "Figma", "Prototyping", "Accessibility (WCAG)", "Front-end development", "HTML", "CSS", "JavaScript", "ASP.NET", "SQL Server", "SaaS web applications"],
+    "sameAs": ["https://www.linkedin.com/in/dominika-%C5%A1kulavikov%C3%A1-287928238/"]
+  }
+  }
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IM+Fell+English+SC&family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Special+Elite&display=swap">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" href="images/favicon.svg" type="image/svg+xml">
+  <script src="js/main.js" defer></script>
+</head>
+<body>
+  <!-- hlavička sa vkladá zo súboru js/layout.js (spoločná pre všetky stránky) -->
+  <script src="js/layout.js"></script>
+
+  <main id="content" class="page page--wide">
+
+    <!-- ===== Fotka + úvod ===== -->
+    <div class="about-top">
+      <figure class="photo">
+        <div class="photo__frame photo__frame--cctv">
+          <img class="photo__full" src="images/full-body.jpg" alt="Dominika Škulavíková in an olive shirt and jeans, wearing headphones, taking a mirror selfie" width="720" height="1200">
+          <!-- efekty bezpečnostnej kamery: šum, riadky, skenovacia čiara -->
+          <span class="photo__grain" aria-hidden="true"></span>
+          <span class="photo__scan" aria-hidden="true"></span>
+          <span class="photo__rec" aria-hidden="true"><span class="blink">●</span> REC · CAM 02</span>
+
+          <div class="paper id-card">
+            <img src="images/portrait.jpg" alt="Portrait of Dominika Škulavik" width="56" height="56">
+            <span class="id-card__text">
+              <span class="id-card__label">SURVIVOR ID</span>
+              <span class="id-card__name">D. Škulavik</span>
+              <span class="id-card__label">FILE #001 · NITRA</span>
+            </span>
+          </div>
+        </div>
+      </figure>
+
+      <div class="about-text">
+        <div class="stack">
+          <p class="eyebrow">UX/UI DESIGNER &amp; FRONT-END DEVELOPER</p>
+          <h1 class="display">MSc. Dominika Škulavik</h1>
+        </div>
+
+        <dl class="meta-grid">
+          <div><dt>CLASS</dt><dd>Designer / Developer hybrid</dd></div>
+          <div><dt>EDUCATION</dt><dd>Comenius University</dd></div>
+          <div><dt>TRAINING</dt><dd>Business Informatics</dd></div>
+          <div><dt>LAST SEEN</dt><dd>Nitra, Slovakia</dd></div>
+        </dl>
+
+        <div class="paper field-notes">
+          <span class="label">FIELD NOTES</span>
+          <p>Turns complicated workflows into simple interfaces.</p>
+          <p>Good at spotting interface problems.</p>
+          <p>Off-duty, can be found in a horror game, or between the pages of sci-fi.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== Štatistiky (radar) ===== -->
+    <section class="section" aria-labelledby="stats-title">
+      <div class="section__head">
+        <h2 id="stats-title" class="h2">Survivor stats</h2>
+      </div>
+
+      <div class="skill-split">
+      <!-- Aktívne zručnosti: prepínanie kategórií + radar -->
+      <div class="skill-col skill-col--active">
+      <p class="label">ACTIVE SKILLS</p>
+      <div class="box stats">
+        <div class="stats__chart">
+          <!-- graf kreslí js/main.js z detailov vybranej kategórie (zoznam .skills nižšie) -->
+          <svg class="radar" viewBox="0 0 620 400" role="img" aria-label="Skill radar"></svg>
+        </div>
+
+        <div class="stats__side">
+          <div class="stat-list" role="group" aria-label="Stats">
+            <button class="pick pick--teal stat" type="button" data-switch="stats" data-target="stat-0" aria-pressed="false">
+              <span>UX &amp; Research</span>
+            </button>
+            <button class="pick pick--teal stat" type="button" data-switch="stats" data-target="stat-1" aria-pressed="true">
+              <span>UI &amp; Design</span>
+            </button>
+            <button class="pick pick--teal stat" type="button" data-switch="stats" data-target="stat-2" aria-pressed="false">
+              <span>Front-End</span>
+            </button>
+            <button class="pick pick--teal stat" type="button" data-switch="stats" data-target="stat-3" aria-pressed="false">
+              <span>Back-End &amp; Data</span>
+            </button>
+          </div>
+
+          <div class="examine visually-hidden" aria-live="polite">
+            <div id="stat-0" hidden>
+              <span class="label label--teal">EXAMINE · UX &amp; Research</span>
+              <ul class="skills">
+                <li><span class="skills__row"><span>Wireframing &amp; prototyping</span><span>Advanced</span></span><span class="bar bar--advanced" aria-hidden="true"><span></span></span></li>
+                <li><span class="skills__row"><span>Current-state mapping &amp; user flows</span><span>Advanced</span></span><span class="bar bar--advanced" aria-hidden="true"><span></span></span></li>
+                <li><span class="skills__row"><span>User roles &amp; permissions</span><span>Advanced</span></span><span class="bar bar--advanced" aria-hidden="true"><span></span></span></li>
+                <li><span class="skills__row"><span>Accessibility (WCAG 2.1)</span><span>Skillful</span></span><span class="bar bar--skillful" aria-hidden="true"><span></span></span></li>
+                <li><span class="skills__row"><span>Requirements &amp; stakeholder goals</span><span>Skillful</span></span><span class="bar bar--skillful" aria-hidden="true"><span></span></span></li>
+              </ul>
+            </div>
+            <div id="stat-1">
+              <span class="label label--teal">EXAMINE · UI &amp; Design Systems</span>
+              <ul class="skills">
+                <li><span class="skills__row"><span>Figma</span><span>Advanced</span></span><span class="bar bar--advanced" aria-hidden="true"><span></span></span></li>
+                <li><span class="skills__row"><span>UI design</span><span>Advanced</span></span><span class="bar bar--advanced" aria-hidden="true"><span></span></span></li>
+                <li><span class="skills__row"><span>Design systems &amp; tokens</span><span>Advanced</span></span><span class="bar bar--advanced" aria-hidden="true"><span></span></span></li>
+                <li><span class="skills__row"><span>Responsive design</span><span>Advanced</span></span><span class="bar bar--advanced" aria-hidden="true"><span></span></span></li>
+                <li><span class="skills__row"><span>Illustrator · Photoshop</span><span>Skillful</span></span><span class="bar bar--skillful" aria-hidden="true"><span></span></span></li>
+              </ul>
+            </div>
+            <div id="stat-2" hidden>
+              <span class="label label--teal">EXAMINE · Front-End</span>
+              <ul class="skills">
+                <li><span class="skills__row"><span>HTML5</span><span>Advanced</span></span><span class="bar bar--advanced" aria-hidden="true"><span></span></span></li>
+                <li><span class="skills__row"><span>CSS3</span><span>Advanced</span></span><span class="bar bar--advanced" aria-hidden="true"><span></span></span></li>
+                <li><span class="skills__row"><span>JavaScript (ES6)</span><span>Skillful</span></span><span class="bar bar--skillful" aria-hidden="true"><span></span></span></li>
+                <li><span class="skills__row"><span>Responsive layouts</span><span>Advanced</span></span><span class="bar bar--advanced" aria-hidden="true"><span></span></span></li>
+                <li><span class="skills__row"><span>Accessible markup (ARIA)</span><span>Skillful</span></span><span class="bar bar--skillful" aria-hidden="true"><span></span></span></li>
+              </ul>
+            </div>
+            <div id="stat-3" hidden>
+              <span class="label label--teal">EXAMINE · Back-End &amp; Data</span>
+              <ul class="skills">
+                <li><span class="skills__row"><span>ASP.NET Web Forms</span><span>Skillful</span></span><span class="bar bar--skillful" aria-hidden="true"><span></span></span></li>
+                <li><span class="skills__row"><span>VB.NET</span><span>Skillful</span></span><span class="bar bar--skillful" aria-hidden="true"><span></span></span></li>
+                <li><span class="skills__row"><span>SQL Server · T-SQL</span><span>Skillful</span></span><span class="bar bar--skillful" aria-hidden="true"><span></span></span></li>
+                <li><span class="skills__row"><span>Git</span><span>Basic</span></span><span class="bar bar--basic" aria-hidden="true"><span></span></span></li>
+                <li><span class="skills__row"><span>WordPress</span><span>Skillful</span></span><span class="bar bar--skillful" aria-hidden="true"><span></span></span></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      </div>
+
+      <!-- Pasívne zručnosti: fungujú stále, netreba ich zapínať -->
+      <div class="skill-col">
+        <p class="label">PASSIVE SKILLS</p>
+        <ul class="passives">
+          <li class="passive">
+            <span class="passive__icon" aria-hidden="true">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+            </span>
+            <div class="passive__text">
+              <h3 class="passive__name">Attention to detail</h3>
+            </div>
+          </li>
+          <li class="passive">
+            <span class="passive__icon" aria-hidden="true">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h6v6H4zM14 14h6v6h-6z"></path><path d="M10 7h4a3 3 0 0 1 3 3v4M7 10v4a3 3 0 0 0 3 3h4"></path></svg>
+            </span>
+            <div class="passive__text">
+              <h3 class="passive__name">Analytical thinking</h3>
+            </div>
+          </li>
+          <li class="passive">
+            <span class="passive__icon" aria-hidden="true">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"></circle><path d="M15.5 8.5l-2 5-5 2 2-5z"></path></svg>
+            </span>
+            <div class="passive__text">
+              <h3 class="passive__name">Comfortable with ambiguity</h3>
+            </div>
+          </li>
+          <li class="passive">
+            <span class="passive__icon" aria-hidden="true">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M8 7l-5 5 5 5M16 7l5 5-5 5M14 4l-4 16"></path></svg>
+            </span>
+            <div class="passive__text">
+              <h3 class="passive__name">Speaks design and code</h3>
+            </div>
+          </li>
+        </ul>
+      </div>
+      </div>
+    </section>
+
+    <!-- ===== Inventár (záľuby) ===== -->
+    <section class="section section--tight" aria-labelledby="inv-title">
+      <div class="section__head">
+        <h2 id="inv-title" class="h2">Inventory</h2>
+      </div>
+
+      <!--
+        Inventár: každá vec je jedna kartička <button class="inv-card">.
+        Prepína sa sám; klik na kartičku, bodku alebo šípku ho zastaví a po 5 s nečinnosti pokračuje.
+        Fotka namiesto ikony: nahraď <svg ...> v .inv-card__art za <img src="images/inventory/nazov.png" alt="">
+      -->
+      <div class="box inventory" data-inventory>
+        <div class="inventory__bar">
+          <span class="label">ITEM BOX</span>
+          <button class="inventory__toggle" type="button" aria-pressed="false">❚❚ Pause</button>
+        </div>
+
+        <div class="inventory__track">
+          <button class="inv-card" type="button" data-name="Telescope">
+            <span class="inv-card__art"><img src="images/inventory/telescope.png" alt="A cream Meade refractor telescope" width="480" height="159"></span>
+            <span class="inv-card__type">EXAMINE · TOOL</span>
+            <span class="inv-card__name">Telescope</span>
+            <span class="inv-card__text">Amateur astronomer. I mostly hunt planets, because my sky has about as much light pollution as a shopping centre car park.</span>
+          </button>
+
+          <button class="inv-card" type="button" data-name="Currently reading">
+            <span class="inv-card__art"><img src="images/inventory/book.jpg" alt="The Lost World by Michael Crichton, paperback" width="309" height="480"></span>
+            <span class="inv-card__type">EXAMINE · CURRENTLY READING</span>
+            <span class="inv-card__name">The Lost World</span>
+            <span class="inv-card__text">Sci-fi books and films in general; fantasy too, as long as nobody falls in love by chapter three.</span>
+          </button>
+
+          <button class="inv-card" type="button" data-name="Camera">
+            <span class="inv-card__art"><img src="images/inventory/camera.png" alt="A Nikon DSLR with a long Tamron zoom lens and its strap" width="474" height="479"></span>
+            <span class="inv-card__type">EXAMINE · TOOL</span>
+            <span class="inv-card__name">Camera</span>
+            <span class="inv-card__text">Photography and composition. Seven years of art school will do that to a person.</span>
+          </button>
+
+          <button class="inv-card" type="button" data-name="Notebook">
+            <span class="inv-card__art"><img src="images/inventory/notebook.png" alt="A patterned notebook with an antler pen, an orange pen, a highlighter and correction tape" width="285" height="480"></span>
+            <span class="inv-card__type">EXAMINE · FILE</span>
+            <span class="inv-card__name">Notebook</span>
+            <span class="inv-card__text">Creative writing. You never know when an idea will strike.</span>
+          </button>
+
+          <button class="inv-card" type="button" data-name="First aid spray">
+            <span class="inv-card__art"><img src="images/inventory/spray.png" alt="A First Aid recovery spray bottle" width="123" height="480"></span>
+            <span class="inv-card__type">EXAMINE · RECOVERY ITEM</span>
+            <span class="inv-card__name">First aid spray</span>
+            <span class="inv-card__text">Restores full health after a long feedback round. One spray covers a whole sprint review.</span>
+          </button>
+        </div>
+
+        <div class="inventory__dots" role="group" aria-label="Items"></div>
+        <div class="inventory__progress" aria-hidden="true"><span></span></div>
+      </div>
+    </section>
+  </main>
+
+  <!-- pätička sa vkladá zo súboru js/layout.js -->
+  <div data-site-footer></div>
+</body>
+</html>

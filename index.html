@@ -1,0 +1,251 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <title>Dominika Škulavik — UX/UI Designer &amp; Front-end Developer</title>
+  <meta name="description" content="UX/UI designer and front-end developer from Nitra, Slovakia. I design web apps in Figma, build design systems and ship the front-end code.">
+  <meta name="author" content="Dominika Škulavik">
+  <meta name="theme-color" content="#0b0c0a">
+  <!-- zdieľanie na sociálnych sieťach (LinkedIn, Facebook…) -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Dominika Škulavik — Portfolio">
+  <meta property="og:title" content="Dominika Škulavik — UX/UI Designer &amp; Front-end Developer">
+  <meta property="og:description" content="UX/UI designer and front-end developer from Nitra, Slovakia. I design web apps in Figma, build design systems and ship the front-end code.">
+  <meta property="og:locale" content="en_GB">
+  <meta name="twitter:card" content="summary">
+  <!-- štruktúrované dáta pre Google -->
+  <script type="application/ld+json">
+  {
+  "@context": "https://schema.org",
+  "@graph": [
+  {
+    "@type": "Person",
+    "@id": "#dominika",
+    "name": "Dominika Škulavik",
+    "alternateName": "Dominika Škulaviková",
+    "jobTitle": "UX/UI Designer & Front-end Developer",
+    "description": "UX/UI designer and front-end developer who designs web applications in Figma, builds design systems and ships the front-end.",
+    "email": "mailto:skulavikova.d@gmail.com",
+    "address": { "@type": "PostalAddress", "addressLocality": "Nitra", "addressCountry": "SK" },
+    "alumniOf": { "@type": "CollegeOrUniversity", "name": "Comenius University Bratislava" },
+    "knowsLanguage": ["sk", "cs", "en"],
+    "knowsAbout": ["UX design", "UI design", "User research", "Information architecture", "Design systems", "Design tokens", "Figma", "Prototyping", "Accessibility (WCAG)", "Front-end development", "HTML", "CSS", "JavaScript", "ASP.NET", "SQL Server", "SaaS web applications"],
+    "sameAs": ["https://www.linkedin.com/in/dominika-%C5%A1kulavikov%C3%A1-287928238/"]
+  },
+  { "@type": "WebSite", "name": "Dominika Škulavik — Portfolio", "author": { "@id": "#dominika" }, "inLanguage": "en" }
+  ]
+  }
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IM+Fell+English+SC&family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Special+Elite&display=swap">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" href="images/favicon.svg" type="image/svg+xml">
+  <script src="js/main.js" defer></script>
+</head>
+<body>
+  <!-- hlavička sa vkladá zo súboru js/layout.js (spoločná pre všetky stránky) -->
+  <script src="js/layout.js"></script>
+
+  <main id="content" class="page">
+
+    <!-- ===== Úvod ===== -->
+    <section class="intro home-hero">
+      <div class="intro__text">
+        <p class="eyebrow">UX/UI DESIGNER &amp; FRONT-END DEVELOPER</p>
+        <h1 class="display flicker"><span class="display__line">I design the screens.</span> <span class="display__line">Then I survive building them.</span></h1>
+      </div>
+
+    </section>
+
+    <!-- ===== Knižnica hier =====
+      Prechádza sa po krokoch ako menu v hre: Start → režim → titul → detail.
+      Nová hra = nový <article class="game-detail" data-mode="main|demos|completed" data-name="Názov">.
+      Počty, zoznam titulov aj breadcrumbs si skript poskladá sám.
+      Ak má režim len jeden titul, zoznam sa preskočí a otvorí sa rovno detail.
+    -->
+    <section class="box library" aria-labelledby="lib-title" data-library>
+      <div class="library__bar">
+        <nav class="crumbs" aria-label="Breadcrumb"><ol class="crumbs__list"></ol></nav>
+        <button class="library__back" type="button" hidden>◀ Back</button>
+      </div>
+      <h2 id="lib-title" class="visually-hidden">Game library</h2>
+
+      <!-- 1 · Title screen -->
+      <div class="library__screen screen-start" data-screen="start">
+        <button class="start-btn" type="button" data-go="modes"><span class="start-btn__arrow" aria-hidden="true">▶</span> Press start</button>
+        <p class="screen-start__hint">or press Enter</p>
+      </div>
+
+      <!-- 2 · Výber režimu -->
+      <div class="library__screen" data-screen="modes" hidden>
+        <p class="screen__prompt" tabindex="-1">Choose your mode</p>
+        <div class="modes">
+          <button class="mode pick" type="button" data-mode="main">
+            <span class="mode__count"></span>
+            <span class="mode__name">Main campaign</span>
+            <span class="mode__desc">Long-running products I design and build.</span>
+          </button>
+          <button class="mode pick pick--teal" type="button" data-mode="demos">
+            <span class="mode__count"></span>
+            <span class="mode__name">Demos</span>
+            <span class="mode__desc">Design challenges and concepts.</span>
+          </button>
+          <button class="mode pick" type="button" data-mode="completed">
+            <span class="mode__count"></span>
+            <span class="mode__name">Completed</span>
+            <span class="mode__desc">Finished projects that have run their course.</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- 3 · Výber titulu (zoznam doplní skript) -->
+      <div class="library__screen" data-screen="titles" hidden>
+        <p class="screen__prompt" tabindex="-1">Choose your title</p>
+        <div class="titles"></div>
+      </div>
+
+      <!-- 4 · Detail hry -->
+      <div class="library__screen library__game" data-screen="game" hidden>
+
+        <!-- ===== Detail: ISAT ===== -->
+        <article class="game-detail" id="game-isat" data-mode="main" data-name="ISAT, s.r.o." hidden>
+          <div class="cover">
+            <span class="cover__kind kind--red">FULL GAME</span>
+            <span class="cover__title">ISAT, s.r.o.</span>
+          </div>
+
+          <div class="game-detail__info">
+            <p class="game-detail__desc">Complex SaaS web application used in the agricultural sector.</p>
+
+            <div class="dlc-section">
+              <div class="dlc-section__head"><span>DOWNLOADABLE CONTENT</span><span>4 PACKS</span></div>
+              <div class="dlc-grid">
+                <div class="dlc">
+                  <span class="dlc__status"><span>DLC 01</span><span>INSTALLED</span></span>
+                  <span class="dlc__name">Modules</span>
+                  <p class="dlc__desc">Expanding and creating new functionalities.</p>
+                </div>
+                <div class="dlc">
+                  <span class="dlc__status"><span>DLC 02</span><span>INSTALLED</span></span>
+                  <span class="dlc__name">Components</span>
+                  <p class="dlc__desc">Creating a design system from a single base colour.</p>
+                </div>
+                <div class="dlc">
+                  <span class="dlc__status"><span>DLC 03</span><span>INSTALLED</span></span>
+                  <span class="dlc__name">Subpage</span>
+                  <p class="dlc__desc">Setting up the user profile page.</p>
+                </div>
+                <div class="dlc">
+                  <span class="dlc__status"><span>DLC 04</span><span>INSTALLED</span></span>
+                  <span class="dlc__name">Brand Kit</span>
+                  <p class="dlc__desc">Brand guidelines and a set of twelve icons.</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="cta-row">
+              <a class="cta" href="portfolio.html#isat">
+                <svg width="10" height="12" viewBox="0 0 10 12" aria-hidden="true"><path d="M0 0 L10 6 L0 12 Z" fill="currentColor"></path></svg>
+                Continue
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <!-- ===== Detail: CLAIM ===== -->
+        <article class="game-detail" id="game-claim" data-mode="demos" data-name="CLAIM" hidden>
+          <div class="cover cover--teal">
+            <span class="cover__kind kind--teal">DEMO DISC</span>
+            <span class="cover__title">CLAIM</span>
+          </div>
+          <div class="game-detail__info">
+            <p class="game-detail__desc">A concept app for reporting a car accident anywhere in Europe.</p>
+            <div class="dlc-section">
+              <div class="dlc-section__head"><span>DOWNLOADABLE CONTENT</span><span>4 PACKS</span></div>
+              <div class="dlc-grid">
+                <div class="dlc">
+                  <span class="dlc__status"><span>DLC 01</span><span>INSTALLED</span></span>
+                  <span class="dlc__name">Research &amp; Analysis</span>
+                  <p class="dlc__desc">Every field of the accident form, mapped first.</p>
+                </div>
+                <div class="dlc">
+                  <span class="dlc__status"><span>DLC 02</span><span>INSTALLED</span></span>
+                  <span class="dlc__name">IA</span>
+                  <p class="dlc__desc">Four tabs and one report flow with three paths.</p>
+                </div>
+                <div class="dlc">
+                  <span class="dlc__status"><span>DLC 03</span><span>INSTALLED</span></span>
+                  <span class="dlc__name">Brand Identity</span>
+                  <p class="dlc__desc">A geometric logo in petrol instead of blue.</p>
+                </div>
+                <div class="dlc">
+                  <span class="dlc__status"><span>DLC 04</span><span>INSTALLED</span></span>
+                  <span class="dlc__name">Screens &amp; Prototype</span>
+                  <p class="dlc__desc">36 screens and a clickable Figma prototype.</p>
+                </div>
+              </div>
+            </div>
+            <div class="cta-row">
+              <a class="cta" href="portfolio.html#claim">
+                <svg width="10" height="12" viewBox="0 0 10 12" aria-hidden="true"><path d="M0 0 L10 6 L0 12 Z" fill="currentColor"></path></svg>
+                Continue
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <!-- ===== Detail: PrintySVK ===== -->
+        <article class="game-detail" id="game-printy" data-mode="completed" data-name="PrintySVK" hidden>
+          <div class="cover cover--muted">
+            <span class="cover__kind kind--muted">UNINSTALLED</span>
+            <span class="cover__title">PrintySVK</span>
+          </div>
+
+          <div class="game-detail__info">
+            <p class="game-detail__desc">The website of a small 3D-printing business based in Nitra. The domain has since been shut down.</p>
+            <div class="dlc-section">
+              <div class="dlc-section__head"><span>DOWNLOADABLE CONTENT</span><span>4 PACKS</span></div>
+              <div class="dlc-grid">
+                <div class="dlc">
+                  <span class="dlc__status dlc__status--archived"><span>DLC 01</span><span>ARCHIVED</span></span>
+                  <span class="dlc__name">Price Calculator</span>
+                  <p class="dlc__desc">A live price estimate instead of a quote request.</p>
+                </div>
+                <div class="dlc">
+                  <span class="dlc__status dlc__status--archived"><span>DLC 02</span><span>ARCHIVED</span></span>
+                  <span class="dlc__name">Materials</span>
+                  <p class="dlc__desc">A filament guide with filters by property.</p>
+                </div>
+                <div class="dlc">
+                  <span class="dlc__status dlc__status--archived"><span>DLC 03</span><span>ARCHIVED</span></span>
+                  <span class="dlc__name">Contact</span>
+                  <p class="dlc__desc">A contact form and contacts on every page.</p>
+                </div>
+                <div class="dlc">
+                  <span class="dlc__status dlc__status--archived"><span>DLC 04</span><span>ARCHIVED</span></span>
+                  <span class="dlc__name">Redesign</span>
+                  <p class="dlc__desc">A new logo, palette and leaner Gutenberg blocks.</p>
+                </div>
+              </div>
+            </div>
+            <div class="cta-row">
+              <a class="cta" href="https://www.instagram.com/reel/C8Fp9GfN3Yo5uW9fBLLJz4K7z0aXdoFZnUbBCI0/" target="_blank" rel="noopener">
+                <svg width="10" height="12" viewBox="0 0 10 12" aria-hidden="true"><path d="M0 0 L10 6 L0 12 Z" fill="currentColor"></path></svg>
+                Watch replay
+              </a>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- pätička sa vkladá zo súboru js/layout.js -->
+  <div data-site-footer></div>
+</body>
+</html>

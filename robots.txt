@@ -1,0 +1,6 @@
+# Vyhľadávače smú prehľadávať celý web.
+User-agent: *
+Allow: /
+
+# Po zverejnení nahraď YOUR-DOMAIN skutočnou adresou webu (aj v sitemap.xml).
+Sitemap: https://YOUR-DOMAIN/sitemap.xml

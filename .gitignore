@@ -1,0 +1,13 @@
+# nastavenia nástrojov, nie sú súčasťou webu
+.claude/
+.vscode/
+
+# súbory, ktoré stránka nepoužíva (nemajú byť verejne na GitHube)
+images/isat/emissions.jpg
+images/isat/organisation.jpg
+images/full-body.png
+images/isat-logo.svg
+images/claim-logo.svg
+images/printy-logo.png
+images/printy-logo-light.png
+images/printy/homepage-hero.jpg
