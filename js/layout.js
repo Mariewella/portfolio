@@ -33,7 +33,7 @@
       </dl>
     </div>
     <p class="site-footer__legal">
-      <span>© 2026 Dominika Škulavik</span>
+      <span>© 2026 Dominika Škulavik. All rights reserved.</span>
       <button type="button" class="motion-toggle" aria-pressed="false">Pause animations</button>
     </p>
   </footer>`;

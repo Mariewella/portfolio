@@ -674,7 +674,7 @@
     toggle.addEventListener('click', function () {
       stopped = !stopped;
       toggle.setAttribute('aria-pressed', String(stopped));
-      if (stopped) { hold(); toggle.textContent = '▶ Play'; toggle.classList.remove('is-waiting'); }
+      if (stopped) { hold(); toggle.textContent = '▶︎ Play'; toggle.classList.remove('is-waiting'); }
       else play();
     });
 
@@ -703,7 +703,7 @@
       if (e.detail.off !== stopped) toggle.click();
     });
 
-    if (stopped) { toggle.textContent = '▶ Play'; toggle.setAttribute('aria-pressed', 'true'); }
+    if (stopped) { toggle.textContent = '▶︎ Play'; toggle.setAttribute('aria-pressed', 'true'); }
     show(0);
   }
 

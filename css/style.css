@@ -575,7 +575,7 @@ button { font-family: inherit; cursor: pointer; }
   transition: background 0.2s, box-shadow 0.2s;
 }
 .start-btn:hover { background: var(--red-dark); box-shadow: 0 0 36px rgba(239, 90, 80, 0.35); }
-.start-btn__arrow { font-size: 18px; color: var(--red); animation: blink 1.2s steps(1) infinite; }
+.start-btn__arrow { flex: none; color: var(--red); animation: blink 1.2s steps(1) infinite; }
 .start-btn:hover .start-btn__arrow { color: var(--cream); }
 .screen-start__hint { margin: 0; font-size: 12px; letter-spacing: 0.16em; color: var(--muted); }
 
