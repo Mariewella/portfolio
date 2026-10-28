@@ -25,10 +25,10 @@
 
   // kontakty ako ikony; prázdna adresa = ikona sa nezobrazí
   const SOCIAL = [
-    ['Instagram', '', '<rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.6" fill="currentColor"/>'],
+    ['Instagram', 'https://www.instagram.com/_shychill_/', '<rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.6" fill="currentColor"/>'],
     ['LinkedIn', 'https://www.linkedin.com/in/dominika-%C5%A1kulavikov%C3%A1-287928238/', '<rect x="3" y="3" width="18" height="18" rx="2"/><path d="M8 10v7M8 7v.01M12 17v-4a2 2 0 0 1 4 0v4M12 10v7"/>'],
     ['Email', 'mailto:skulavikova.d@gmail.com', '<rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/>'],
-    ['Facebook', '', '<path d="M15 3h-2.5A3.5 3.5 0 0 0 9 6.5V10H6.5v3.5H9V21h3.5v-7.5H15l.5-3.5h-3V7a1 1 0 0 1 1-1H15z"/>']
+    ['Facebook', 'https://www.facebook.com/Little.Domka', '<path d="M15 3h-2.5A3.5 3.5 0 0 0 9 6.5V10H6.5v3.5H9V21h3.5v-7.5H15l.5-3.5h-3V7a1 1 0 0 1 1-1H15z"/>']
   ];
   const socialLinks = SOCIAL.filter(function (s) { return s[1]; }).map(function (s) {
     const external = s[1].indexOf('http') === 0 ? ' target="_blank" rel="noopener"' : '';
