@@ -315,12 +315,13 @@ button { font-family: inherit; cursor: pointer; }
   justify-content: space-between;
   gap: 32px 48px;
 }
-.site-footer__save { flex: 1 1 320px; display: flex; flex-direction: column; align-items: flex-start; gap: 16px; }
-.site-footer__title { margin: 0; font-family: var(--font-display); font-weight: 400; font-size: clamp(28px, 3.4vw, 40px); line-height: 1.1; max-width: 520px; }
-.site-footer__contacts { flex: 1 1 420px; margin: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(220px, 100%), 1fr)); gap: 1px; background: var(--line); border: 1px solid var(--line); align-self: flex-start; }
-.site-footer__contacts > div { padding: 14px 16px; background: var(--panel); display: flex; flex-direction: column; gap: 4px; }
-.site-footer__contacts dt { font-size: 12px; letter-spacing: 0.2em; color: var(--muted); }
-.site-footer__contacts dd { margin: 0; font-size: 14px; word-break: break-word; }
+.site-footer__title { margin: 0; font-family: var(--font-display); font-weight: 400; font-size: clamp(32px, 4vw, 48px); line-height: 1.05; }
+.site-footer__actions { display: flex; flex-wrap: wrap; align-items: center; gap: 20px 28px; }
+.cta__meta { font-weight: 400; letter-spacing: 0.08em; opacity: 0.8; }
+/* ikony kontaktov */
+.social { margin: 0; padding: 0; list-style: none; display: flex; gap: 8px; }
+.social__link { width: 48px; height: 48px; display: grid; place-items: center; border: 1px solid var(--line-2); color: var(--text); transition: color 0.15s, border-color 0.15s, background-color 0.15s; }
+.social__link:hover { color: var(--red); border-color: var(--red); background: var(--red-bg); }
 .site-footer__legal {
   max-width: 1320px;
   margin: 0 auto;

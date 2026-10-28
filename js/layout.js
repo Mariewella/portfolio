@@ -21,16 +21,33 @@
   const INITIALS = 'DŠ'; // na mobile namiesto mena, ako favicon
 
   /* ---------- Pätička ---------- */
+  const CV = 'files/Dominika_Skulavikova_CV.pdf';
+
+  // kontakty ako ikony; prázdna adresa = ikona sa nezobrazí
+  const SOCIAL = [
+    ['Instagram', '', '<rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.6" fill="currentColor"/>'],
+    ['LinkedIn', 'https://www.linkedin.com/in/dominika-%C5%A1kulavikov%C3%A1-287928238/', '<rect x="3" y="3" width="18" height="18" rx="2"/><path d="M8 10v7M8 7v.01M12 17v-4a2 2 0 0 1 4 0v4M12 10v7"/>'],
+    ['Email', 'mailto:skulavikova.d@gmail.com', '<rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/>'],
+    ['Facebook', '', '<path d="M15 3h-2.5A3.5 3.5 0 0 0 9 6.5V10H6.5v3.5H9V21h3.5v-7.5H15l.5-3.5h-3V7a1 1 0 0 1 1-1H15z"/>']
+  ];
+  const socialLinks = SOCIAL.filter(function (s) { return s[1]; }).map(function (s) {
+    const external = s[1].indexOf('http') === 0 ? ' target="_blank" rel="noopener"' : '';
+    return '<li><a class="social__link" href="' + s[1] + '"' + external + '>' +
+      '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' + s[2] + '</svg>' +
+      '<span class="visually-hidden">' + s[0] + '</span></a></li>';
+  }).join('');
+
   const FOOTER = `
   <footer class="site-footer" id="contact">
     <div class="site-footer__inner">
-      <div class="site-footer__save">
-        <h2 class="site-footer__title">Let’s survive the next project together.</h2>
+      <h2 class="site-footer__title">Let’s join forces.</h2>
+      <div class="site-footer__actions">
+        <a class="cta" href="${CV}" download>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12M6 10l6 6 6-6M4 21h16"/></svg>
+          Download CV <span class="cta__meta">(PDF)</span>
+        </a>
+        <ul class="social" aria-label="Contact and social profiles">${socialLinks}</ul>
       </div>
-      <dl class="site-footer__contacts">
-        <div><dt>EMAIL</dt><dd><a href="mailto:skulavikova.d@gmail.com">skulavikova.d@gmail.com</a></dd></div>
-        <div><dt>LINKEDIN</dt><dd><a href="https://www.linkedin.com/in/dominika-%C5%A1kulavikov%C3%A1-287928238/" target="_blank" rel="noopener">in/dominika-škulaviková</a></dd></div>
-      </dl>
     </div>
     <p class="site-footer__legal">
       <span>© 2026 Dominika Škulavik. All rights reserved.</span>
