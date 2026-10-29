@@ -580,8 +580,8 @@
       return dot;
     });
 
-    // 3D náklon fotky za kurzorom (len myš na počítači)
-    const canTilt = !reducedMotion && window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+    // 3D náklon fotky: za kurzorom myši, na mobile za prstom ťahaným po predmete
+    const canTilt = !reducedMotion;
     cards.forEach(function (card) {
       const art = card.querySelector('.inv-card__art');
       const img = art.querySelector('img');
@@ -596,8 +596,13 @@
       obj.appendChild(glare);
       if (!canTilt) return;
 
+      let touching = false; // prst položený na predmete aktuálnej karty
+      art.addEventListener('pointerdown', function (e) {
+        if (e.pointerType !== 'mouse' && card.hasAttribute('aria-current')) touching = true;
+      });
+
       card.addEventListener('pointermove', function (e) {
-        if (!card.hasAttribute('aria-current') || e.pointerType !== 'mouse') return;
+        if (!card.hasAttribute('aria-current') || (e.pointerType !== 'mouse' && !touching)) return;
         const r = art.getBoundingClientRect();
         const x = Math.min(1, Math.max(0, (e.clientX - r.left) / r.width));
         const y = Math.min(1, Math.max(0, (e.clientY - r.top) / r.height));
@@ -609,12 +614,17 @@
         glare.style.setProperty('--gy', (y * 100).toFixed(0) + '%');
         if (!card.classList.contains('is-tilting')) { card.classList.add('is-tilting'); hold(); }
       });
-      card.addEventListener('pointerleave', function () {
+      function untilt() {
+        touching = false;
         if (!card.classList.contains('is-tilting')) return;
         card.classList.remove('is-tilting');
         ['--rx', '--ry', '--sx', '--sy'].forEach(function (p) { obj.style.removeProperty(p); });
         userGo(); // po 5 s nečinnosti pokračuje v prepínaní
-      });
+      }
+      card.addEventListener('pointerleave', untilt);
+      // prst zdvihnutý alebo prehliadač prevzal posun stránky
+      card.addEventListener('pointerup', function (e) { if (e.pointerType !== 'mouse') untilt(); });
+      card.addEventListener('pointercancel', untilt);
     });
 
     function show(i) {
@@ -684,7 +694,11 @@
     });
 
     let startX = null;
-    track.addEventListener('pointerdown', function (e) { startX = e.clientX; });
+    track.addEventListener('pointerdown', function (e) {
+      // ťahanie prstom po predmete ho natáča, neprepína kartu
+      const onObject = e.pointerType !== 'mouse' && canTilt && e.target.closest('.inv-card[aria-current] .inv-card__art');
+      startX = onObject ? null : e.clientX;
+    });
     track.addEventListener('pointerup', function (e) {
       if (startX !== null && Math.abs(e.clientX - startX) > 40) userGo(current + (e.clientX < startX ? 1 : -1));
       startX = null;
