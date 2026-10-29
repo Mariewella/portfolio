@@ -1534,6 +1534,11 @@ body.has-dossier { overflow: hidden; }
 /* fotky pripnuté priamo v texte dokumentu (napr. Solution pri logu) */
 .evidence--pinned { margin-top: 22px; align-items: start; }
 @media (min-width: 641px) { .evidence--pinned { grid-template-columns: minmax(0, 1fr) minmax(0, 2fr); } }
+/* tri fotky: prvá cez celú šírku, dve pod ňou */
+@media (min-width: 641px) {
+  .evidence--trio { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
+  .evidence--trio > .snap:first-child { grid-column: 1 / -1; }
+}
 .snap {
   position: relative;
   padding: 10px 10px 12px;
