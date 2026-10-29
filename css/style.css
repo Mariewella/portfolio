@@ -316,11 +316,14 @@ button { font-family: inherit; cursor: pointer; }
   gap: 32px 48px;
 }
 .site-footer__title { margin: 0; font-family: var(--font-display); font-weight: 400; font-size: clamp(32px, 4vw, 48px); line-height: 1.05; }
-.site-footer__actions { display: flex; flex-wrap: wrap; align-items: center; gap: 20px 28px; }
+.site-footer__actions { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 8px; }
+/* mobil: tlačidlo a ikony v jednom riadku */
+.site-footer .cta { padding: 0 12px; gap: 8px; letter-spacing: 0.1em; }
+.site-footer .cta svg { display: none; }
 .cta__meta { font-weight: 400; letter-spacing: 0.08em; opacity: 0.8; }
 /* ikony kontaktov */
-.social { margin: 0; padding: 0; list-style: none; display: flex; gap: 8px; }
-.social__link { width: 48px; height: 48px; display: grid; place-items: center; border: 1px solid var(--line-2); color: var(--text); transition: color 0.15s, border-color 0.15s, background-color 0.15s; }
+.social { margin: 0; padding: 0; list-style: none; display: flex; gap: 4px; }
+.social__link { width: 40px; height: 40px; display: grid; place-items: center; border: 1px solid var(--line-2); color: var(--text); transition: color 0.15s, border-color 0.15s, background-color 0.15s; }
 .social__link:hover { color: var(--red); border-color: var(--red); background: var(--red-bg); }
 .site-footer__legal {
   max-width: 1320px;
@@ -1139,18 +1142,26 @@ body.has-dossier { overflow: hidden; }
 
 .id-card {
   position: absolute;
-  left: 14px;
-  bottom: 14px;
+  /* mobil: menšia karta, aby ju rám fotky neorezal (je natočená o 2°) */
+  left: 16px;
+  bottom: 20px;
+  max-width: calc(100% - 32px);
   display: flex;
-  gap: 10px;
+  gap: 8px;
   align-items: center;
-  padding: 8px 12px 8px 8px;
+  padding: 6px 10px 6px 6px;
   transform: rotate(-2deg);
 }
-.id-card img { width: 56px; height: 56px; object-fit: cover; filter: grayscale(0.25) contrast(1.05); }
+.id-card img { width: 44px; height: 44px; object-fit: cover; filter: grayscale(0.25) contrast(1.05); }
 .id-card__text { display: flex; flex-direction: column; gap: 2px; }
-.id-card__label { font-size: 12px; letter-spacing: 0.18em; color: var(--ink-label); }
-.id-card__name { font-family: var(--font-type); font-size: 15px; }
+.id-card__label { font-size: 12px; letter-spacing: 0.1em; color: var(--ink-label); }
+.id-card__name { font-family: var(--font-type); font-size: 14px; }
+@media (min-width: 1000px) {
+  .id-card { left: 14px; bottom: 14px; max-width: none; gap: 10px; padding: 8px 12px 8px 8px; }
+  .id-card img { width: 56px; height: 56px; }
+  .id-card__label { letter-spacing: 0.18em; }
+  .id-card__name { font-size: 15px; }
+}
 
 .about-text { flex: 999 1 560px; min-width: 0; order: -1; display: flex; flex-direction: column; gap: 28px; }
 .about-text .display { font-size: clamp(32px, 5.6vw, 72px); }
@@ -1513,3 +1524,13 @@ body.has-dossier { overflow: hidden; }
 .rule-quote blockquote { margin: 0; }
 .rule-quote p { margin: 0; font-family: var(--font-display); font-size: clamp(26px, 4vw, 40px); line-height: 1.15; color: var(--text); }
 .rule-quote figcaption { margin-top: 10px; font-size: 12px; letter-spacing: 0.2em; color: var(--muted); }
+
+/* spis: dokument, ktorý sa ešte pripravuje (Evidence) */
+.doc__pending { margin: 0; padding: 20px 22px; border: 1.5px dashed var(--paper-line); font-family: var(--font-type); font-size: 14px; line-height: 1.7; color: var(--ink-muted); }
+@media (min-width: 641px) {
+  .site-footer__actions { gap: 20px 28px; }
+  .site-footer .cta { padding: 0 22px; gap: 10px; letter-spacing: 0.18em; }
+  .site-footer .cta svg { display: block; }
+  .social { gap: 8px; }
+  .social__link { width: 48px; height: 48px; }
+}

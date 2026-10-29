@@ -44,7 +44,7 @@
       <div class="site-footer__actions">
         <a class="cta" href="${CV}" download>
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12M6 10l6 6 6-6M4 21h16"/></svg>
-          Download CV <span class="cta__meta">(PDF)</span>
+          Hire me <span class="cta__meta">(CV)</span><span class="visually-hidden">, download PDF</span>
         </a>
         <ul class="social" aria-label="Contact and social profiles">${socialLinks}</ul>
       </div>
