@@ -316,7 +316,7 @@ button { font-family: inherit; cursor: pointer; }
   gap: 32px 48px;
 }
 .site-footer__title { margin: 0; font-family: var(--font-display); font-weight: 400; font-size: clamp(32px, 4vw, 48px); line-height: 1.05; }
-.site-footer__actions { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 8px; }
+.site-footer__actions { flex: 1 1 100%; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 12px 8px; } /* mobil: tlačidlo vľavo, ikony vpravo */
 /* mobil: tlačidlo a ikony v jednom riadku */
 .site-footer .cta { padding: 0 12px; gap: 8px; letter-spacing: 0.1em; }
 .site-footer .cta svg { display: none; }
@@ -1528,7 +1528,7 @@ body.has-dossier { overflow: hidden; }
 /* spis: dokument, ktorý sa ešte pripravuje (Evidence) */
 .doc__pending { margin: 0; padding: 20px 22px; border: 1.5px dashed var(--paper-line); font-family: var(--font-type); font-size: 14px; line-height: 1.7; color: var(--ink-muted); }
 @media (min-width: 641px) {
-  .site-footer__actions { gap: 20px 28px; }
+  .site-footer__actions { flex: 0 1 auto; justify-content: flex-start; gap: 20px 28px; }
   .site-footer .cta { padding: 0 22px; gap: 10px; letter-spacing: 0.18em; }
   .site-footer .cta svg { display: block; }
   .social { gap: 8px; }
