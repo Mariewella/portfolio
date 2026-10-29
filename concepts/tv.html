@@ -1,0 +1,509 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>TV concept · Dominika Škulavik</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IM+Fell+English+SC&family=Space+Mono:wght@400;700&family=Special+Elite&display=swap">
+<style>
+/* =========================================================
+   NÁVRH: stránka ako starý televízor (len koncept, nie je na webe)
+   ========================================================= */
+:root {
+  --bg: #0b0c0a;
+  --text: #e9e2cf;
+  --muted: #a39d8c;
+  --red: #ef5a50;
+  --red-dark: #a8231d;
+  --red-bg: #1c1614;
+  --teal: #14b3ac;
+  --cream: #f6efdc;
+
+  /* skrinka televízora */
+  --wood-1: #3a2417;
+  --wood-2: #24160d;
+  --plastic: #1b1a17;
+  --plastic-2: #2a2824;
+  --chrome-1: #e9e4d6;
+  --chrome-2: #8d887c;
+
+  --font-display: 'IM Fell English SC', Georgia, serif;
+  --font-mono: 'Space Mono', ui-monospace, monospace;
+  --font-type: 'Special Elite', 'Courier New', monospace;
+}
+* { box-sizing: border-box; }
+html { background: var(--bg); }
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: 24px 16px 32px;
+  font-family: var(--font-mono);
+  color: var(--text);
+  /* tmavá izba, svetlo z televízora */
+  background: radial-gradient(ellipse 70% 55% at 50% 42%, rgba(120, 140, 130, 0.12), transparent 70%), var(--bg);
+}
+:focus-visible { outline: 2px solid var(--teal); outline-offset: 3px; }
+.visually-hidden { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+/* ---------- skrinka ---------- */
+.tv {
+  width: min(100%, 980px);
+  padding: 14px 14px 0;
+  border-radius: 28px 28px 18px 18px;
+  background:
+    repeating-linear-gradient(92deg, rgba(255,255,255,0.025) 0 2px, transparent 2px 9px),
+    linear-gradient(180deg, var(--wood-1), var(--wood-2));
+  box-shadow:
+    inset 0 2px 0 rgba(255,255,255,0.08),
+    inset 0 -3px 0 rgba(0,0,0,0.5),
+    0 40px 80px rgba(0,0,0,0.6);
+}
+.tv__bezel {
+  padding: clamp(10px, 2.4vw, 26px);
+  border-radius: 22px;
+  background: linear-gradient(160deg, var(--plastic-2), var(--plastic));
+  box-shadow: inset 0 0 0 1px rgba(0,0,0,0.6), inset 0 2px 6px rgba(255,255,255,0.05);
+}
+
+/* ---------- obrazovka (CRT) ---------- */
+.screen {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  border-radius: 6% / 8%;   /* vypuklé sklo */
+  background: radial-gradient(ellipse at 50% 45%, #1a201d 0%, #0b0e0c 70%, #050605 100%);
+  box-shadow: inset 0 0 60px rgba(0,0,0,0.9), inset 0 0 0 2px #000;
+  isolation: isolate;
+}
+
+/* šum, riadky, vinetácia, odlesk skla */
+.screen__noise { position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0.13; mix-blend-mode: screen; image-rendering: pixelated; z-index: 2; pointer-events: none; }
+.screen::before {
+  content: ""; position: absolute; inset: 0; z-index: 3; pointer-events: none;
+  background: repeating-linear-gradient(180deg, rgba(0,0,0,0.28) 0 1px, transparent 1px 3px);
+}
+.screen::after {
+  content: ""; position: absolute; inset: 0; z-index: 4; pointer-events: none;
+  background:
+    radial-gradient(ellipse 60% 40% at 30% 18%, rgba(255,255,255,0.07), transparent 60%),
+    radial-gradient(ellipse at center, transparent 55%, rgba(0,0,0,0.75) 100%);
+}
+.screen__roll { /* pomaly bežiaci svetlejší pás ako na starej telke */
+  position: absolute; left: 0; right: 0; height: 18%; z-index: 3; pointer-events: none;
+  background: linear-gradient(180deg, transparent, rgba(200,230,215,0.05), transparent);
+  animation: roll 7s linear infinite;
+}
+@keyframes roll { from { top: -20%; } to { top: 110%; } }
+
+.screen__content {
+  position: relative; z-index: 1;
+  height: 100%;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  gap: clamp(18px, 4vw, 34px);
+  padding: 8% 7%;
+  text-align: center;
+  animation: jitter 5s steps(1) infinite;
+  text-shadow: 0 0 6px rgba(233, 226, 207, 0.35), 1px 0 0 rgba(239, 90, 80, 0.35), -1px 0 0 rgba(20, 179, 172, 0.3);
+}
+@keyframes jitter { 0%, 96%, 100% { transform: none; } 97% { transform: translateX(2px) skewX(-1deg); } 98% { transform: translateX(-1px); } }
+
+.osd { position: absolute; top: 6%; right: 7%; z-index: 1; font-size: 13px; letter-spacing: 0.2em; color: #9be8b9; text-shadow: 0 0 8px rgba(155,232,185,0.6); }
+.osd--left { left: 7%; right: auto; color: var(--muted); text-shadow: none; }
+
+.title { margin: 0; font-family: var(--font-display); font-weight: 400; font-size: clamp(26px, 5vw, 54px); line-height: 1.05; text-wrap: balance; }
+.title span { display: block; color: var(--muted); font-size: 0.55em; margin-top: 10px; }
+
+/* ---------- menu na obrazovke ---------- */
+.menu { list-style: none; margin: 0; padding: 0; display: grid; gap: 12px; width: min(100%, 360px); }
+.menu__item {
+  width: 100%;
+  min-height: 52px;
+  padding: 0 20px;
+  display: flex; align-items: center; justify-content: center; gap: 14px;
+  border: 1.5px solid rgba(233, 226, 207, 0.18);
+  background: transparent;
+  color: var(--text);
+  font: 400 clamp(20px, 3vw, 26px) var(--font-display);
+  text-shadow: inherit;
+  cursor: pointer;
+  transition: border-color 0.15s, background 0.15s, transform 0.15s;
+}
+.menu__item small { font: 12px var(--font-mono); letter-spacing: 0.16em; color: var(--muted); }
+.menu__arrow { width: 12px; flex: none; color: var(--red); visibility: hidden; }
+/* zvýraznená položka (Play) – ako dnešné tlačidlo Start */
+.menu__item[aria-current="true"] {
+  border-color: var(--red);
+  background: rgba(168, 35, 29, 0.25);
+  box-shadow: 0 0 28px rgba(239, 90, 80, 0.25);
+}
+.menu__item[aria-current="true"] .menu__arrow { visibility: visible; animation: blink 1.2s steps(1) infinite; }
+/* ostatné: hover z prvej verzie (červený rámik, tmavé pozadie, posun hore) */
+.menu__item:hover:not([aria-current="true"]) { border-color: var(--red); background: var(--red-bg); transform: translateY(-2px); }
+@keyframes blink { 50% { opacity: 0; } }
+.hint { margin: 0; font-size: 12px; letter-spacing: 0.16em; color: var(--muted); }
+
+/* prepínanie kanálov: zrnenie cez celú obrazovku */
+.screen.is-switching .screen__noise { opacity: 0.9; }
+.screen.is-switching .screen__content { opacity: 0; }
+.screen.is-off .screen__content, .screen.is-off .osd { opacity: 0; }
+.screen.is-on .screen__content { animation: power-on 0.6s ease-out, jitter 5s steps(1) 0.6s infinite; }
+@keyframes power-on { 0% { transform: scale(1, 0.004); filter: brightness(4); } 50% { transform: scale(1, 0.004); } 100% { transform: none; filter: none; } }
+
+/* ---------- spodná lišta = pätička ---------- */
+.panel {
+  margin-top: 14px;
+  padding: 16px clamp(12px, 2.4vw, 26px);
+  border-radius: 10px;
+  background:
+    repeating-linear-gradient(90deg, rgba(255,255,255,0.03) 0 1px, transparent 1px 4px),
+    linear-gradient(180deg, #2c2a26, #1a1916);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.08), inset 0 -2px 0 rgba(0,0,0,0.6);
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  gap: 16px;
+}
+.panel__label { display: block; margin-bottom: 8px; font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted); text-shadow: 0 -1px 0 rgba(0,0,0,0.8); }
+
+/* Hire me = veľké vypínacie tlačidlo */
+.power { justify-self: start; display: flex; align-items: center; gap: 12px; }
+.power__btn {
+  display: inline-flex; align-items: center; gap: 10px;
+  min-height: 44px; padding: 0 18px;
+  border-radius: 6px;
+  background: linear-gradient(180deg, #c22a22, var(--red-dark));
+  color: var(--cream);
+  font: 700 13px var(--font-mono); letter-spacing: 0.12em; text-transform: uppercase; text-decoration: none;
+  box-shadow: 0 3px 0 #5e130f, inset 0 1px 0 rgba(255,255,255,0.25);
+  transition: transform 0.08s, box-shadow 0.08s;
+}
+.power__btn:active { transform: translateY(3px); box-shadow: 0 0 0 #5e130f, inset 0 1px 0 rgba(255,255,255,0.25); }
+.power__btn small { font-weight: 400; opacity: 0.8; }
+.led { width: 8px; height: 8px; border-radius: 50%; background: var(--red); box-shadow: 0 0 8px var(--red); animation: blink 2.4s steps(1) infinite; }
+
+/* značka televízora = ja */
+.badge {
+  justify-self: center;
+  padding: 6px 16px 5px;
+  border-radius: 4px;
+  background: linear-gradient(180deg, var(--chrome-1), var(--chrome-2) 55%, var(--chrome-1));
+  color: #24201a;
+  text-align: center;
+  box-shadow: 0 1px 0 rgba(255,255,255,0.15), inset 0 -1px 0 rgba(0,0,0,0.3), 0 2px 6px rgba(0,0,0,0.5);
+  text-decoration: none;
+}
+.badge__name { display: block; font: 400 clamp(17px, 2.2vw, 22px) var(--font-display); letter-spacing: 0.14em; text-shadow: 0 1px 0 rgba(255,255,255,0.5); }
+.badge__model { display: block; font-size: 12px; letter-spacing: 0.24em; color: #4a4438; }
+
+/* 4 gombíky = sociálne siete */
+.knobs { justify-self: end; text-align: right; }
+.knobs ul { list-style: none; margin: 0; padding: 0; display: flex; gap: 10px; justify-content: flex-end; }
+.knob {
+  width: 44px; height: 44px;
+  display: grid; place-items: center;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 30%, #4a4741, #1d1c19 70%);
+  color: var(--text);
+  box-shadow: 0 3px 0 #0a0a09, inset 0 1px 0 rgba(255,255,255,0.15), 0 0 0 3px #12110f;
+  transition: transform 0.25s, color 0.15s;
+}
+.knob:hover { color: var(--red); transform: rotate(-35deg); }
+.knob:active { transform: rotate(-35deg) translateY(2px); box-shadow: 0 1px 0 #0a0a09, 0 0 0 3px #12110f; }
+
+/* nožičky a copyright pod televízorom */
+.tv__base { display: flex; justify-content: space-between; padding: 10px 12% 0; }
+.tv__leg { width: 18px; height: 26px; background: linear-gradient(90deg, #15100b, #2d1e13); clip-path: polygon(20% 0, 80% 0, 100% 100%, 0 100%); }
+.legal { margin: 14px 0 0; text-align: center; font-size: 12px; letter-spacing: 0.08em; color: var(--muted); }
+
+.note { max-width: 980px; margin: 22px auto 0; padding: 12px 16px; border: 1px dashed #4a4d47; font-size: 12px; line-height: 1.7; color: var(--muted); }
+
+/* TV na šírku: skrinka cez celú šírku okna, obrazovka vyplní výšku */
+@media (orientation: landscape) {
+  body { display: block; place-items: normal; padding: 0 0 24px; }
+  .tv { width: 100%; border-radius: 0 0 18px 18px; padding: 14px 14px 0; }
+  .screen { aspect-ratio: auto; height: calc(100vh - 220px); min-height: 360px; }
+  .legal, .note { margin-left: 16px; margin-right: 16px; }
+}
+
+/* tlačidlo B a reproduktor patria len Game Boyu */
+.pad-b, .speaker { display: none; }
+
+/* =========================================================
+   GAME BOY: obrazovky vyššie ako širšie (mobil na výšku)
+   ========================================================= */
+@media (orientation: portrait) {
+  :root {
+    --gb-body: #cfccc3;
+    --gb-body-2: #b9b5aa;
+    --gb-bezel: #5c5e6c;
+    --gb-0: #0f380f;   /* 4 odtiene zelenej ako na starom LCD */
+    --gb-1: #306230;
+    --gb-2: #8bac0f;
+    --gb-3: #9bbc0f;
+    --gb-ink: #2e3478;
+  }
+  body { padding: 16px 12px 24px; }
+  .tv {
+    width: min(100%, 440px);
+    padding: 18px 18px 26px;
+    border-radius: 14px 14px 64px 14px;
+    background: linear-gradient(160deg, var(--gb-body), var(--gb-body-2));
+    box-shadow: inset 0 2px 0 rgba(255,255,255,0.5), inset -4px -6px 0 rgba(0,0,0,0.12), 0 30px 60px rgba(0,0,0,0.6);
+  }
+  .tv__base { display: none; }
+
+  /* tmavý rámik okolo displeja s kontrolkou */
+  .tv__bezel {
+    position: relative;
+    padding: 22px 26px 26px 34px;
+    border-radius: 10px 10px 40px 10px;
+    background: var(--gb-bezel);
+    box-shadow: inset 0 2px 4px rgba(0,0,0,0.4);
+  }
+  .tv__bezel::before { /* kontrolka napájania */
+    content: ""; position: absolute; left: 12px; top: 42%;
+    width: 8px; height: 8px; border-radius: 50%;
+    background: var(--red); box-shadow: 0 0 8px var(--red);
+  }
+
+  /* zelený LCD namiesto CRT */
+  .screen {
+    aspect-ratio: auto; min-height: 420px;
+    border-radius: 3px;
+    background: var(--gb-3);
+    box-shadow: inset 0 0 0 2px rgba(15,56,15,0.25), inset 0 0 30px rgba(15,56,15,0.35);
+  }
+  .screen__noise { opacity: 0.07; mix-blend-mode: multiply; }
+  .screen::before { background: repeating-linear-gradient(90deg, rgba(15,56,15,0.06) 0 1px, transparent 1px 3px), repeating-linear-gradient(180deg, rgba(15,56,15,0.06) 0 1px, transparent 1px 3px); }
+  .screen::after { background: none; }
+  .screen__roll { display: none; }
+  .screen__content, .screen.is-on .screen__content { padding: 72px 18px 28px; gap: 18px; color: var(--gb-0); text-shadow: none; animation: none; }
+  .osd { color: var(--gb-0); text-shadow: none; }
+  .osd--left { color: var(--gb-1); }
+  .title { font-size: 28px; }
+  .title span { color: var(--gb-1); }
+  .menu { gap: 8px; }
+  .menu__item {
+    flex-wrap: wrap; column-gap: 10px; row-gap: 0;
+    min-height: 48px; padding: 6px 14px;
+    border: 2px solid var(--gb-1); color: var(--gb-0); font-size: 22px;
+  }
+  .menu__item small { flex-basis: 100%; color: var(--gb-1); }
+  .menu__arrow { color: var(--gb-3); }
+  .menu__item[aria-current="true"] { border-color: var(--gb-0); background: var(--gb-0); color: var(--gb-3); box-shadow: none; }
+  .menu__item[aria-current="true"] small { color: var(--gb-2); }
+  .menu__item:hover:not([aria-current="true"]) { border-color: var(--gb-0); background: var(--gb-2); }
+  .hint { display: none; } /* na mobile nie je klávesnica */
+  :focus-visible { outline-color: var(--gb-ink); }
+  .screen :focus-visible { outline-color: var(--gb-0); }
+
+  /* ovládanie pod displejom = pätička */
+  .panel {
+    margin-top: 0; padding: 0;
+    background: none; box-shadow: none; border-radius: 0;
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas: "badge badge" "pad ab" "pad speaker";
+    gap: 18px 8px;
+  }
+  .badge {
+    grid-area: badge; justify-self: start;
+    margin: 12px 0 0 4px; padding: 0;
+    background: none; box-shadow: none; text-align: left;
+    color: var(--gb-ink);
+  }
+  .badge__name { font-size: 24px; font-style: italic; letter-spacing: 0.06em; text-shadow: none; }
+  .badge__model { color: var(--gb-ink); font-size: 12px; letter-spacing: 0.3em; }
+
+  /* D-pad = 4 sociálne siete */
+  .knobs { grid-area: pad; justify-self: start; text-align: left; min-width: 0; }
+  .panel__label { color: #5e5a50; text-shadow: 0 1px 0 rgba(255,255,255,0.4); letter-spacing: 0.1em; white-space: nowrap; }
+  .knobs ul { display: grid; grid-template-columns: repeat(3, 44px); grid-template-rows: repeat(3, 44px); gap: 0; }
+  .knobs ul::before { content: ""; grid-area: 2 / 2; background: #26262b; } /* stred kríža */
+  .knobs li:nth-child(1) { grid-area: 1 / 2; } /* hore */
+  .knobs li:nth-child(2) { grid-area: 2 / 3; } /* vpravo */
+  .knobs li:nth-child(3) { grid-area: 3 / 2; } /* dole */
+  .knobs li:nth-child(4) { grid-area: 2 / 1; } /* vľavo */
+  .knob {
+    width: 44px; height: 44px; border-radius: 4px;
+    background: #26262b; color: #b9b6c4;
+    box-shadow: 0 3px 0 #111114;
+  }
+  .knobs li:nth-child(1) .knob { border-radius: 4px 4px 0 0; }
+  .knobs li:nth-child(2) .knob { border-radius: 0 4px 4px 0; }
+  .knobs li:nth-child(3) .knob { border-radius: 0 0 4px 4px; }
+  .knobs li:nth-child(4) .knob { border-radius: 4px 0 0 4px; }
+  .knob:hover { color: var(--red); transform: none; }
+  .knob:active { transform: translateY(2px); box-shadow: 0 1px 0 #111114; }
+
+  /* A = Hire me, B = Pause, šikmo ako na konzole */
+  .power { grid-area: ab; justify-self: end; align-self: start; gap: 18px; padding: 22px 34px 0 0; transform: rotate(-24deg); }
+  .led { display: none; }
+  .power__btn, .pad-b {
+    position: relative;
+    display: grid; place-items: center;
+    width: 58px; height: 58px; min-height: 0; padding: 0;
+    border: 0; border-radius: 50%;
+    background: radial-gradient(circle at 35% 30%, #c2306a, #8a1c4a 70%);
+    box-shadow: 0 4px 0 #4f0f2a, inset 0 1px 0 rgba(255,255,255,0.3);
+  }
+  .pad-b { margin-top: 30px; }
+  .power__btn:active, .pad-b:active { transform: translateY(3px); box-shadow: 0 1px 0 #4f0f2a; }
+  .btn-label {
+    position: absolute; top: calc(100% + 8px); left: 50%; transform: translateX(-50%);
+    white-space: nowrap;
+    font: 700 12px var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase;
+    color: var(--gb-ink);
+  }
+  .btn-label small { font-weight: 400; opacity: 1; }
+
+  /* reproduktor: šikmé štrbiny vpravo dole */
+  .speaker { grid-area: speaker; justify-self: end; align-self: end; display: flex; gap: 7px; transform: rotate(-28deg); margin: 16px 10px 0 0; }
+  .speaker span { width: 6px; height: 46px; border-radius: 3px; background: #8f8b80; box-shadow: inset 0 2px 2px rgba(0,0,0,0.35); }
+}
+
+.motion-off .screen__roll, .motion-off .screen__content, .motion-off .menu__arrow, .motion-off .led { animation: none !important; }
+
+/* ---------- menej pohybu ---------- */
+@media (prefers-reduced-motion: reduce) {
+  .screen__roll, .screen__content, .menu__arrow, .led { animation: none !important; }
+  .screen__noise { opacity: 0.06; }
+}
+</style>
+</head>
+<body>
+
+<main>
+  <div class="tv">
+    <div class="tv__bezel">
+      <div class="screen is-off" id="screen">
+        <canvas class="screen__noise" id="noise" aria-hidden="true"></canvas>
+        <div class="screen__roll" aria-hidden="true"></div>
+        <p class="osd osd--left" aria-hidden="true">AV-1</p>
+        <p class="osd" id="osd" aria-hidden="true">CH 01</p>
+
+        <div class="screen__content" id="content">
+          <h1 class="title">I design the screens. <span>Then I survive building them.</span></h1>
+          <nav aria-label="Main">
+            <ul class="menu" id="menu">
+              <li><button class="menu__item" type="button" aria-current="true" data-ch="02" data-to="Game library">
+                <svg class="menu__arrow" viewBox="0 0 14 16" aria-hidden="true"><path d="M0 0 L14 8 L0 16 Z" fill="currentColor"/></svg>Play</button></li>
+              <li><button class="menu__item" type="button" data-ch="03" data-to="Concept art">
+                <svg class="menu__arrow" viewBox="0 0 14 16" aria-hidden="true"><path d="M0 0 L14 8 L0 16 Z" fill="currentColor"/></svg>Concept art <small>Portfolio</small></button></li>
+              <li><button class="menu__item" type="button" data-ch="04" data-to="Credits">
+                <svg class="menu__arrow" viewBox="0 0 14 16" aria-hidden="true"><path d="M0 0 L14 8 L0 16 Z" fill="currentColor"/></svg>Credits <small>About</small></button></li>
+            </ul>
+          </nav>
+          <p class="hint">↑ ↓ to choose · Enter to play</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- spodná lišta televízora = pätička -->
+    <footer class="panel">
+      <!-- TV: vypínač vľavo · Game Boy: tlačidlá A a B -->
+      <div class="power">
+        <span class="led" aria-hidden="true"></span>
+        <button class="pad-b" type="button" aria-pressed="false"><span class="btn-label">Pause</span><span class="visually-hidden"> animations</span></button>
+        <a class="power__btn" href="../files/Dominika_Skulavikova_CV.pdf" download><span class="btn-label">Hire me <small>(CV)</small></span><span class="visually-hidden">, download PDF</span></a>
+      </div>
+
+      <a class="badge" href="#" aria-label="Dominika Škulavik — Home">
+        <span class="badge__name">ŠKULAVIK</span>
+        <span class="badge__model">UX · UI · DEV</span>
+      </a>
+
+      <div class="knobs">
+        <span class="panel__label" id="join">Let’s join forces</span>
+        <ul aria-labelledby="join">
+          <li><a class="knob" href="https://www.instagram.com/_shychill_/" target="_blank" rel="noopener"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.6" fill="currentColor"/></svg><span class="visually-hidden">Instagram (opens in a new tab)</span></a></li>
+          <li><a class="knob" href="https://www.linkedin.com/in/dominika-%C5%A1kulavikov%C3%A1-287928238/" target="_blank" rel="noopener"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M8 10v7M8 7v.01M12 17v-4a2 2 0 0 1 4 0v4M12 10v7"/></svg><span class="visually-hidden">LinkedIn (opens in a new tab)</span></a></li>
+          <li><a class="knob" href="mailto:skulavikova.d@gmail.com"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg><span class="visually-hidden">Email</span></a></li>
+          <li><a class="knob" href="https://www.facebook.com/Little.Domka" target="_blank" rel="noopener"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 3h-2.5A3.5 3.5 0 0 0 9 6.5V10H6.5v3.5H9V21h3.5v-7.5H15l.5-3.5h-3V7a1 1 0 0 1 1-1H15z"/></svg><span class="visually-hidden">Facebook (opens in a new tab)</span></a></li>
+        </ul>
+      </div>
+    <div class="speaker" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span><span></span></div>
+    </footer>
+    <div class="tv__base" aria-hidden="true"><span class="tv__leg"></span><span class="tv__leg"></span>
+      <p class="legal">© 2026 Dominika Škulavik. All rights reserved.</p>
+    </div>
+  </div>
+  <p class="note">Návrh / concept only — kliknutie na položku zatiaľ len „prepne kanál“, podstránky sa neotvárajú.</p>
+</main>
+
+<script>
+(function () {
+  'use strict';
+  const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const screen = document.getElementById('screen');
+  const osd = document.getElementById('osd');
+  const items = Array.from(document.querySelectorAll('.menu__item'));
+
+  /* šum: malé plátno s náhodnými pixelmi, roztiahnuté cez obrazovku */
+  const canvas = document.getElementById('noise');
+  const ctx = canvas.getContext('2d');
+  canvas.width = 160; canvas.height = 120;
+  const img = ctx.createImageData(canvas.width, canvas.height);
+  function drawNoise() {
+    const d = img.data;
+    for (let i = 0; i < d.length; i += 4) {
+      const v = Math.random() * 255 | 0;
+      d[i] = d[i + 1] = d[i + 2] = v; d[i + 3] = 255;
+    }
+    ctx.putImageData(img, 0, 0);
+  }
+  let last = 0, paused = false;
+
+  /* tlačidlo B na Game Boyi: Pause / Play animations */
+  const padB = document.querySelector('.pad-b');
+  padB.addEventListener('click', function () {
+    paused = !paused;
+    document.documentElement.classList.toggle('motion-off', paused);
+    padB.setAttribute('aria-pressed', String(paused));
+    padB.querySelector('.btn-label').textContent = paused ? 'Play' : 'Pause';
+  });
+  function loop(t) {
+    if (t - last > 50 && !paused) { drawNoise(); last = t; } // ~20 fps stačí, šetrí batériu
+    requestAnimationFrame(loop);
+  }
+  drawNoise();
+  if (!reduced) requestAnimationFrame(loop);
+
+  /* zapnutie televízora */
+  setTimeout(function () {
+    screen.classList.remove('is-off');
+    if (!reduced) screen.classList.add('is-on');
+  }, reduced ? 0 : 300);
+
+  /* výber položky: šípky ako v hernom menu, zvýraznenie ide za kurzorom */
+  function select(i) {
+    items.forEach(function (b, j) { b.toggleAttribute('aria-current', false); if (j === i) b.setAttribute('aria-current', 'true'); });
+  }
+  items.forEach(function (b, i) {
+    b.addEventListener('focus', function () { select(i); });
+    b.addEventListener('click', function () { switchChannel(b); });
+  });
+  document.addEventListener('keydown', function (e) {
+    const cur = items.findIndex(function (b) { return b.hasAttribute('aria-current'); });
+    if (e.key === 'ArrowDown' || e.key === 'ArrowUp') {
+      e.preventDefault();
+      const next = (cur + (e.key === 'ArrowDown' ? 1 : items.length - 1)) % items.length;
+      items[next].focus();
+    }
+  });
+
+  /* „prepnutie kanála“: chvíľu zrnenie, potom späť (v návrhu sa nikam nejde) */
+  function switchChannel(b) {
+    osd.textContent = 'CH ' + b.dataset.ch;
+    if (reduced) return;
+    screen.classList.add('is-switching');
+    setTimeout(function () { screen.classList.remove('is-switching'); }, 450);
+  }
+})();
+</script>
+</body>
+</html>
