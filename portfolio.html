@@ -264,8 +264,9 @@
             <div><dt>PROBLEM</dt><dd>Current accident claim process is complex and time-consuming. People often feel stressed and are prone to make mistakes, when filling out personal or vehicle information.</dd></div>
             <div><dt>SOLUTION</dt><dd>
               <ul class="case__points">
-                <li>The whole method is built on the European Accident Statement with revisions.</li>
-                <li>Out of scope: the green card, the insurer’s claim handling, the web form for the second driver and country-specific legal values.</li>
+                <li>Rather than reinventing what is already digitalised I focused on improving the exisitng process with unique approach. Why focus only on the insurance claim and not the driver?</li>
+                <li>Intuitive design that reduces cognitive load and provides clear guidance throughout the reporting process.</li>
+                <li>No more drawing cars and the accident scene.</li>
               </ul>
             </dd></div>
           </dl>
@@ -275,12 +276,13 @@
           <header class="doc__head"><span>DOC 02</span><span class="stamp stamp--demo">DEMO</span></header>
           <h3 class="doc__title">Research &amp; users</h3>
           <dl class="doc__brief">
-            <div><dt>TASK</dt><dd>Find out whether someone has already solved this. Where something works, it should be improved, not replaced.</dd></div>
-            <div><dt>PROBLEM</dt><dd>Existing options each miss the moment itself: the digital accident statement is paper on a screen, insurer apps assume you report later from home with the other party already known, and the paper form assumes you have it, a pen and a shared language.</dd></div>
+            <div><dt>TASK</dt><dd>Find out and research existing solutions to determine what they offer and lack.</dd></div>
+            <div><dt>PROBLEM</dt><dd>Existing options converted the paper form into a digital one without addressing the core issues of the physical form. They started with the form itself, rather than the user's needs. People under stress cannot think clearly and require a guidance throughout the process.</dd></div>
             <div><dt>SOLUTION</dt><dd>
               <ul class="case__points">
-                <li>Instead of invented personas: domain-based scenarios. A cross-border crash with no shared language, a report three days later from home, a driver who drove off, an accident with no other party.</li>
-                <li>An assumption register: what I assume, how I would test it, and what changes if it’s wrong. For example, whether a stranger will scan a QR code at the scene.</li>
+                <li>Rather than starting with the form, I focused on the user's needs and duties. Before the user gets to the form they are guided through 3 crucial steps: safety, injuries and calling emergency services.</li>
+                <li>After making sure everyone is safe, the app helps users document the incident with minimal cognitive load.</li>
+                <li>The situations are categorised into different approaches, whether another party is involved, drove off, or an accident with no other party.</li>
               </ul>
             </dd></div>
           </dl>
@@ -290,13 +292,13 @@
           <header class="doc__head"><span>DOC 03</span><span class="stamp stamp--demo">DEMO</span></header>
           <h3 class="doc__title">Analysis</h3>
           <dl class="doc__brief">
-            <div><dt>TASK</dt><dd>Map every field of the European Accident Statement to the app. Its field numbering is the same in every language: field 7 is the vehicle, whether the form is Slovak, French or Italian.</dd></div>
-            <div><dt>PROBLEM</dt><dd>Paper assumes both drivers stand side by side with a working pen, read the same language and have the form in the glovebox. On the road, all three fail.</dd></div>
+            <div><dt>TASK</dt><dd>Map every field of the European Accident Statement.</dd></div>
+            <div><dt>PROBLEM</dt><dd>Ensure that the proposed improvements are not too different from established practices.</dd></div>
             <div><dt>SOLUTION</dt><dd>
               <ul class="case__points">
-                <li>Each driver fills in their own half on their own phone, in their own language, with shared field numbers.</li>
-                <li>A gap analysis between my data model and the form: policyholder vs. driver, trailers, six types of cover, the bank account that actually receives the money.</li>
-                <li>The two sheets of the paper form became the key structural idea: what has to happen at the scene, and what can wait until you sit down.</li>
+                <li>Each driver fills in their own half on their own phone exchanging information via a QR code.</li>
+                <li>Designed an incidents page to display, track and manage reported accidents.</li>
+                <li>Garage management features to store and organize vehicle information including information regarding ownership as the vehicle can be a personal, leased or company car. Based on this information the form would pre-fill relevant fields.</li>
               </ul>
             </dd></div>
           </dl>
@@ -317,40 +319,39 @@
           </dl>
         </article>
 
-        <article class="doc" data-title="Report Flow" hidden>
-          <header class="doc__head"><span>DOC 05</span><span class="stamp stamp--demo">DEMO</span></header>
-          <h3 class="doc__title">Report flow</h3>
-          <dl class="doc__brief">
-            <div><dt>TASK</dt><dd>Get a shaken driver from the crash to a signed report.</dd></div>
-            <div><dt>PROBLEM</dt><dd>Someone reporting an accident from three days ago doesn’t need safety steps, and a driver who drove off is a different case from no other party at all.</dd></div>
-            <div><dt>SOLUTION</dt><dd>
-              <ul class="case__points">
-                <li>“Are you at the scene?” comes first. It hides the safety steps when they’re noise and decides whether date and time are known.</li>
-                <li>Skippable safety steps, injuries and 112 first, one thought per line: after a crash people scan, they don’t read.</li>
-                <li>Three branches (other driver here, driver left, only my vehicle) that close before five numbered steps, so the progress bar means the same on every path.</li>
-              </ul>
-            </dd></div>
-          </dl>
-        </article>
-
         <article class="doc" data-title="Logo" hidden>
-          <header class="doc__head"><span>DOC 06</span><span class="stamp stamp--demo">DEMO</span></header>
+          <header class="doc__head"><span>DOC 05</span><span class="stamp stamp--demo">DEMO</span></header>
           <h3 class="doc__title">Logo</h3>
           <dl class="doc__brief">
-            <div><dt>TASK</dt><dd>A mark for an app people open on one of their worst days.</dd></div>
-            <div><dt>PROBLEM</dt><dd>It shouldn’t be a drawn letter with a wheel next to it.</dd></div>
+            <div><dt>TASK</dt><dd>A mark for an app people open on one of their worst days. The logo should evoke symbolism related to motor vehicles.</dd></div>
+            <div><dt>PROBLEM</dt><dd>Find a shape that is both a symbol of motion and a representation of a vehicle.</dd></div>
             <div><dt>SOLUTION</dt><dd>
               <ul class="case__points">
                 <li>Built from geometry: the ring between two circles is split into eight equal sectors, and the same cut removes a wedge from each.</li>
                 <li>Removing one sector on the right opens the closed circle into a C, and the empty inner circle reads as a wheel hub. One shape that is both.</li>
                 <li>The custom logotype follows the same rule: sharp inner cut, rounded outer corner, flat edges.</li>
               </ul>
+              <!-- prilepené fotky, klik ich zväčší (rovnako ako Evidence) -->
+              <ul class="evidence evidence--pinned">
+                <li class="snap">
+                  <button class="snap__open" type="button" data-full="images/claim/logo-construction.jpg">
+                    <img src="images/claim/logo-construction.jpg" alt="Logo construction in Illustrator: a ring between two circles split into eight sectors, each with a wedge cut out; the grey sector on the right is the one removed" width="593" height="628" loading="lazy">
+                  </button>
+                  <span class="snap__caption">Construction</span>
+                </li>
+                <li class="snap">
+                  <button class="snap__open" type="button" data-full="images/claim/logo-variants.png">
+                    <img src="images/claim/logo-variants.png" alt="Logo variants: the primary lockup with the CLAIM logotype, the orange submark, and a one-colour black version" width="1400" height="480" loading="lazy">
+                  </button>
+                  <span class="snap__caption">Logo variants</span>
+                </li>
+              </ul>
             </dd></div>
           </dl>
         </article>
 
         <article class="doc" data-title="Brand Identity" hidden>
-          <header class="doc__head"><span>DOC 07</span><span class="stamp stamp--demo">DEMO</span></header>
+          <header class="doc__head"><span>DOC 06</span><span class="stamp stamp--demo">DEMO</span></header>
           <h3 class="doc__title">Brand identity</h3>
           <dl class="doc__brief">
             <div><dt>TASK</dt><dd>Colours, components and tone for a product people use a few times in their life, under stress.</dd></div>
@@ -366,7 +367,7 @@
         </article>
 
         <article class="doc" data-title="Screens &amp; Prototype" hidden>
-          <header class="doc__head"><span>DOC 08</span><span class="stamp stamp--demo">DEMO</span></header>
+          <header class="doc__head"><span>DOC 07</span><span class="stamp stamp--demo">DEMO</span></header>
           <h3 class="doc__title">Screens &amp; prototype</h3>
           <dl class="doc__brief">
             <div><dt>TASK</dt><dd>Turn the structure into high-fidelity screens and a clickable prototype.</dd></div>
@@ -382,7 +383,7 @@
         </article>
 
         <article class="doc" data-title="Validation" hidden>
-          <header class="doc__head"><span>DOC 09</span><span class="stamp stamp--progress">PLAN</span></header>
+          <header class="doc__head"><span>DOC 08</span><span class="stamp stamp--progress">PLAN</span></header>
           <h3 class="doc__title">Validation &amp; handoff</h3>
           <dl class="doc__brief">
             <div><dt>TASK</dt><dd>Say honestly what is verified and what isn’t.</dd></div>
@@ -397,8 +398,6 @@
           </dl>
         </article>
 
-        <!-- fotky prilepené páskou; klik ich zväčší a dá sa nimi listovať (js/main.js · initEvidence)
-             Nová fotka: skopíruj jedno <li>, data-full = veľký obrázok, img = náhľad -->
         <article class="doc doc--evidence" data-title="Evidence" hidden>
           <header class="doc__head"><span>EVIDENCE</span><span class="stamp stamp--demo">4 EXHIBITS</span></header>
           <h3 class="doc__title">Visual concepts</h3>

@@ -1531,6 +1531,9 @@ body.has-dossier { overflow: hidden; }
 /* Evidence: fotky prilepené lepiacou páskou */
 .evidence { margin: 0; padding: 14px 4px 8px; list-style: none; display: grid; grid-template-columns: 1fr; gap: 34px 26px; }
 @media (min-width: 641px) { .evidence { grid-template-columns: 1fr 1fr; } }
+/* fotky pripnuté priamo v texte dokumentu (napr. Solution pri logu) */
+.evidence--pinned { margin-top: 22px; align-items: start; }
+@media (min-width: 641px) { .evidence--pinned { grid-template-columns: minmax(0, 1fr) minmax(0, 2fr); } }
 .snap {
   position: relative;
   padding: 10px 10px 12px;
