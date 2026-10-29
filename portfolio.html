@@ -397,10 +397,38 @@
           </dl>
         </article>
 
+        <!-- fotky prilepené páskou; klik ich zväčší a dá sa nimi listovať (js/main.js · initEvidence)
+             Nová fotka: skopíruj jedno <li>, data-full = veľký obrázok, img = náhľad -->
         <article class="doc doc--evidence" data-title="Evidence" hidden>
-          <header class="doc__head"><span>EVIDENCE</span><span class="stamp stamp--progress">IN PREPARATION</span></header>
+          <header class="doc__head"><span>EVIDENCE</span><span class="stamp stamp--demo">4 EXHIBITS</span></header>
           <h3 class="doc__title">Visual concepts</h3>
-          <p class="doc__pending">Screens, flows and mock-ups for this case file are being prepared and will be added here soon.</p>
+          <p class="doc__meta">Select a photo to see it full size.</p>
+          <ul class="evidence">
+            <li class="snap">
+              <button class="snap__open" type="button" data-full="images/claim/mockup-hero.jpg">
+                <img src="images/claim/mockup-hero-thumb.jpg" alt="CLAIM key visual: the app name, the line “Report a car accident anywhere in Europe” and three phones showing Garage, Home and Incidents" width="720" height="480" loading="lazy">
+              </button>
+              <span class="snap__caption">Exhibit A · Key visual</span>
+            </li>
+            <li class="snap">
+              <button class="snap__open" type="button" data-full="images/claim/mockup-app-overview.jpg">
+                <img src="images/claim/mockup-app-overview-thumb.jpg" alt="Five app screens side by side: Home with Report an Accident, Incidents, Garage, Notifications and Profile" width="720" height="480" loading="lazy">
+              </button>
+              <span class="snap__caption">Exhibit B · App overview</span>
+            </li>
+            <li class="snap">
+              <button class="snap__open" type="button" data-full="images/claim/mockup-report-flow.jpg">
+                <img src="images/claim/mockup-report-flow-thumb.jpg" alt="Five steps of the report flow: safety checklist, are you at the scene, who else was involved, the scene with map and witnesses, and connecting the other driver with a QR code" width="720" height="480" loading="lazy">
+              </button>
+              <span class="snap__caption">Exhibit C · Report flow</span>
+            </li>
+            <li class="snap">
+              <button class="snap__open" type="button" data-full="images/claim/mockup-garage-profile.jpg">
+                <img src="images/claim/mockup-garage-profile-thumb.jpg" alt="Four screens: the Garage list of vehicles, vehicle details, insurance contracts and the Profile page" width="720" height="480" loading="lazy">
+              </button>
+              <span class="snap__caption">Exhibit D · Garage &amp; profile</span>
+            </li>
+          </ul>
         </article>
 
         <nav class="dossier__nav" aria-label="Pages"></nav>
@@ -517,12 +545,6 @@
               </ul>
             </dd></div>
           </dl>
-        </article>
-
-        <article class="doc doc--evidence" data-title="Evidence" hidden>
-          <header class="doc__head"><span>EVIDENCE</span><span class="stamp stamp--progress">IN PREPARATION</span></header>
-          <h3 class="doc__title">Visual concepts</h3>
-          <p class="doc__pending">Screens, flows and mock-ups for this case file are being prepared and will be added here soon.</p>
         </article>
 
         <nav class="dossier__nav" aria-label="Pages"></nav>

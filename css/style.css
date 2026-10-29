@@ -1527,6 +1527,78 @@ body.has-dossier { overflow: hidden; }
 
 /* spis: dokument, ktorý sa ešte pripravuje (Evidence) */
 .doc__pending { margin: 0; padding: 20px 22px; border: 1.5px dashed var(--paper-line); font-family: var(--font-type); font-size: 14px; line-height: 1.7; color: var(--ink-muted); }
+
+/* Evidence: fotky prilepené lepiacou páskou */
+.evidence { margin: 0; padding: 14px 4px 8px; list-style: none; display: grid; grid-template-columns: 1fr; gap: 34px 26px; }
+@media (min-width: 641px) { .evidence { grid-template-columns: 1fr 1fr; } }
+.snap {
+  position: relative;
+  padding: 10px 10px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  background: #fbf8ef;
+  box-shadow: 0 1px 1px rgba(43, 38, 32, 0.15), 0 10px 18px -8px rgba(43, 38, 32, 0.45);
+  transform: rotate(-1.4deg);
+  transition: transform 0.2s;
+}
+.snap:nth-child(even) { transform: rotate(1.2deg); }
+.snap:nth-child(3n) { transform: rotate(-0.6deg); }
+/* dva kúsky polopriesvitnej pásky cez horné rohy */
+.snap::before,
+.snap::after {
+  content: "";
+  position: absolute;
+  top: -10px;
+  width: 74px;
+  height: 22px;
+  background: linear-gradient(180deg, rgba(214, 196, 140, 0.88), rgba(200, 182, 128, 0.82));
+  box-shadow: 0 1px 2px rgba(43, 38, 32, 0.25);
+  /* zúbkované okraje odtrhnutej pásky */
+  clip-path: polygon(0 8%, 6% 0, 12% 10%, 18% 0, 82% 0, 88% 8%, 94% 0, 100% 10%, 100% 92%, 94% 100%, 88% 90%, 82% 100%, 18% 100%, 12% 92%, 6% 100%, 0 90%);
+  pointer-events: none;
+}
+.snap::before { left: -14px; transform: rotate(-32deg); }
+.snap::after { right: -14px; transform: rotate(34deg); }
+.snap:nth-child(even)::before { left: 50%; margin-left: -37px; transform: rotate(-3deg); }
+.snap:nth-child(even)::after { display: none; }
+.snap:hover { transform: rotate(0deg) scale(1.02); }
+.snap__open { display: block; padding: 0; border: 0; background: none; cursor: zoom-in; }
+.snap__open img { display: block; width: 100%; height: auto; }
+.snap__caption { font-family: var(--font-type); font-size: 14px; color: var(--ink); text-align: center; }
+@media (prefers-reduced-motion: reduce) { .snap { transition: none; } }
+
+/* zväčšená fotka (dialóg nad spisom) */
+.lightbox {
+  width: 100vw;
+  height: 100dvh;
+  max-width: none;
+  max-height: none;
+  margin: 0;
+  padding: 16px;
+  border: 0;
+  background: transparent;
+  color: var(--text);
+}
+.lightbox::backdrop { background: rgba(5, 6, 5, 0.9); }
+.lightbox[open] { display: grid; grid-template-rows: auto 1fr auto; gap: 12px; }
+.lightbox__bar { display: flex; justify-content: space-between; align-items: center; gap: 12px; font-size: 12px; letter-spacing: 0.18em; color: var(--muted); font-variant-numeric: tabular-nums; }
+.lightbox__figure { margin: 0; min-height: 0; display: grid; grid-template-rows: 1fr auto; gap: 10px; justify-items: center; touch-action: pan-y; }
+.lightbox__figure img { min-height: 0; width: auto; height: auto; max-width: 100%; max-height: 100%; object-fit: contain; align-self: center; background: #fbf8ef; padding: 6px; }
+.lightbox__figure figcaption { font-family: var(--font-type); font-size: 15px; color: var(--text-soft); text-align: center; }
+.lightbox__nav { display: flex; justify-content: center; gap: 12px; }
+.lightbox button {
+  min-height: 44px;
+  padding: 0 18px;
+  border: 1px solid var(--line-2);
+  background: var(--panel);
+  color: var(--text);
+  font-size: 12px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+.lightbox button:hover:not(:disabled) { border-color: var(--red); }
+.lightbox button:disabled { opacity: 0.35; cursor: default; }
 @media (min-width: 641px) {
   .site-footer__actions { flex: 0 1 auto; justify-content: flex-start; gap: 20px 28px; }
   .site-footer .cta { padding: 0 22px; gap: 10px; letter-spacing: 0.18em; }

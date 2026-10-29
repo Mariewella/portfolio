@@ -721,6 +721,81 @@
     show(0);
   }
 
+  /* -------------------------------------------------------
+     Evidence: klik na prilepenú fotku ju zväčší,
+     šípkami / potiahnutím sa listuje medzi fotkami toho istého spisu
+  ------------------------------------------------------- */
+  function initEvidence() {
+    const galleries = document.querySelectorAll('.evidence');
+    if (!galleries.length) return;
+
+    const box = document.createElement('dialog');
+    box.className = 'lightbox';
+    box.setAttribute('aria-label', 'Enlarged photo');
+    box.innerHTML =
+      '<div class="lightbox__bar"><span class="lightbox__count"></span><button type="button" data-lb="close">Close ✕</button></div>' +
+      '<figure class="lightbox__figure"><img alt=""><figcaption></figcaption></figure>' +
+      '<div class="lightbox__nav"><button type="button" data-lb="-1">← Previous</button><button type="button" data-lb="1">Next →</button></div>';
+    document.body.appendChild(box);
+    const img = box.querySelector('img');
+    const caption = box.querySelector('figcaption');
+    const count = box.querySelector('.lightbox__count');
+    const prev = box.querySelector('[data-lb="-1"]');
+    const next = box.querySelector('[data-lb="1"]');
+    let items = [], current = 0, opener = null;
+
+    function show(i) {
+      if (i < 0 || i >= items.length) return;
+      current = i;
+      const btn = items[i];
+      const thumb = btn.querySelector('img');
+      img.src = btn.dataset.full;
+      img.alt = thumb.alt;
+      caption.textContent = btn.closest('.snap').querySelector('.snap__caption').textContent;
+      count.textContent = 'EXHIBIT ' + (i + 1) + ' / ' + items.length;
+      prev.disabled = i === 0;
+      next.disabled = i === items.length - 1;
+    }
+
+    galleries.forEach(function (list) {
+      const buttons = Array.from(list.querySelectorAll('.snap__open'));
+      buttons.forEach(function (btn, i) {
+        btn.setAttribute('aria-label', 'Enlarge: ' + btn.closest('.snap').querySelector('.snap__caption').textContent);
+        btn.addEventListener('click', function () {
+          items = buttons;
+          opener = btn;
+          show(i);
+          box.showModal();
+        });
+      });
+    });
+
+    box.addEventListener('click', function (e) {
+      const b = e.target.closest('[data-lb]');
+      if (b) {
+        if (b.dataset.lb === 'close') box.close();
+        else show(current + Number(b.dataset.lb));
+      } else if (e.target === box) box.close(); // klik mimo fotky
+    });
+    box.addEventListener('keydown', function (e) {
+      // Esc zavrie len fotku, spis pod ňou ostane otvorený
+      if (e.key === 'Escape') { e.preventDefault(); box.close(); }
+      if (e.key === 'ArrowRight') show(current + 1);
+      if (e.key === 'ArrowLeft') show(current - 1);
+    });
+    // potiahnutie prstom doľava / doprava
+    let startX = null;
+    box.addEventListener('pointerdown', function (e) { startX = e.pointerType === 'mouse' ? null : e.clientX; });
+    box.addEventListener('pointerup', function (e) {
+      if (startX !== null && Math.abs(e.clientX - startX) > 40) show(current + (e.clientX < startX ? 1 : -1));
+      startX = null;
+    });
+    box.addEventListener('close', function () {
+      img.removeAttribute('src');
+      if (opener) opener.focus();
+    });
+  }
+
   /* ------------------------------------------------------- */
   document.addEventListener('DOMContentLoaded', function () {
     initSwitchers();
@@ -728,6 +803,7 @@
     initToTop();
     initRadar();
     initDossiers();
+    initEvidence();
     initInventory();
   });
 })();
