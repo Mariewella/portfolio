@@ -1,5 +1,6 @@
 // odpočet 9 → 0 ako v hre; potom už len čaká, kým hráč klikne
 (function () {
+  if (window.trophies) window.trophies.unlock('youDied');
   var box = document.querySelector('[data-countdown]');
   var num = box.querySelector('.game-over__count-num');
   if (document.documentElement.classList.contains('motion-off') ||

@@ -1,6 +1,11 @@
 (function () {
   'use strict';
 
+  // odomkne achievement (js/achievements.js); bez neho sa nestane nič
+  function trophy(id) {
+    if (window.trophies) window.trophies.unlock(id);
+  }
+
   /* -------------------------------------------------------
      1. Prepínač panelov
      Tlačidlo:  <button data-switch="skupina" data-target="id-panelu">
@@ -446,6 +451,7 @@
       const toc = dialog.querySelector('.dossier__toc');
       const nav = dialog.querySelector('.dossier__nav');
       const page = dialog.querySelector('.dossier__page');
+      const read = new Set(); // prečítané strany otvoreného spisu (achievement)
       let current = 0;
       docTotal += docs.length;
 
@@ -495,6 +501,10 @@
         prev.disabled = i === 0;
         next.disabled = i === docs.length - 1;
         page.scrollTop = 0;
+        if (dialog.open) {
+          read.add(i);
+          if (read.size === docs.length) trophy('firstDocument');
+        }
       }
 
       dialog.addEventListener('keydown', function (e) {
@@ -514,9 +524,9 @@
       });
 
       dialog.openAt = function (i) {
-        show(i || 0, true);
         document.body.classList.add('has-dossier');
         dialog.showModal();
+        show(i || 0, true);
         if (location.hash !== '#' + key) history.replaceState(null, '', '#' + key);
       };
 
@@ -590,7 +600,8 @@
       obj.className = 'inv-card__obj';
       const glare = document.createElement('span');
       glare.className = 'inv-card__glare';
-      glare.style.setProperty('--shape', 'url("' + img.getAttribute('src') + '")');
+      // celá adresa: relatívnu by prehliadač hľadal vedľa style.css (css/images/…)
+      glare.style.setProperty('--shape', 'url("' + img.src + '")');
       art.insertBefore(obj, img);
       obj.appendChild(img);
       obj.appendChild(glare);
@@ -672,8 +683,13 @@
     }
 
     // akcia používateľa: zastaví a po 5 s nečinnosti pokračuje
+    // achievement Hoarder: návštevník sám prejde všetky predmety (samé prepínanie sa neráta)
+    const examined = new Set();
     function userGo(i) {
+      examined.add(current);
       if (i !== undefined) show(i);
+      examined.add(current);
+      if (examined.size === n) trophy('hoarder');
       hold();
       if (stopped) return;
       toggle.textContent = 'Resumes in 5 s';
@@ -796,6 +812,30 @@
     });
   }
 
+  /* -------------------------------------------------------
+     About — achievement Know the main character:
+     stránka doscrollovaná po pätičku a vyskúšané všetky Active skills
+     ------------------------------------------------------- */
+  function initMainCharacter() {
+    const stats = Array.from(document.querySelectorAll('[data-switch="stats"]'));
+    const footer = document.querySelector('.site-footer');
+    if (!stats.length || !footer || !('IntersectionObserver' in window)) return;
+
+    const tried = new Set(stats.filter(function (b) { return b.getAttribute('aria-pressed') === 'true'; }));
+    let reachedEnd = false;
+    function check() {
+      if (reachedEnd && tried.size === stats.length) trophy('mainCharacter');
+    }
+    document.addEventListener('switch:stats', function (e) { tried.add(e.detail.button); check(); });
+    const io = new IntersectionObserver(function (entries) {
+      if (!entries[0].isIntersecting) return;
+      reachedEnd = true;
+      io.disconnect();
+      check();
+    });
+    io.observe(footer);
+  }
+
   /* ------------------------------------------------------- */
   document.addEventListener('DOMContentLoaded', function () {
     initSwitchers();
@@ -805,5 +845,6 @@
     initDossiers();
     initEvidence();
     initInventory();
+    initMainCharacter();
   });
 })();
