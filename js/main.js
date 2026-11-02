@@ -503,7 +503,13 @@
         page.scrollTop = 0;
         if (dialog.open) {
           read.add(i);
-          if (read.size === docs.length) trophy('firstDocument');
+          if (read.size === docs.length) {
+            trophy('firstDocument');
+            if (window.analytics && !read.reported) {
+              read.reported = true; // celý spis prečítaný: pošle sa raz
+              window.analytics.event('case_file_read', { case_file: key });
+            }
+          }
         }
       }
 
@@ -524,6 +530,7 @@
       });
 
       dialog.openAt = function (i) {
+        if (window.analytics) window.analytics.event('case_file_open', { case_file: key });
         document.body.classList.add('has-dossier');
         dialog.showModal();
         show(i || 0, true);

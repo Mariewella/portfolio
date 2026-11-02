@@ -1417,7 +1417,8 @@ body.has-dossier { overflow: hidden; }
 .inv-card:not([aria-current="true"]) .inv-card__text { visibility: hidden; }
 
 /* prepínač animácií v pätičke */
-.motion-toggle {
+.motion-toggle,
+.consent-settings {
   min-height: 24px;
   padding: 2px 0;
   border: none;
@@ -1429,7 +1430,8 @@ body.has-dossier { overflow: hidden; }
   text-underline-offset: 3px;
   cursor: pointer;
 }
-.motion-toggle:hover { color: var(--text); }
+.motion-toggle:hover, .consent-settings:hover { color: var(--text); }
+.site-footer__settings { display: flex; flex-wrap: wrap; gap: 4px 20px; }
 
 /* animácie vypnuté prepínačom: rovnaký efekt ako prefers-reduced-motion */
 .motion-off *,
@@ -1826,3 +1828,102 @@ body.has-dossier { overflow: hidden; }
 @media (min-width: 2240px) { html { --zoom: 1.5; zoom: 1.5; } }
 @media (min-width: 2560px) { html { --zoom: 1.7; zoom: 1.7; } }
 @media (min-width: 3200px) { html { --zoom: 2; zoom: 2; } }
+
+/* ---------- Súhlas s Google Analytics (js/analytics.js) ---------- */
+.consent {
+  position: fixed;
+  right: max(16px, env(safe-area-inset-right, 0px));
+  bottom: calc(16px + env(safe-area-inset-bottom, 0px));
+  left: max(16px, env(safe-area-inset-left, 0px));
+  z-index: 70;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px 20px;
+  max-width: 560px;
+  margin-left: auto;
+  padding: 16px 18px;
+  border: 1px solid var(--line-2);
+  border-left: 4px solid var(--amber);
+  background: var(--panel);
+  color: var(--text);
+  box-shadow: var(--shadow-paper);
+}
+.consent__text { flex: 1 1 260px; margin: 0; font-size: 13px; line-height: 1.6; color: var(--text-body); }
+.consent__label { display: block; margin-bottom: 4px; font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--amber); }
+.consent__actions { display: flex; flex-wrap: wrap; gap: 8px; }
+.consent__actions .consent__btn { flex: 1 1 auto; }
+.consent__btn {
+  min-height: 44px;
+  padding: 0 16px;
+  border: 1px solid var(--line-2);
+  background: var(--panel-2);
+  color: var(--text);
+  font: inherit;
+  font-size: 12px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+.consent__btn:hover { border-color: var(--muted); }
+.consent__btn--yes { border-color: var(--red-dark); background: var(--red-dark); color: var(--cream); }
+.consent__btn--yes:hover { background: var(--red-darker); border-color: var(--red-darker); }
+/* na mobile by sa lišta a hláška o trofeji prekryli: hláška ide pod hlavičku */
+@media (max-width: 640px) {
+  body:has(.consent) .trophy-toast { top: calc(76px + env(safe-area-inset-top, 0px)); bottom: auto; }
+}
+
+/* nastavenia cookies: dialóg s kategóriami a zoznamom toho, čo web ukladá */
+.cookies {
+  width: min(720px, calc(100vw / var(--zoom, 1) - 32px));
+  max-height: calc(100dvh / var(--zoom, 1) - 32px);
+  padding: clamp(20px, 4vw, 40px);
+  border: 1px solid var(--line-2);
+  border-top: 4px solid var(--amber);
+  background: var(--bg);
+  color: var(--text);
+  overflow-y: auto;
+}
+.cookies::backdrop { background: rgba(5, 6, 5, 0.88); }
+.cookies__close { position: absolute; top: clamp(12px, 2vw, 20px); right: clamp(12px, 2vw, 20px); }
+.cookies__eyebrow { margin: 0 0 8px; padding-right: 110px; font-size: 12px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--amber); }
+.cookies__title { margin: 0; font-family: var(--font-display); font-weight: 400; font-size: clamp(34px, 6vw, 48px); line-height: 1; color: var(--cream); }
+.cookies__lead { margin: 14px 0 0; font-family: var(--font-type); font-size: 15px; line-height: 1.7; color: var(--text-soft); }
+.cookies__group { margin-top: 24px; padding-top: 20px; border-top: 1px solid var(--line); }
+.cookies__group > p { margin: 8px 0 0; font-size: 13px; line-height: 1.65; color: var(--text-body); }
+.cookies__head { display: flex; justify-content: space-between; align-items: center; gap: 12px; }
+.cookies__head h3 { margin: 0; font-family: var(--font-display); font-weight: 400; font-size: 24px; color: var(--cream); }
+.cookies__always { font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--teal); }
+.cookies__group--none .cookies__always { color: var(--muted); }
+.cookies__list { margin: 14px 0 0; padding: 0; list-style: none; display: grid; gap: 8px; }
+.cookie { padding: 12px 14px; border: 1px solid var(--line); background: var(--panel-3); }
+.cookie__name { font-family: var(--font-mono); font-size: 13px; font-weight: 700; color: var(--text); overflow-wrap: anywhere; }
+.cookie__meta { margin: 8px 0 0; display: grid; gap: 4px; font-size: 12px; line-height: 1.5; }
+.cookie__meta div { display: grid; grid-template-columns: 76px minmax(0, 1fr); gap: 8px; }
+.cookie__meta dt { letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); }
+.cookie__meta dd { margin: 0; color: var(--text-body); }
+.cookies__actions { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 8px; margin-top: 28px; padding-top: 20px; border-top: 1px solid var(--line); }
+.cookies .consent__btn { flex: 1 1 auto; }
+@media (min-width: 641px) { .cookies .consent__btn { flex: 0 0 auto; } }
+.cookies__close {
+  min-height: 44px;
+  padding: 0 16px;
+  border: 1px solid var(--line-2);
+  background: var(--panel);
+  color: var(--text);
+  font: inherit;
+  font-size: 12px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+.cookies__close:hover { border-color: var(--red); }
+
+/* prepínač (checkbox s role="switch") */
+.switch { position: relative; display: inline-flex; align-items: center; min-width: 44px; min-height: 44px; justify-content: flex-end; cursor: pointer; }
+.switch input { position: absolute; inset: 0; width: 100%; height: 100%; margin: 0; opacity: 0; cursor: pointer; }
+.switch__track { position: relative; width: 44px; height: 24px; border: 1px solid var(--line-dash); background: var(--panel-2); transition: background-color 0.2s, border-color 0.2s; }
+.switch__track::after { content: ""; position: absolute; top: 3px; left: 3px; width: 16px; height: 16px; background: var(--muted); transition: transform 0.2s, background-color 0.2s; }
+.switch input:checked + .switch__track { border-color: var(--teal); background: var(--teal-bg); }
+.switch input:checked + .switch__track::after { transform: translateX(20px); background: var(--teal); }
+.switch input:focus-visible + .switch__track { outline: 2px solid var(--amber); outline-offset: 3px; }

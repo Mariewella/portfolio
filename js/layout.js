@@ -51,7 +51,10 @@
     </div>
     <p class="site-footer__legal">
       <span>© 2026 Dominika Škulavik. All rights reserved.</span>
-      <button type="button" class="motion-toggle" aria-pressed="false">Pause animations</button>
+      <span class="site-footer__settings">
+        <button type="button" class="consent-settings">Cookie settings</button>
+        <button type="button" class="motion-toggle" aria-pressed="false">Pause animations</button>
+      </span>
     </p>
   </footer>`;
 

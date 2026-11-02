@@ -55,6 +55,12 @@
       id: 'getInTouch', title: 'Get in touch', tag: 'Radio', color: TEAL,
       hint: 'Reach out on a social network or by e-mail.', line: 'Signal received.',
       art: '<rect x="54" y="46" width="32" height="62" rx="5" fill="#14b3ac" fill-opacity="0.1"/><g fill="none" stroke="#14b3ac" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="54" y="46" width="32" height="62" rx="5"/><path d="M60 46 V26"/><path d="M61 58 H79 M61 64 H79 M61 70 H79"/><circle cx="70" cy="90" r="6"/><path d="M96 54 A14 14 0 0 1 96 78"/><path d="M104 46 A24 24 0 0 1 104 86"/><path d="M44 54 A14 14 0 0 0 44 78"/><path d="M36 46 A24 24 0 0 0 36 86"/></g><circle cx="80" cy="52" r="2.2" fill="#ef5a50"/>'
+    },
+    {
+      // odomyká js/analytics.js, keď návštevník sám prijme analytiku
+      id: 'cookieMonster', title: 'Cookie Monster', tag: 'Rations', color: AMBER,
+      hint: 'Accept all cookies.', line: 'Om nom nom.',
+      art: '<defs><mask id="cookie-bite"><rect width="140" height="140" fill="#fff"/><circle cx="99" cy="44" r="10" fill="#000"/><circle cx="104" cy="58" r="8" fill="#000"/><circle cx="88" cy="36" r="8" fill="#000"/></mask></defs><g mask="url(#cookie-bite)"><circle cx="72" cy="68" r="34" fill="#f0a24a" fill-opacity="0.2" stroke="#f0a24a" stroke-width="2.5"/><g fill="#f0a24a"><path d="M58 52 l6 -2 l2 5 l-5 3 z"/><path d="M78 60 l5 1 l-1 6 l-5 -2 z"/><path d="M56 74 l6 1 l-1 5 l-6 -2 z"/><path d="M74 84 l5 -2 l3 5 l-5 2 z"/><path d="M88 74 l4 3 l-3 4 l-4 -3 z"/></g></g><g fill="#f0a24a" fill-opacity="0.75"><circle cx="110" cy="34" r="2"/><circle cx="116" cy="46" r="1.5"/><circle cx="104" cy="26" r="1.3"/></g><circle cx="44" cy="100" r="14" fill="#0e100e" stroke="#14b3ac" stroke-width="2.5"/><path d="M37 100 L42 105 L51 95" fill="none" stroke="#14b3ac" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>'
     }
   ];
 
@@ -216,6 +222,7 @@
     if (!a || saved[id]) return;
     saved[id] = new Date().toISOString();
     save();
+    if (window.analytics) window.analytics.event('trophy_unlock', { trophy: id });
     updateNav();
     if (box.open) renderList();
     queue.push(a);
