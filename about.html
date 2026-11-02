@@ -6,7 +6,7 @@
   <!-- bezpečnosť: stránka smie načítať len vlastné skripty a štýly, písma z Google Fonts a Google Analytics -->
   <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://www.googletagmanager.com; style-src 'self' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: https://*.google-analytics.com https://*.googletagmanager.com; connect-src 'self' https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com; object-src 'none'; base-uri 'self'; form-action 'none'">
   <!-- Google Analytics, len po súhlase návštevníka (js/analytics.js) -->
-  <script src="js/analytics.js"></script>
+  <script src="/js/analytics.js"></script>
   <meta name="referrer" content="strict-origin-when-cross-origin">
   <meta name="color-scheme" content="dark">
   <title>About Dominika Škulavik — UX/UI Designer in Nitra, Slovakia</title>
@@ -19,13 +19,13 @@
   <meta property="og:title" content="About Dominika Škulavik — UX/UI Designer in Nitra, Slovakia">
   <meta property="og:description" content="UX/UI designer and front-end developer with an MSc in Managerial Informatics. Skills in UX research, Figma, design systems, HTML, CSS, JavaScript and SQL.">
   <meta property="og:locale" content="en_GB">
-  <meta property="og:url" content="https://www.dominika-skulavik.com/about.html">
+  <meta property="og:url" content="https://www.dominika-skulavik.com/about">
   <meta property="og:image" content="https://www.dominika-skulavik.com/images/og-image.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <meta property="og:image:alt" content="Home screen of Dominika Škulavik’s portfolio: I design the screens. Then I survive building them.">
   <meta name="twitter:card" content="summary_large_image">
-  <link rel="canonical" href="https://www.dominika-skulavik.com/about.html">
+  <link rel="canonical" href="https://www.dominika-skulavik.com/about">
   <meta name="twitter:card" content="summary">
   <!-- štruktúrované dáta pre Google -->
   <script type="application/ld+json">
@@ -51,14 +51,14 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IM+Fell+English+SC&family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Special+Elite&display=swap">
-  <link rel="stylesheet" href="css/style.css">
-  <link rel="icon" href="images/favicon.svg" type="image/svg+xml">
-  <script src="js/main.js" defer></script>
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="icon" href="/images/favicon.svg" type="image/svg+xml">
+  <script src="/js/main.js" defer></script>
 </head>
 <body>
   <!-- hlavička sa vkladá zo súboru js/layout.js (spoločná pre všetky stránky) -->
-  <script src="js/layout.js"></script>
-  <script src="js/achievements.js"></script>
+  <script src="/js/layout.js"></script>
+  <script src="/js/achievements.js"></script>
 
   <main id="content" class="page page--wide">
 
@@ -66,14 +66,14 @@
     <div class="about-top">
       <figure class="photo">
         <div class="photo__frame photo__frame--cctv">
-          <img class="photo__full" src="images/full-body.jpg" alt="Dominika Škulavíková in an olive shirt and jeans, wearing headphones, taking a mirror selfie" width="720" height="1200">
+          <img class="photo__full" src="/images/full-body.jpg" alt="Dominika Škulavíková in an olive shirt and jeans, wearing headphones, taking a mirror selfie" width="720" height="1200">
           <!-- efekty bezpečnostnej kamery: šum, riadky, skenovacia čiara -->
           <span class="photo__grain" aria-hidden="true"></span>
           <span class="photo__scan" aria-hidden="true"></span>
           <span class="photo__rec" aria-hidden="true"><span class="blink">●</span> REC · CAM 02</span>
 
           <div class="paper id-card">
-            <img src="images/portrait.jpg" alt="Portrait of Dominika Škulavik" width="56" height="56">
+            <img src="/images/portrait.jpg" alt="Portrait of Dominika Škulavik" width="56" height="56">
             <span class="id-card__text">
               <span class="id-card__label">SURVIVOR ID</span>
               <span class="id-card__name">D. Škulavik</span>
@@ -102,7 +102,7 @@
           <p>Good at spotting interface problems.</p>
           <p>Off-duty, can be found in a horror game, or between the pages of sci-fi.</p>
           <!-- rovnaké CV ako v pätičke (js/layout.js) -->
-          <a class="cta field-notes__cta" href="files/Dominika_Skulavikova_CV.pdf" download>
+          <a class="cta field-notes__cta" href="/files/Dominika_Skulavikova_CV.pdf" download>
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12M6 10l6 6 6-6M4 21h16"/></svg>
             Hire me <span class="cta__meta">(CV)</span><span class="visually-hidden">, download PDF</span>
           </a>
@@ -289,42 +289,42 @@
 
         <div class="inventory__track">
           <button class="inv-card" type="button" data-name="Telescope">
-            <span class="inv-card__art"><img src="images/inventory/telescope.png" alt="A cream Meade refractor telescope" width="480" height="159"></span>
+            <span class="inv-card__art"><img src="/images/inventory/telescope.png" alt="A cream Meade refractor telescope" width="480" height="159"></span>
             <span class="inv-card__type">EXAMINE · TOOL</span>
             <span class="inv-card__name">Telescope</span>
             <span class="inv-card__text">I mostly observe NEOs, because my sky has about as much light pollution as a shopping centre car park.</span>
           </button>
 
           <button class="inv-card" type="button" data-name="Currently reading">
-            <span class="inv-card__art"><img src="images/inventory/book.jpg" alt="The Lost World by Michael Crichton, paperback" width="309" height="480"></span>
+            <span class="inv-card__art"><img src="/images/inventory/book.jpg" alt="The Lost World by Michael Crichton, paperback" width="309" height="480"></span>
             <span class="inv-card__type">EXAMINE · NOW READING</span>
             <span class="inv-card__name">The Lost World</span>
             <span class="inv-card__text">Sci-fi books and films are my jam. Ocassionally fantasy, as long as nobody falls in love by chapter three.</span>
           </button>
 
           <button class="inv-card" type="button" data-name="Camera">
-            <span class="inv-card__art"><img src="images/inventory/camera.png" alt="A Nikon DSLR with a long Tamron zoom lens and its strap" width="474" height="479"></span>
+            <span class="inv-card__art"><img src="/images/inventory/camera.png" alt="A Nikon DSLR with a long Tamron zoom lens and its strap" width="474" height="479"></span>
             <span class="inv-card__type">EXAMINE · TOOL</span>
             <span class="inv-card__name">Camera</span>
             <span class="inv-card__text">A necessary tool for capturing terrestrial planets, holiday joy and artistic expression.</span>
           </button>
 
           <button class="inv-card" type="button" data-name="Notebook">
-            <span class="inv-card__art"><img src="images/inventory/notebook.png" alt="A patterned notebook with an antler pen, an orange pen, a highlighter and correction tape" width="285" height="480"></span>
+            <span class="inv-card__art"><img src="/images/inventory/notebook.png" alt="A patterned notebook with an antler pen, an orange pen, a highlighter and correction tape" width="285" height="480"></span>
             <span class="inv-card__type">EXAMINE · FILE</span>
             <span class="inv-card__name">Notebook</span>
             <span class="inv-card__text">A journal for jotting down ideas and sketches. You never know when an idea will strike.</span>
           </button>
 
           <button class="inv-card" type="button" data-name="First aid spray">
-            <span class="inv-card__art"><img src="images/inventory/spray.png" alt="A First Aid recovery spray bottle" width="123" height="480"></span>
+            <span class="inv-card__art"><img src="/images/inventory/spray.png" alt="A First Aid recovery spray bottle" width="123" height="480"></span>
             <span class="inv-card__type">EXAMINE · RECOVERY ITEM</span>
             <span class="inv-card__name">First aid spray</span>
             <span class="inv-card__text">Restores full health after a long feedback round. One spray covers a whole sprint review.</span>
           </button>
 
           <button class="inv-card" type="button" data-name="Gameboy">
-            <span class="inv-card__art"><img src="images/inventory/gameboy.png" alt="A Gameboy Advance SP" width="1067" height="1067"></span>
+            <span class="inv-card__art"><img src="/images/inventory/gameboy.png" alt="A Gameboy Advance SP" width="1067" height="1067"></span>
             <span class="inv-card__type">EXAMINE · DEVICE</span>
             <span class="inv-card__name">Gameboy</span>
             <span class="inv-card__text">A classic functional handheld gaming console. If you feel an odd sense of nostalgia, I'm sorry and you're welcome.</span>

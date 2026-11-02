@@ -5,8 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <!-- bezpečnosť: stránka smie načítať len vlastné skripty a štýly, písma z Google Fonts a Google Analytics -->
   <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://www.googletagmanager.com; style-src 'self' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: https://*.google-analytics.com https://*.googletagmanager.com; connect-src 'self' https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com; object-src 'none'; base-uri 'self'; form-action 'none'">
+  <!-- /portfolio/claim a pod.: presmerovanie na otvorený spis (js/redirect.js) -->
+  <script src="/js/redirect.js"></script>
   <!-- Google Analytics, len po súhlase návštevníka (js/analytics.js) -->
-  <script src="js/analytics.js"></script>
+  <script src="/js/analytics.js"></script>
   <meta name="referrer" content="strict-origin-when-cross-origin">
   <meta name="color-scheme" content="dark">
   <!-- GitHub Pages ukáže túto stránku pri akejkoľvek zlej adrese (aj /a/b/c),
@@ -19,14 +21,14 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IM+Fell+English+SC&family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Special+Elite&display=swap">
-  <link rel="stylesheet" href="css/style.css">
-  <link rel="icon" href="images/favicon.svg" type="image/svg+xml">
-  <script src="js/main.js" defer></script>
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="icon" href="/images/favicon.svg" type="image/svg+xml">
+  <script src="/js/main.js" defer></script>
 </head>
 <body>
   <!-- hlavička sa vkladá zo súboru js/layout.js (spoločná pre všetky stránky) -->
-  <script src="js/layout.js"></script>
-  <script src="js/achievements.js"></script>
+  <script src="/js/layout.js"></script>
+  <script src="/js/achievements.js"></script>
 
   <main id="content" class="page">
     <section class="game-over">
@@ -41,11 +43,11 @@
       </p>
 
       <div class="cta-row">
-        <a class="cta" href="index.html">
+        <a class="cta" href="/">
           <svg width="10" height="12" viewBox="0 0 10 12" aria-hidden="true"><path d="M0 0 L10 6 L0 12 Z" fill="currentColor"></path></svg>
           Continue
         </a>
-        <a class="cta cta--ghost" href="portfolio.html">Open case files</a>
+        <a class="cta cta--ghost" href="/portfolio">Open case files</a>
       </div>
     </section>
   </main>
@@ -53,6 +55,6 @@
   <!-- pätička sa vkladá zo súboru js/layout.js -->
   <div data-site-footer></div>
 
-  <script src="js/404.js"></script>
+  <script src="/js/404.js"></script>
 </body>
 </html>

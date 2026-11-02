@@ -436,7 +436,8 @@
      Spis:       <dialog class="dossier" id="dossier-isat">
      Dokumenty v spise sú <article class="doc" data-title="...">;
      obsah, číslovanie strán a počítadlá doplní skript sám.
-     Odkaz portfolio.html#isat otvorí rovno daný spis.
+     Otvorený spis má adresu /portfolio/isat; odkaz /portfolio#isat
+     (aj starý portfolio.html#isat) otvorí rovno daný spis.
      ------------------------------------------------------- */
   function initDossiers() {
     const dossiers = Array.from(document.querySelectorAll('.dossier'));
@@ -524,7 +525,7 @@
       dialog.addEventListener('click', function (e) { if (e.target === dialog) dialog.close(); });
       dialog.addEventListener('close', function () {
         document.body.classList.remove('has-dossier');
-        if (location.hash === '#' + key) history.replaceState(null, '', location.pathname + location.search);
+        if (location.pathname === '/portfolio/' + key) history.replaceState(null, '', '/portfolio' + location.search);
         const folder = document.querySelector('[data-dossier="' + key + '"]');
         if (folder) folder.focus();
       });
@@ -534,7 +535,7 @@
         document.body.classList.add('has-dossier');
         dialog.showModal();
         show(i || 0, true);
-        if (location.hash !== '#' + key) history.replaceState(null, '', '#' + key);
+        history.replaceState(null, '', '/portfolio/' + key + location.search);
       };
 
       show(0, true);
@@ -552,12 +553,15 @@
       });
     });
 
-    function openFromHash() {
-      const dialog = location.hash && document.getElementById('dossier-' + location.hash.slice(1));
+    // spis z adresy: /portfolio/isat alebo #isat
+    function openFromUrl() {
+      const fromPath = location.pathname.match(/^\/portfolio\/([a-z]+)\/?$/);
+      const key = fromPath ? fromPath[1] : location.hash.slice(1);
+      const dialog = key && document.getElementById('dossier-' + key);
       if (dialog && dialog.classList.contains('dossier') && !dialog.open) dialog.openAt(0);
     }
-    window.addEventListener('hashchange', openFromHash);
-    openFromHash();
+    window.addEventListener('hashchange', openFromUrl);
+    openFromUrl();
   }
 
   /* -------------------------------------------------------

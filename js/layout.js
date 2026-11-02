@@ -11,9 +11,9 @@
 
   /* ---------- Položky menu: [adresa, text] ---------- */
   const NAV = [
-    ['index.html', 'Home'],
-    ['portfolio.html', 'Portfolio'],
-    ['about.html', 'About me']
+    ['/', 'Home'],
+    ['/portfolio', 'Portfolio'],
+    ['/about', 'About me']
   ];
 
   /* ---------- Hlavička ---------- */
@@ -21,7 +21,7 @@
   const INITIALS = 'DŠ'; // na mobile namiesto mena, ako favicon
 
   /* ---------- Pätička ---------- */
-  const CV = 'files/Dominika_Skulavikova_CV.pdf';
+  const CV = '/files/Dominika_Skulavikova_CV.pdf';
 
   // kontakty ako ikony; prázdna adresa = ikona sa nezobrazí
   const SOCIAL = [
@@ -59,10 +59,11 @@
   </footer>`;
 
   /* ---------- Odtiaľto nižšie netreba nič meniť ---------- */
-  const page = (location.pathname.split('/').pop() || 'index.html').toLowerCase();
+  // prvá časť adresy: /portfolio/claim → /portfolio; staré odkazy s .html platia tiež
+  const page = '/' + (location.pathname.split('/')[1] || '').replace(/\.html$/, '').replace(/^index$/, '').toLowerCase();
 
   const links = NAV.map(function (item) {
-    const current = item[0].toLowerCase() === page;
+    const current = item[0] === page;
     return current
       ? '<a href="' + item[0] + '" aria-current="page">' + item[1] + '<span class="nav-indicator" aria-hidden="true"></span></a>'
       : '<a href="' + item[0] + '">' + item[1] + '</a>';
@@ -71,7 +72,7 @@
   const HEADER = `
   <a class="skip-link" href="#content">Skip to content</a>
   <header class="site-header">
-    <a class="brand" href="index.html" aria-label="${BRAND} — Home">
+    <a class="brand" href="/" aria-label="${BRAND} — Home">
       <span class="brand__mark" aria-hidden="true">${INITIALS}</span>
       <span class="brand__name" aria-hidden="true">${BRAND}</span>
     </a>

@@ -6,7 +6,7 @@
   <!-- bezpečnosť: stránka smie načítať len vlastné skripty a štýly, písma z Google Fonts a Google Analytics -->
   <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://www.googletagmanager.com; style-src 'self' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: https://*.google-analytics.com https://*.googletagmanager.com; connect-src 'self' https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com; object-src 'none'; base-uri 'self'; form-action 'none'">
   <!-- Google Analytics, len po súhlase návštevníka (js/analytics.js) -->
-  <script src="js/analytics.js"></script>
+  <script src="/js/analytics.js"></script>
   <meta name="referrer" content="strict-origin-when-cross-origin">
   <meta name="color-scheme" content="dark">
   <title>UX/UI Design Case Studies — Dominika Škulavik</title>
@@ -19,13 +19,13 @@
   <meta property="og:title" content="UX/UI Design Case Studies — Dominika Škulavik">
   <meta property="og:description" content="UX/UI design and front-end case studies: a B2B SaaS web app for agriculture with its design system, a car-accident reporting app and a WordPress redesign.">
   <meta property="og:locale" content="en_GB">
-  <meta property="og:url" content="https://www.dominika-skulavik.com/portfolio.html">
+  <meta property="og:url" content="https://www.dominika-skulavik.com/portfolio">
   <meta property="og:image" content="https://www.dominika-skulavik.com/images/og-image.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <meta property="og:image:alt" content="Home screen of Dominika Škulavik’s portfolio: I design the screens. Then I survive building them.">
   <meta name="twitter:card" content="summary_large_image">
-  <link rel="canonical" href="https://www.dominika-skulavik.com/portfolio.html">
+  <link rel="canonical" href="https://www.dominika-skulavik.com/portfolio">
   <meta name="twitter:card" content="summary">
   <!-- štruktúrované dáta pre Google -->
   <script type="application/ld+json">
@@ -44,14 +44,14 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IM+Fell+English+SC&family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Special+Elite&display=swap">
-  <link rel="stylesheet" href="css/style.css">
-  <link rel="icon" href="images/favicon.svg" type="image/svg+xml">
-  <script src="js/main.js" defer></script>
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="icon" href="/images/favicon.svg" type="image/svg+xml">
+  <script src="/js/main.js" defer></script>
 </head>
 <body>
   <!-- hlavička sa vkladá zo súboru js/layout.js (spoločná pre všetky stránky) -->
-  <script src="js/layout.js"></script>
-  <script src="js/achievements.js"></script>
+  <script src="/js/layout.js"></script>
+  <script src="/js/achievements.js"></script>
 
   <main id="content" class="page page--tight">
 
@@ -226,20 +226,20 @@
               <!-- prilepené fotky z Figmy (stránka Mockupy), klik ich zväčší -->
               <ul class="evidence evidence--pinned evidence--trio">
                 <li class="snap">
-                  <button class="snap__open" type="button" data-full="images/isat/ds-components.jpg">
-                    <img src="images/isat/ds-components-thumb.jpg" alt="Sign-in components: input field states, language switcher closed and open, language item states, carousel pager, Fluent icons, and the colour palette of blue and grey ramps with one yellow micro-accent" width="720" height="480" loading="lazy">
+                  <button class="snap__open" type="button" data-full="/images/isat/ds-components.jpg">
+                    <img src="/images/isat/ds-components-thumb.jpg" alt="Sign-in components: input field states, language switcher closed and open, language item states, carousel pager, Fluent icons, and the colour palette of blue and grey ramps with one yellow micro-accent" width="720" height="480" loading="lazy">
                   </button>
                   <span class="snap__caption">Sign-in components</span>
                 </li>
                 <li class="snap">
-                  <button class="snap__open" type="button" data-full="images/isat/ds-buttons.jpg">
-                    <img src="images/isat/ds-buttons-thumb.jpg" alt="Button matrix of types by states: primary, secondary, tertiary, destructive, with icon and icon only, in default, hover, focus, pressed and disabled; plus large touch buttons for a weighbridge kiosk" width="720" height="480" loading="lazy">
+                  <button class="snap__open" type="button" data-full="/images/isat/ds-buttons.jpg">
+                    <img src="/images/isat/ds-buttons-thumb.jpg" alt="Button matrix of types by states: primary, secondary, tertiary, destructive, with icon and icon only, in default, hover, focus, pressed and disabled; plus large touch buttons for a weighbridge kiosk" width="720" height="480" loading="lazy">
                   </button>
                   <span class="snap__caption">Buttons</span>
                 </li>
                 <li class="snap">
-                  <button class="snap__open" type="button" data-full="images/isat/ds-form-controls.jpg">
-                    <img src="images/isat/ds-form-controls-thumb.jpg" alt="Form controls: input states, segmented control, chips, toggle and checkbox, a numeric PIN keypad, search box, dropdown and vehicle select cards" width="720" height="480" loading="lazy">
+                  <button class="snap__open" type="button" data-full="/images/isat/ds-form-controls.jpg">
+                    <img src="/images/isat/ds-form-controls-thumb.jpg" alt="Form controls: input states, segmented control, chips, toggle and checkbox, a numeric PIN keypad, search box, dropdown and vehicle select cards" width="720" height="480" loading="lazy">
                   </button>
                   <span class="snap__caption">Form controls</span>
                 </li>
@@ -254,38 +254,38 @@
           <p class="doc__meta">Select a photo to see it full size.</p>
           <ul class="evidence">
             <li class="snap">
-              <button class="snap__open" type="button" data-full="images/isat/mockup-warehouse-hero.jpg">
-                <img src="images/isat/mockup-warehouse-hero-thumb.jpg" alt="Warehouse module key visual: the line “Stock levels always in sight”, three steps (filter the records, review the totals, export to CSV) and three phones with filters, totals and a chart" width="720" height="480" loading="lazy">
+              <button class="snap__open" type="button" data-full="/images/isat/mockup-warehouse-hero.jpg">
+                <img src="/images/isat/mockup-warehouse-hero-thumb.jpg" alt="Warehouse module key visual: the line “Stock levels always in sight”, three steps (filter the records, review the totals, export to CSV) and three phones with filters, totals and a chart" width="720" height="480" loading="lazy">
               </button>
               <span class="snap__caption">Exhibit A · Warehouse</span>
             </li>
             <li class="snap">
-              <button class="snap__open" type="button" data-full="images/isat/mockup-warehouse-flow.jpg">
-                <img src="images/isat/mockup-warehouse-flow-thumb.jpg" alt="Five warehouse screens side by side: overview with totals, advanced filters, table view, chart view and material detail" width="720" height="480" loading="lazy">
+              <button class="snap__open" type="button" data-full="/images/isat/mockup-warehouse-flow.jpg">
+                <img src="/images/isat/mockup-warehouse-flow-thumb.jpg" alt="Five warehouse screens side by side: overview with totals, advanced filters, table view, chart view and material detail" width="720" height="480" loading="lazy">
               </button>
               <span class="snap__caption">Exhibit B · Warehouse flow</span>
             </li>
             <li class="snap">
-              <button class="snap__open" type="button" data-full="images/isat/mockup-warehouse-views.jpg">
-                <img src="images/isat/mockup-warehouse-views-thumb.jpg" alt="Material overview, “Table or chart, your choice”: the same records as a table and as a bar chart of income and outcome with a detail on tap" width="720" height="480" loading="lazy">
+              <button class="snap__open" type="button" data-full="/images/isat/mockup-warehouse-views.jpg">
+                <img src="/images/isat/mockup-warehouse-views-thumb.jpg" alt="Material overview, “Table or chart, your choice”: the same records as a table and as a bar chart of income and outcome with a detail on tap" width="720" height="480" loading="lazy">
               </button>
               <span class="snap__caption">Exhibit C · Table or chart</span>
             </li>
             <li class="snap">
-              <button class="snap__open" type="button" data-full="images/isat/mockup-lunches-hero.jpg">
-                <img src="images/isat/mockup-lunches-hero-thumb.jpg" alt="Lunches module key visual: the line “Lunch orders without paperwork”, three steps (upload the menu, choose meals, track orders) and three phones with the weekly menu, menu selection and orders" width="720" height="480" loading="lazy">
+              <button class="snap__open" type="button" data-full="/images/isat/mockup-lunches-hero.jpg">
+                <img src="/images/isat/mockup-lunches-hero-thumb.jpg" alt="Lunches module key visual: the line “Lunch orders without paperwork”, three steps (upload the menu, choose meals, track orders) and three phones with the weekly menu, menu selection and orders" width="720" height="480" loading="lazy">
               </button>
               <span class="snap__caption">Exhibit D · Lunches</span>
             </li>
             <li class="snap">
-              <button class="snap__open" type="button" data-full="images/isat/mockup-lunches-flow.jpg">
-                <img src="images/isat/mockup-lunches-flow-thumb.jpg" alt="Five lunches screens side by side: weekly menu with a deadline countdown, quick actions, menu selection for a day, my orders and the week overview" width="720" height="480" loading="lazy">
+              <button class="snap__open" type="button" data-full="/images/isat/mockup-lunches-flow.jpg">
+                <img src="/images/isat/mockup-lunches-flow-thumb.jpg" alt="Five lunches screens side by side: weekly menu with a deadline countdown, quick actions, menu selection for a day, my orders and the week overview" width="720" height="480" loading="lazy">
               </button>
               <span class="snap__caption">Exhibit E · Lunches flow</span>
             </li>
             <li class="snap">
-              <button class="snap__open" type="button" data-full="images/isat/mockup-lunches-orders.jpg">
-                <img src="images/isat/mockup-lunches-orders-thumb.jpg" alt="Orders, “The whole week at a glance”: meals ordered per day for next week with no orders yet and for the current week already ordered" width="720" height="480" loading="lazy">
+              <button class="snap__open" type="button" data-full="/images/isat/mockup-lunches-orders.jpg">
+                <img src="/images/isat/mockup-lunches-orders-thumb.jpg" alt="Orders, “The whole week at a glance”: meals ordered per day for next week with no orders yet and for the current week already ordered" width="720" height="480" loading="lazy">
               </button>
               <span class="snap__caption">Exhibit F · Week overview</span>
             </li>
@@ -396,14 +396,14 @@
               <!-- prilepené fotky, klik ich zväčší (rovnako ako Evidence) -->
               <ul class="evidence evidence--pinned">
                 <li class="snap">
-                  <button class="snap__open" type="button" data-full="images/claim/logo-construction.jpg">
-                    <img src="images/claim/logo-construction.jpg" alt="Logo construction in Illustrator: a ring between two circles split into eight sectors, each with a wedge cut out; the grey sector on the right is the one removed" width="593" height="628" loading="lazy">
+                  <button class="snap__open" type="button" data-full="/images/claim/logo-construction.jpg">
+                    <img src="/images/claim/logo-construction.jpg" alt="Logo construction in Illustrator: a ring between two circles split into eight sectors, each with a wedge cut out; the grey sector on the right is the one removed" width="593" height="628" loading="lazy">
                   </button>
                   <span class="snap__caption">Construction</span>
                 </li>
                 <li class="snap">
-                  <button class="snap__open" type="button" data-full="images/claim/logo-variants.png">
-                    <img src="images/claim/logo-variants.png" alt="Logo variants: the primary lockup with the CLAIM logotype, the orange submark, and a one-colour black version" width="1400" height="480" loading="lazy">
+                  <button class="snap__open" type="button" data-full="/images/claim/logo-variants.png">
+                    <img src="/images/claim/logo-variants.png" alt="Logo variants: the primary lockup with the CLAIM logotype, the orange submark, and a one-colour black version" width="1400" height="480" loading="lazy">
                   </button>
                   <span class="snap__caption">Logo variants</span>
                 </li>
@@ -450,26 +450,26 @@
           <p class="doc__meta">Select a photo to see it full size.</p>
           <ul class="evidence">
             <li class="snap">
-              <button class="snap__open" type="button" data-full="images/claim/mockup-hero.jpg">
-                <img src="images/claim/mockup-hero-thumb.jpg" alt="CLAIM key visual: the app name, the line “Report a car accident anywhere in Europe” and three phones showing Garage, Home and Incidents" width="720" height="480" loading="lazy">
+              <button class="snap__open" type="button" data-full="/images/claim/mockup-hero.jpg">
+                <img src="/images/claim/mockup-hero-thumb.jpg" alt="CLAIM key visual: the app name, the line “Report a car accident anywhere in Europe” and three phones showing Garage, Home and Incidents" width="720" height="480" loading="lazy">
               </button>
               <span class="snap__caption">Exhibit A · Key visual</span>
             </li>
             <li class="snap">
-              <button class="snap__open" type="button" data-full="images/claim/mockup-app-overview.jpg">
-                <img src="images/claim/mockup-app-overview-thumb.jpg" alt="Five app screens side by side: Home with Report an Accident, Incidents, Garage, Notifications and Profile" width="720" height="480" loading="lazy">
+              <button class="snap__open" type="button" data-full="/images/claim/mockup-app-overview.jpg">
+                <img src="/images/claim/mockup-app-overview-thumb.jpg" alt="Five app screens side by side: Home with Report an Accident, Incidents, Garage, Notifications and Profile" width="720" height="480" loading="lazy">
               </button>
               <span class="snap__caption">Exhibit B · App overview</span>
             </li>
             <li class="snap">
-              <button class="snap__open" type="button" data-full="images/claim/mockup-report-flow.jpg">
-                <img src="images/claim/mockup-report-flow-thumb.jpg" alt="Five steps of the report flow: safety checklist, are you at the scene, who else was involved, the scene with map and witnesses, and connecting the other driver with a QR code" width="720" height="480" loading="lazy">
+              <button class="snap__open" type="button" data-full="/images/claim/mockup-report-flow.jpg">
+                <img src="/images/claim/mockup-report-flow-thumb.jpg" alt="Five steps of the report flow: safety checklist, are you at the scene, who else was involved, the scene with map and witnesses, and connecting the other driver with a QR code" width="720" height="480" loading="lazy">
               </button>
               <span class="snap__caption">Exhibit C · Report flow</span>
             </li>
             <li class="snap">
-              <button class="snap__open" type="button" data-full="images/claim/mockup-garage-profile.jpg">
-                <img src="images/claim/mockup-garage-profile-thumb.jpg" alt="Four screens: the Garage list of vehicles, vehicle details, insurance contracts and the Profile page" width="720" height="480" loading="lazy">
+              <button class="snap__open" type="button" data-full="/images/claim/mockup-garage-profile.jpg">
+                <img src="/images/claim/mockup-garage-profile-thumb.jpg" alt="Four screens: the Garage list of vehicles, vehicle details, insurance contracts and the Profile page" width="720" height="480" loading="lazy">
               </button>
               <span class="snap__caption">Exhibit D · Garage &amp; profile</span>
             </li>
@@ -497,7 +497,7 @@
         <ol class="dossier__toc"></ol>
         <p class="dossier__label">ATTACHMENTS</p>
         <ul class="dossier__files">
-          <li><a href="files/printysvk-bachelor-thesis.pdf" download>Bachelor’s thesis (PDF, Slovak)</a></li>
+          <li><a href="/files/printysvk-bachelor-thesis.pdf" download>Bachelor’s thesis (PDF, Slovak)</a></li>
           <li><a href="https://www.instagram.com/reel/C8Fp9GfN3Yo5uW9fBLLJz4K7z0aXdoFZnUbBCI0/" target="_blank" rel="noopener">Video of the finished site</a></li>
         </ul>
       </aside>
