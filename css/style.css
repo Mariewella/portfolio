@@ -237,7 +237,7 @@ button { font-family: inherit; cursor: pointer; }
 
 /* tablet a desktop: celé meno a menu v riadku */
 @media (min-width: 641px) {
-  .brand__mark, .menu-toggle { display: none; }
+  .menu-toggle { display: none; }
   .brand__name { display: block; }
   .main-nav { display: flex; flex-wrap: wrap; gap: 4px; }
 }
@@ -837,9 +837,9 @@ button { font-family: inherit; cursor: pointer; }
 body.has-dossier { overflow: hidden; }
 
 .dossier {
-  width: min(1180px, calc(100vw - 32px));
+  width: min(1180px, calc(100vw / var(--zoom, 1) - 32px));
   max-width: none;
-  max-height: calc(100dvh - 32px);
+  max-height: calc(100dvh / var(--zoom, 1) - 32px);
   padding: 0;
   border: none;
   background: transparent;
@@ -854,7 +854,7 @@ body.has-dossier { overflow: hidden; }
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: auto 1fr;
-  height: calc(100dvh - 32px);
+  height: calc(100dvh / var(--zoom, 1) - 32px);
   padding: 8px;
   gap: 0;
   background: linear-gradient(90deg, #a8885a, #b7955f 49%, #8f7043 50%, #b7955f 51%);
@@ -864,7 +864,7 @@ body.has-dossier { overflow: hidden; }
 .dossier__spread > .paper { box-shadow: none; }
 
 .dossier__index {
-  max-height: 34dvh;
+  max-height: calc(34dvh / var(--zoom, 1));
   padding: 18px;
   display: flex;
   flex-direction: column;
@@ -1033,7 +1033,7 @@ body.has-dossier { overflow: hidden; }
 .dossier__index .dossier__summary,
 .dossier__index .case__meta { display: none; }
 @media (min-width: 861px) {
-  .dossier__spread { grid-template-columns: minmax(260px, 340px) 1fr; grid-template-rows: none; height: min(780px, calc(100dvh - 32px)); padding: 14px; }
+  .dossier__spread { grid-template-columns: minmax(260px, 340px) 1fr; grid-template-rows: none; height: min(780px, calc(100dvh / var(--zoom, 1) - 32px)); padding: 14px; }
   .dossier__index { max-height: none; padding: 28px 26px; border-bottom: none; border-right: 1px solid var(--paper-line); }
   .dossier__index .dossier__summary { display: block; }
   .dossier__index .case__meta { display: flex; }
@@ -1171,6 +1171,8 @@ body.has-dossier { overflow: hidden; }
 .field-notes { padding: clamp(20px, 3vw, 30px); display: flex; flex-direction: column; gap: 12px; transform: rotate(-0.4deg); }
 .field-notes .label { color: var(--ink-muted); letter-spacing: 0.18em; }
 .field-notes p { margin: 0; font-family: var(--font-type); font-size: 16px; line-height: 1.7; text-wrap: pretty; }
+/* .paper a by inak zafarbil text na červeno, na červenom tlačidle by zmizol */
+.field-notes .field-notes__cta { align-self: flex-start; margin-top: 6px; color: var(--cream); }
 
 .section { display: flex; flex-direction: column; gap: 20px; }
 .section--tight { gap: 16px; }
@@ -1578,8 +1580,8 @@ body.has-dossier { overflow: hidden; }
 
 /* zväčšená fotka (dialóg nad spisom) */
 .lightbox {
-  width: 100vw;
-  height: 100dvh;
+  width: calc(100vw / var(--zoom, 1));
+  height: calc(100dvh / var(--zoom, 1));
   max-width: none;
   max-height: none;
   margin: 0;
@@ -1648,8 +1650,8 @@ body.has-dossier { overflow: hidden; }
 
 /* zoznam trofejí: denník prípadu so znakmi */
 .trophies {
-  width: min(1240px, calc(100vw - 32px));
-  max-height: calc(100dvh - 32px);
+  width: min(1240px, calc(100vw / var(--zoom, 1) - 32px));
+  max-height: calc(100dvh / var(--zoom, 1) - 32px);
   padding: clamp(20px, 4vw, 56px);
   border: 1px solid var(--line-2);
   background: var(--bg);
@@ -1746,6 +1748,14 @@ body.has-dossier { overflow: hidden; }
   .trophy__stamp { margin-top: auto; font-size: 13px; padding: 2px 10px; }
 }
 
+/* úzke telefóny (do 400 px): menší znak a nadpis, aby sa dlhé názvy zmestili */
+@media (max-width: 400px) {
+  .trophies { padding: 16px 14px; }
+  .trophy { grid-template-columns: 56px minmax(0, 1fr); gap: 10px 12px; padding: 14px; }
+  .trophy__title { font-size: 20px; overflow-wrap: anywhere; }
+  .trophies__intro { padding-right: 96px; }
+}
+
 .trophies__foot {
   display: flex;
   flex-wrap: wrap;
@@ -1782,7 +1792,7 @@ body.has-dossier { overflow: hidden; }
   z-index: 60;
   display: flex;
   align-items: stretch;
-  width: min(380px, calc(100vw - 32px));
+  width: min(380px, calc(100vw / var(--zoom, 1) - 32px));
   border: 1px solid var(--line-2);
   border-right: 4px solid var(--teal);
   background: var(--panel);
@@ -1802,3 +1812,17 @@ body.has-dossier { overflow: hidden; }
 .trophy-toast__line { font-family: var(--font-type); font-size: 13px; color: var(--text-soft); }
 .motion-off .trophy-toast { transition: none; transform: none; }
 @media (prefers-reduced-motion: reduce) { .trophy-toast { transition: none; transform: none; } }
+
+/* ---------- PC a veľké monitory ----------
+   Obsah ide cez celú šírku, od okrajov vždy 5rem.
+   Na väčších monitoroch sa celý web zväčší (zoom), aby nebol drobný;
+   odsadenie sa delí zoomom, takže na obrazovke ostáva presne 5rem. */
+@media (min-width: 1024px) {
+  :root { --gutter: calc(5rem / var(--zoom, 1)); }
+  .page, .site-footer__inner, .site-footer__legal { max-width: none; }
+}
+@media (min-width: 1600px) { html { --zoom: 1.15; zoom: 1.15; } }
+@media (min-width: 1920px) { html { --zoom: 1.3; zoom: 1.3; } }
+@media (min-width: 2240px) { html { --zoom: 1.5; zoom: 1.5; } }
+@media (min-width: 2560px) { html { --zoom: 1.7; zoom: 1.7; } }
+@media (min-width: 3200px) { html { --zoom: 2; zoom: 2; } }
