@@ -121,29 +121,24 @@
       'If you allow it, it also uses Google Analytics to see which case files get read and whether anyone downloads the CV. ' +
       'Nothing here is used for ads.</p>' +
 
+    // zapamätanie samotnej voľby: nedá sa vypnúť, inak by sa lišta pýtala na každej stránke
+    '<section class="cookies__group">' +
+      '<div class="cookies__head"><h3>Your choice</h3><span class="cookies__always">Always on</span></div>' +
+      rows(ALWAYS) +
+    '</section>' +
+
     '<section class="cookies__group">' +
       '<div class="cookies__head"><h3 id="cookies-memory">Necessary</h3>' +
         '<label class="switch"><input type="checkbox" role="switch" aria-labelledby="cookies-memory" class="cookies__memory"><span class="switch__track" aria-hidden="true"></span></label>' +
       '</div>' +
-      '<p>Without these the site would forget your settings on every page. They stay in your browser (local storage) and are never sent anywhere. ' +
-        'Switch them off and your trophies, found files and paused animations are deleted and won’t be kept past the page you are on.</p>' +
       rows(NECESSARY) +
-      '<p class="cookies__note">Always kept, otherwise this question would come back on every page:</p>' +
-      rows(ALWAYS) +
     '</section>' +
 
     '<section class="cookies__group">' +
       '<div class="cookies__head"><h3 id="cookies-analytics">Analytics</h3>' +
         '<label class="switch"><input type="checkbox" role="switch" aria-labelledby="cookies-analytics" class="cookies__toggle"><span class="switch__track" aria-hidden="true"></span></label>' +
       '</div>' +
-      '<p>Counts visits and shows which pages and case files get read, where visitors come from and on what device. ' +
-        'The data is processed by Google Ireland Ltd. and stays anonymous to me: I see totals, not people.</p>' +
       rows(ANALYTICS) +
-    '</section>' +
-
-    '<section class="cookies__group cookies__group--none">' +
-      '<div class="cookies__head"><h3>Marketing</h3><span class="cookies__always">None</span></div>' +
-      '<p>No advertising or tracking cookies from Meta, Google Ads or anyone else.</p>' +
     '</section>' +
 
     '<div class="cookies__actions">' +

@@ -1890,12 +1890,9 @@ body.has-dossier { overflow: hidden; }
 .cookies__title { margin: 0; font-family: var(--font-display); font-weight: 400; font-size: clamp(34px, 6vw, 48px); line-height: 1; color: var(--cream); }
 .cookies__lead { margin: 14px 0 0; font-family: var(--font-type); font-size: 15px; line-height: 1.7; color: var(--text-soft); }
 .cookies__group { margin-top: 24px; padding-top: 20px; border-top: 1px solid var(--line); }
-.cookies__group > p { margin: 8px 0 0; font-size: 13px; line-height: 1.65; color: var(--text-body); }
-.cookies__group > .cookies__note { margin: 16px 0 0; font-size: 12px; color: var(--muted); }
 .cookies__head { display: flex; justify-content: space-between; align-items: center; gap: 12px; }
 .cookies__head h3 { margin: 0; font-family: var(--font-display); font-weight: 400; font-size: 24px; color: var(--cream); }
 .cookies__always { font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--teal); }
-.cookies__group--none .cookies__always { color: var(--muted); }
 .cookies__list { margin: 14px 0 0; padding: 0; list-style: none; display: grid; gap: 8px; }
 .cookie { padding: 12px 14px; border: 1px solid var(--line); background: var(--panel-3); }
 .cookie__name { font-family: var(--font-mono); font-size: 13px; font-weight: 700; color: var(--text); overflow-wrap: anywhere; }
