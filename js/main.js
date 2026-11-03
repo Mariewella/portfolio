@@ -446,6 +446,27 @@
     const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     let docTotal = 0;
 
+    // Found files: dokumenty, ktoré návštevník už otvoril; pamätá sa v prehliadači
+    const FOUND_KEY = 'found-files';
+    let found = [];
+    try { found = JSON.parse(localStorage.getItem(FOUND_KEY)) || []; } catch (e) { /* súkromné okno */ }
+    const foundEl = document.querySelector('[data-count="found"]');
+    const allDocs = new Set();
+    function markFound(id) {
+      if (found.indexOf(id) < 0) {
+        found.push(id);
+        // pamäť webu vypnutá v Cookie settings (js/analytics.js): ráta sa len do obnovenia stránky
+        if (!window.siteMemory || window.siteMemory.allowed()) {
+          try { localStorage.setItem(FOUND_KEY, JSON.stringify(found)); } catch (e) { /* nevadí */ }
+        }
+      }
+      updateFound();
+    }
+    function updateFound() {
+      // ráta len dokumenty, ktoré na stránke stále sú
+      if (foundEl) foundEl.textContent = found.filter(function (id) { return allDocs.has(id); }).length;
+    }
+
     dossiers.forEach(function (dialog) {
       const key = dialog.id.replace('dossier-', '');
       const docs = Array.from(dialog.querySelectorAll('.doc'));
@@ -455,6 +476,7 @@
       const read = new Set(); // prečítané strany otvoreného spisu (achievement)
       let current = 0;
       docTotal += docs.length;
+      docs.forEach(function (doc) { allDocs.add(key + ':' + doc.dataset.title); });
 
       const countEl = document.querySelector('[data-doc-count="' + key + '"]');
       if (countEl) countEl.textContent = docs.length;
@@ -503,6 +525,7 @@
         next.disabled = i === docs.length - 1;
         page.scrollTop = 0;
         if (dialog.open) {
+          markFound(key + ':' + docs[i].dataset.title);
           read.add(i);
           if (read.size === docs.length) {
             trophy('firstDocument');
@@ -544,6 +567,7 @@
     const docsEl = document.querySelector('[data-count="docs"]');
     const foldersEl = document.querySelector('[data-count="folders"]');
     if (docsEl) docsEl.textContent = docTotal;
+    updateFound();
     if (foldersEl) foldersEl.textContent = dossiers.length;
 
     document.querySelectorAll('[data-dossier]').forEach(function (folder) {

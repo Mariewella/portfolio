@@ -69,6 +69,8 @@
   try { saved = JSON.parse(localStorage.getItem(KEY)) || {}; } catch (e) { /* súkromné okno: postup sa nepamätá */ }
 
   function save() {
+    // pamäť webu vypnutá v Cookie settings (js/analytics.js): trofeje platia len do obnovenia stránky
+    if (window.siteMemory && !window.siteMemory.allowed()) return;
     try { localStorage.setItem(KEY, JSON.stringify(saved)); } catch (e) { /* nevadí */ }
   }
 

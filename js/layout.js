@@ -199,7 +199,10 @@
       document.documentElement.classList.toggle('motion-off', off);
       toggle.setAttribute('aria-pressed', String(off));
       toggle.textContent = off ? 'Play animations' : 'Pause animations';
-      try { localStorage.setItem(MOTION_KEY, off ? '1' : '0'); } catch (e) { /* nevadí */ }
+      // pamäť webu vypnutá v Cookie settings (js/analytics.js): nič neukladá
+      if (!window.siteMemory || window.siteMemory.allowed()) {
+        try { localStorage.setItem(MOTION_KEY, off ? '1' : '0'); } catch (e) { /* nevadí */ }
+      }
       document.dispatchEvent(new CustomEvent('motionchange', { detail: { off: off } }));
     }
     if (toggle) {

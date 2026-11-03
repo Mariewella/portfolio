@@ -16,6 +16,14 @@
   let consent = null;
   try { consent = localStorage.getItem(KEY); } catch (e) { /* súkromné okno: lišta sa ukáže znova */ }
 
+  // pamäť webu (trofeje, nájdené súbory, pauza animácií) sa dá vypnúť v nastaveniach;
+  // ostatné skripty sa pýtajú window.siteMemory.allowed() predtým, než niečo uložia
+  const MEMORY_KEY = 'site-memory'; // 'off' = web si nič nepamätá
+  const MEMORY_ITEMS = ['motion-off', 'trophies', 'found-files'];
+  let memory = true;
+  try { memory = localStorage.getItem(MEMORY_KEY) !== 'off'; } catch (e) { /* nevadí */ }
+  window.siteMemory = { allowed: function () { return memory; } };
+
   let loaded = false;
   window.dataLayer = window.dataLayer || [];
   function gtag() { window.dataLayer.push(arguments); }
@@ -31,22 +39,36 @@
     document.head.appendChild(s);
   }
 
+  // vráti true, ak treba stránku načítať znova (GA už bežal)
   function setConsent(value) {
     consent = value;
     try { localStorage.setItem(KEY, value); } catch (e) { /* nevadí */ }
-    if (value === 'granted') load();
-    else if (loaded) {
-      // odvolaný súhlas: zmaže cookies Google Analytics a stránku načíta bez merania
-      document.cookie.split(';').forEach(function (c) {
-        const name = c.split('=')[0].trim();
-        if (name.indexOf('_ga') === 0) {
-          ['', '; domain=.dominika-skulavik.com', '; domain=' + location.hostname].forEach(function (d) {
-            document.cookie = name + '=; Max-Age=0; path=/' + d;
-          });
-        }
-      });
-      location.reload();
-    }
+    if (value === 'granted') { load(); return false; }
+    if (!loaded) return false;
+    // odvolaný súhlas: zmaže cookies Google Analytics a stránku načíta bez merania
+    document.cookie.split(';').forEach(function (c) {
+      const name = c.split('=')[0].trim();
+      if (name.indexOf('_ga') === 0) {
+        ['', '; domain=.dominika-skulavik.com', '; domain=' + location.hostname].forEach(function (d) {
+          document.cookie = name + '=; Max-Age=0; path=/' + d;
+        });
+      }
+    });
+    return true;
+  }
+
+  // vráti true, ak treba stránku načítať znova (aby zabudla, čo mala v pamäti)
+  function setMemory(on) {
+    if (on === memory) return false;
+    memory = on;
+    try {
+      if (on) localStorage.removeItem(MEMORY_KEY);
+      else {
+        localStorage.setItem(MEMORY_KEY, 'off');
+        MEMORY_ITEMS.forEach(function (k) { localStorage.removeItem(k); });
+      }
+    } catch (e) { /* nevadí */ }
+    return !on;
   }
 
   if (consent === 'granted') load();
@@ -61,10 +83,15 @@
   /* ---------- Čo web ukladá (zobrazí sa v nastaveniach) ----------
      [názov, platnosť, popis, kto]; pri zmene na webe uprav aj tu */
   const SITE = 'dominika-skulavik.com';
+  // vždy uložené, inak by sa lišta so súhlasom pýtala na každej stránke
+  const ALWAYS = [
+    ['analytics-consent', 'Until you clear it', 'Remembers your choice about analytics.', SITE],
+    ['site-memory', 'Until you clear it', 'Remembers that you switched the site memory off.', SITE]
+  ];
   const NECESSARY = [
-    ['analytics-consent', 'Until you clear it', 'Remembers your choice in this panel.', SITE],
     ['motion-off', 'Until you clear it', 'Remembers whether you paused the animations.', SITE],
-    ['trophies', 'Until you clear it', 'Your unlocked trophies and the date you got each one.', SITE]
+    ['trophies', 'Until you clear it', 'Your unlocked trophies and the date you got each one.', SITE],
+    ['found-files', 'Until you clear it', 'Which case file documents you have already opened.', SITE]
   ];
   const ANALYTICS = [
     ['_ga', '2 years', 'Tells one visit from another, so the same visitor isn’t counted twice.', 'Google'],
@@ -95,9 +122,14 @@
       'Nothing here is used for ads.</p>' +
 
     '<section class="cookies__group">' +
-      '<div class="cookies__head"><h3>Necessary</h3><span class="cookies__always">Always on</span></div>' +
-      '<p>Without these the site would forget your settings on every page. They stay in your browser (local storage) and are never sent anywhere, so they can’t be switched off.</p>' +
+      '<div class="cookies__head"><h3 id="cookies-memory">Necessary</h3>' +
+        '<label class="switch"><input type="checkbox" role="switch" aria-labelledby="cookies-memory" class="cookies__memory"><span class="switch__track" aria-hidden="true"></span></label>' +
+      '</div>' +
+      '<p>Without these the site would forget your settings on every page. They stay in your browser (local storage) and are never sent anywhere. ' +
+        'Switch them off and your trophies, found files and paused animations are deleted and won’t be kept past the page you are on.</p>' +
       rows(NECESSARY) +
+      '<p class="cookies__note">Always kept, otherwise this question would come back on every page:</p>' +
+      rows(ALWAYS) +
     '</section>' +
 
     '<section class="cookies__group">' +
@@ -115,11 +147,12 @@
     '</section>' +
 
     '<div class="cookies__actions">' +
-      '<button type="button" class="consent__btn" data-consent="denied">Decline all</button>' +
+      '<button type="button" class="consent__btn" data-consent="none">Decline all</button>' +
       '<button type="button" class="consent__btn" data-consent="save">Save settings</button>' +
-      '<button type="button" class="consent__btn consent__btn--yes" data-consent="granted">Accept all</button>' +
+      '<button type="button" class="consent__btn consent__btn--yes" data-consent="all">Accept all</button>' +
     '</div>';
   const toggle = panel.querySelector('.cookies__toggle');
+  const memoryToggle = panel.querySelector('.cookies__memory');
 
   /* ---------- Lišta so súhlasom (pri prvej návšteve) ---------- */
   const bar = document.createElement('section');
@@ -136,16 +169,20 @@
 
   function openPanel() {
     toggle.checked = consent === 'granted';
+    memoryToggle.checked = memory;
     panel.showModal();
     panel.scrollTop = 0;
   }
 
-  function decide(value) {
+  // value: analytika 'granted' | 'denied'; mem: pamäť webu true | false (undefined = bez zmeny)
+  function decide(value, mem) {
     bar.remove();
     if (panel.open) panel.close();
-    if (value !== consent) setConsent(value);
-    // trofej Cookie Monster (js/achievements.js)
+    // trofej Cookie Monster (js/achievements.js); pri vypnutej pamäti sa neuloží
     if (value === 'granted' && window.trophies) window.trophies.unlock('cookieMonster');
+    const reloadConsent = value !== consent && setConsent(value);
+    const reloadMemory = mem !== undefined && setMemory(mem);
+    if (reloadConsent || reloadMemory) location.reload();
   }
 
   function onAction(e) {
@@ -154,8 +191,10 @@
     const action = b.dataset.consent;
     if (action === 'settings') openPanel();
     else if (action === 'close') panel.close();
-    else if (action === 'save') decide(toggle.checked ? 'granted' : 'denied');
-    else decide(action);
+    else if (action === 'save') decide(toggle.checked ? 'granted' : 'denied', memoryToggle.checked);
+    else if (action === 'all') decide('granted', true);
+    else if (action === 'none') decide('denied', false);
+    else decide(action); // lišta: Accept / Decline sa týka len analytiky
   }
   bar.addEventListener('click', onAction);
   panel.addEventListener('click', onAction);
