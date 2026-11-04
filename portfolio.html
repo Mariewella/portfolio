@@ -216,9 +216,10 @@
           <h3 class="doc__title">Components</h3>
           <dl class="doc__brief">
             <div><dt>TASK</dt><dd>Create a design system from a single base colour, and put it to work in Info Manager, Livestock Records and Meal Ordering.</dd></div>
-            <div><dt>PROBLEM</dt><dd>[ADD: what the screens looked like without a shared system]</dd></div>
+            <div><dt>PROBLEM</dt><dd>Before I joined, two developers each worked on their own modules with their own CSS, and one of them later moved to Bootstrap. A single developer’s modules looked alike, but side by side the differences across the app were obvious.</dd></div>
             <div><dt>SOLUTION</dt><dd>
               <ul class="case__points">
+                <li>One unified system: some Bootstrap remains underneath, but our own components override it.</li>
                 <li>Primitives and semantic tokens; buttons in three levels plus a destructive variant.</li>
                 <li>Inputs with all of their states, modals, cards, tiles, badges, empty and loading states, a focus ring.</li>
                 <li>Dark mode defined as a second set of values, not an inversion.</li>
