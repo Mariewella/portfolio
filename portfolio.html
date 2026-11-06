@@ -149,13 +149,16 @@
           <h3 class="doc__title">Info Manager</h3>
           <dl class="doc__brief">
             <div><dt>TASK</dt><dd>Develop a system to keep track of deadlines.</dd></div>
-            <div><dt>PROBLEM</dt><dd>A company has many entities and needs to monitor them and provide alerts when they require attention.</dd></div>
+            <div><dt>PROBLEM</dt><dd>Clients keep machines, land parcels and other records in separate databases, and need to track deadlines such as vehicle inspections, emissions checks and maintenance.</dd></div>
             <div><dt>SOLUTION</dt><dd>
               <ul class="case__points">
+                <li>Users add a record from their existing register or desktop application, which prefills the entry, then choose which parameter to track.</li>
                 <li>From one date and one number (how many days ahead to warn) produce a status, a colour, a notification and an e-mail, for four kinds of objects: people, machines, jobs and the company.</li>
                 <li>At most three urgent items per category on the overview.</li>
-                <li>New entries are prefilled from existing registers.</li>
-                <li>Add an audit log, so each change is recorded.</li>
+                <li>An entity’s detail shows all its tracked parameters. Each can be marked as done, or set to repeat for fixed-date duties such as official reports and subsidy applications.</li>
+                <li>Each employee chooses their own alerts within a category. With 50+ machines, each of three users would otherwise get 50+ alerts.</li>
+                <li>Urgent items can be sent together in one summary e-mail.</li>
+                <li>An audit log shows who in the company added, changed or deleted what.</li>
               </ul>
             </dd></div>
           </dl>
@@ -188,6 +191,8 @@
               <ul class="case__points">
                 <li>Choices can change until the cut-off, as on paper; locking after the first click would have been worse than paper. A visible countdown shows how long is left.</li>
                 <li>Uploading a new menu no longer wipes existing orders. It once did, and a whole company’s orders vanished.</li>
+                <li>Before sending, the administrator is warned about employees who haven’t chosen a meal. For GDPR reasons they appear by company ID, and the administrator can e-mail them a reminder to choose.</li>
+                <li>The kitchen e-mail states which week the menu is for and includes the menu image employees chose from, plus a pivot table showing how many portions of each menu to prepare for each day.</li>
                 <li>The kitchen e-mail can’t be sent twice: the check lives in the database, not in a disabled button.</li>
                 <li>Most changes came from how the module behaved in use. One lesson repeated: it did things the user didn’t know about.</li>
               </ul>
@@ -195,17 +200,36 @@
           </dl>
         </article>
 
+        <article class="doc" data-title="Warehouse" hidden>
+          <header class="doc__head"><span>DOC 05</span><span class="stamp stamp--shipped">LIVE</span></header>
+          <h3 class="doc__title">Warehouse</h3>
+          <dl class="doc__brief">
+            <div><dt>TASK</dt><dd>Move warehouse statistics from the desktop application to the web and make them quickly available.</dd></div>
+            <div><dt>PROBLEM</dt><dd>To get statistics, users had to download an export from the desktop application and build them in Excel. It listed only individual movements (goods received and issued), without total receipts, total issues or the current stock level.</dd></div>
+            <div><dt>SOLUTION</dt><dd>
+              <ul class="case__points">
+                <li>Total stock is now calculated from the movements, so users see total goods received and issued, and follow the current stock in a table or a chart.</li>
+                <li>On mobile, the first column stays fixed so the material name is always visible, while the other data scrolls sideways.</li>
+                <li>Filters by a specific warehouse or, within a holding, by company.</li>
+                <li>Where historical records exist, the current period can be compared with the previous one, with the difference shown in %.</li>
+                <li>Export to CSV for Excel, or show only materials with negative stock.</li>
+              </ul>
+            </dd></div>
+          </dl>
+        </article>
+
         <article class="doc" data-title="Profile" hidden>
-          <header class="doc__head"><span>DOC 08</span><span class="stamp stamp--shipped">LIVE</span></header>
+          <header class="doc__head"><span>DOC 06</span><span class="stamp stamp--shipped">LIVE</span></header>
           <h3 class="doc__title">Profile &amp; settings</h3>
           <dl class="doc__brief">
             <div><dt>TASK</dt><dd>One place where a user sets up everything about themselves rather than their work: account, password, signed-in devices, notifications, language and appearance.</dd></div>
-            <div><dt>PROBLEM</dt><dd>Settings were scattered: language in the header, appearance nowhere, notifications couldn’t be switched off, and there was no single place to say how you want things.</dd></div>
+            <div><dt>PROBLEM</dt><dd>The navigation bar kept gaining functions that had nothing to do with navigation, such as language, light and dark mode, and installing the app.</dd></div>
             <div><dt>SOLUTION</dt><dd>
               <ul class="case__points">
+                <li>Moved these functions out of the navigation bar and into the profile, which made the bar lighter.</li>
                 <li>A side panel on desktop that becomes a list with arrows on mobile, a different structure rather than a squeezed panel.</li>
                 <li>Notification toggles appear according to permissions; a toggle the server wouldn’t save isn’t shown at all, rather than greyed out.</li>
-                <li>Personal details come from the signed-in session, after a bug where a stranger could appear in someone’s profile.</li>
+                <li>The page became a shared home for settings: other developers started adding settings for their own systems, under a Developer label visible only to the team.</li>
                 <li>Install-as-app button only when the browser can really install it; dark mode that each page opts into, so older pages don’t break.</li>
               </ul>
             </dd></div>
@@ -213,16 +237,16 @@
         </article>
 
         <article class="doc" data-title="Components" hidden>
-          <header class="doc__head"><span>DOC 09</span><span class="stamp stamp--shipped">SHIPPED</span></header>
+          <header class="doc__head"><span>DOC 07</span><span class="stamp stamp--shipped">SHIPPED</span></header>
           <h3 class="doc__title">Components</h3>
           <dl class="doc__brief">
-            <div><dt>TASK</dt><dd>Create a design system from a single base colour, and put it to work in Info Manager, Livestock Records and Meal Ordering.</dd></div>
+            <div><dt>TASK</dt><dd>Turn my minimal, consistent and readable design into a shared system. My manager chose it as the direction, so the other developers could apply it in their own modules.</dd></div>
             <div><dt>PROBLEM</dt><dd>Before I joined, two developers each worked on their own modules with their own CSS, and one of them later moved to Bootstrap. A single developer’s modules looked alike, but side by side the differences across the app were obvious.</dd></div>
             <div><dt>SOLUTION</dt><dd>
               <ul class="case__points">
-                <li>One unified system: some Bootstrap remains underneath, but our own components override it.</li>
-                <li>Primitives and semantic tokens; buttons in three levels plus a destructive variant.</li>
-                <li>Inputs with all of their states, modals, cards, tiles, badges, empty and loading states, a focus ring.</li>
+                <li>Built the components in Figma: buttons, inputs with all their states, modals, cards, tiles, badges, and empty and loading states.</li>
+                <li>Created shared CSS and JavaScript files for common functions, including the modal windows used across the app.</li>
+                <li>Wrote a document the other developers could follow when working on their own modules.</li>
                 <li>Dark mode defined as a second set of values, not an inversion.</li>
                 <li>Monochromatic palette built from the primary blue, with yellow reserved for micro-accents where needed.</li>
               </ul>
@@ -248,6 +272,45 @@
                 </li>
               </ul>
             </dd></div>
+          </dl>
+        </article>
+
+        <article class="doc" data-title="Dev log: CSS" hidden>
+          <header class="doc__head"><span>DOC 08</span><span class="stamp stamp--shipped">SHIPPED</span></header>
+          <h3 class="doc__title">Dev log: CSS architecture</h3>
+          <dl class="doc__brief">
+            <div><dt>PROBLEM</dt><dd>Styles were scattered across &lt;style&gt; blocks directly in the pages.</dd></div>
+            <div><dt>SOLUTION</dt><dd>
+              <ul class="case__points">
+                <li>Used Info Manager as a pilot and moved its CSS into a shared file, loaded after Bootstrap so it can override it without touching the library.</li>
+                <li>Split tokens into three levels: primitives, semantic tokens and foundations. Modules use only the semantic tokens and foundations, and a data-theme attribute switches dark mode.</li>
+                <li>Built own button, card, field and table components, plus a custom modal structure controlled by its own JavaScript.</li>
+                <li>Migrated modules one at a time, so the app kept working during the changes.</li>
+              </ul>
+            </dd></div>
+            <div><dt>RESULT</dt><dd>
+              <ul class="case__points">
+                <li>181 tokens and 1,826 lines of CSS. Token usage in the pages grew from 263 to 2,517.</li>
+                <li>Hard-coded colours in migrated modules: Info Manager 337 → 1, Meal Ordering 175 → 0, Warehouse 64 → 0, Administration 37 → 0.</li>
+                <li>Bootstrap stays as the base for the grid and some behaviour.</li>
+              </ul>
+            </dd></div>
+          </dl>
+        </article>
+
+        <article class="doc" data-title="Dev log: Rewrite" hidden>
+          <header class="doc__head"><span>DOC 09</span><span class="stamp stamp--shipped">LIVE</span></header>
+          <h3 class="doc__title">Dev log: Rewriting Livestock Records</h3>
+          <dl class="doc__brief">
+            <div><dt>PROBLEM</dt><dd>The page had 9,532 non-empty lines of code, but only 496 unique ones. Nearly everything was repeated, across 38 &lt;style&gt; blocks and 28 GridView tables.</dd></div>
+            <div><dt>SOLUTION</dt><dd>
+              <ul class="case__points">
+                <li>Rewrote the page from the ground up: 558 lines added, 13,208 removed.</li>
+                <li>Built reproduction records, pedigrees, a timeline, photos and documents, and push notifications on the new base.</li>
+                <li>Covered the module with 14 automated Playwright tests.</li>
+              </ul>
+            </dd></div>
+            <div><dt>RESULT</dt><dd>2 &lt;style&gt; blocks instead of 38, and no GridView tables. The page now has 6,138 unique lines out of 7,513, so it holds far more real logic and far less repetition.</dd></div>
           </dl>
         </article>
 

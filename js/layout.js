@@ -25,10 +25,9 @@
 
   // kontakty ako ikony; prázdna adresa = ikona sa nezobrazí
   const SOCIAL = [
-    ['Instagram', 'https://www.instagram.com/_shychill_/', '<rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.6" fill="currentColor"/>'],
     ['LinkedIn', 'https://www.linkedin.com/in/dominika-%C5%A1kulavikov%C3%A1-287928238/', '<rect x="3" y="3" width="18" height="18" rx="2"/><path d="M8 10v7M8 7v.01M12 17v-4a2 2 0 0 1 4 0v4M12 10v7"/>'],
     ['Email', 'mailto:skulavikova.d@gmail.com', '<rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/>'],
-    ['Facebook', 'https://www.facebook.com/Little.Domka', '<path d="M15 3h-2.5A3.5 3.5 0 0 0 9 6.5V10H6.5v3.5H9V21h3.5v-7.5H15l.5-3.5h-3V7a1 1 0 0 1 1-1H15z"/>']
+    ['GitHub', 'https://www.github.com/Mariewella', '<path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.75c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/>']
   ];
   const socialLinks = SOCIAL.filter(function (s) { return s[1]; }).map(function (s) {
     const external = s[1].indexOf('http') === 0 ? ' target="_blank" rel="noopener"' : '';
