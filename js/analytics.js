@@ -207,7 +207,7 @@
     if (/Dominika_Skulavikova_CV\.pdf$/.test(link.getAttribute('href') || '')) {
       window.analytics.event('cv_download', { placement: link.closest('.site-footer') ? 'footer' : 'field_notes' });
     }
-    if (link.classList.contains('social__link')) {
+    if (link.classList.contains('social__link') || link.classList.contains('field-notes__cta--ghost')) {
       window.analytics.event('contact_click', { channel: link.textContent.trim().split(' ')[0].toLowerCase() });
     }
   });

@@ -1,4 +1,4 @@
-# Dominika Škulavíková — Portfolio
+# Dominika Škulaviková — Portfolio
 
 Survival-horror portfólio (UX/UI dizajn + front-end). Čisté HTML, CSS a JavaScript, bez frameworkov a bez build krokov.
 

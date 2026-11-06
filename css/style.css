@@ -1173,6 +1173,8 @@ body.has-dossier { overflow: hidden; }
 .field-notes p { margin: 0; font-family: var(--font-type); font-size: 16px; line-height: 1.7; text-wrap: pretty; }
 /* .paper a by inak zafarbil text na červeno, na červenom tlačidle by zmizol */
 .field-notes .field-notes__cta { align-self: flex-start; margin-top: 6px; color: var(--cream); }
+.field-notes .field-notes__cta--ghost { background: none; border: 1px solid var(--ink); color: var(--ink); }
+.field-notes .field-notes__cta--ghost:hover { background: var(--ink); color: var(--cream); }
 
 .section { display: flex; flex-direction: column; gap: 20px; }
 .section--tight { gap: 16px; }
